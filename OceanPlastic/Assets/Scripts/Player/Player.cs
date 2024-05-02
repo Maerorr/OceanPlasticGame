@@ -5,49 +5,77 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    private float baseMaxOxygen = 100f;
+    private float bonusMaxOxygen = 0f;
+    
     private float currentOxygen = 100f;
     private float oxygenDecreaseRate = 5f;
     private float oxygenIncreaseRate = 20f;
 
     private bool isInWater = true;
+
+    [SerializeField, Range(0.01f, 1f)] 
+    private float oxygeneUpdateRate;
+
+    private float oxygenDivisor;
     
     [SerializeField]
-    private Slider oxygenSlider;
-    
-    private Coroutine oxygenCoroutine;
-    // Start is called before the first frame update
+    private OxygenMeter oxygenMeter;
+    private Coroutine oxygenSliderCoroutine;
+    private Coroutine oxygenTimerCoroutine;
+
     void Start()
     {
-        oxygenCoroutine = StartCoroutine(HandleOxygen());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        oxygenSliderCoroutine = StartCoroutine(HandleOxygenSlider());
+        oxygenTimerCoroutine = StartCoroutine(HandleOxygenTimer());
         
+        oxygenDivisor = 1f / oxygeneUpdateRate;
     }
 
-    IEnumerator HandleOxygen()
+    IEnumerator HandleOxygenSlider()
     {
         while(true)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(oxygeneUpdateRate);
             if (isInWater)
             {
-                UpdateOxygen(-oxygenDecreaseRate / 2f);
+                UpdateOxygenSlider(-oxygenDecreaseRate / oxygenDivisor);
             }
             else
             {
-                UpdateOxygen(oxygenIncreaseRate / 2f);
+                UpdateOxygenSlider(oxygenIncreaseRate / oxygenDivisor);
             }
         }
     }
 
-    private void UpdateOxygen(float delta)
+    IEnumerator HandleOxygenTimer()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            if (isInWater)
+            {
+                UpdateOxygenTimer();
+            }
+            else
+            {
+                UpdateOxygenTimer();
+            }
+        }
+    }
+
+    private void UpdateOxygenSlider(float delta)
     {
         currentOxygen += delta;
         currentOxygen = Mathf.Clamp(currentOxygen, 0f, 100f);
-        oxygenSlider.value = currentOxygen;
+        oxygenMeter.SetSliderValue(currentOxygen);
+    }
+    
+    private void UpdateOxygenTimer()
+    {
+        var secondsForEntireBar = (baseMaxOxygen + bonusMaxOxygen) / oxygenDecreaseRate;
+        var secondsLeft = currentOxygen / (baseMaxOxygen + bonusMaxOxygen) * secondsForEntireBar;
+        oxygenMeter.SetTimerValue(Mathf.FloorToInt(secondsLeft));
     }
     
     public void SetIsInWater(bool value)
