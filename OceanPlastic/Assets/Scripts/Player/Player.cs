@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        Application.SetStackTraceLogType(LogType.Log, StackTraceLogType.ScriptOnly);
         oxygenSliderCoroutine = StartCoroutine(HandleOxygenSlider());
         oxygenTimerCoroutine = StartCoroutine(HandleOxygenTimer());
         

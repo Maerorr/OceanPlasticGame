@@ -16,7 +16,6 @@ public class FloatingTrash : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.name);
         PlayerInventory pi = other.GetComponentInParent<PlayerInventory>();
         if (pi != null)
         {
