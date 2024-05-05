@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
@@ -10,6 +11,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField, Range(0f, 20f)] private float cameraOffset = 5f;
     private float camZ;
     private Vector2 velocity;
+    private Vector2 currentOffset;
     
     private void Awake()
     {
@@ -31,7 +33,8 @@ public class CameraMovement : MonoBehaviour
             case MovementState.Moving:
             {
                 var offset = playerMoveScript.GetVelocity().normalized * cameraOffset;
-                targetPos = new Vector2(targetPos.x + offset.x, targetPos.y + offset.y);
+                currentOffset = Vector2.Lerp(currentOffset, offset, 0.6f);
+                targetPos = new Vector2(targetPos.x, targetPos.y) + currentOffset;
                 break;
             }
         }
