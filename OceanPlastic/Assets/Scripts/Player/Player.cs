@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private float oxygenIncreaseRate = 20f;
 
     private bool isInWater = true;
+    private bool canBreathe = false;
 
     [SerializeField, Range(0.01f, 1f)] 
     private float oxygeneUpdateRate;
@@ -27,18 +28,20 @@ public class Player : MonoBehaviour
     void Start()
     {
         Application.SetStackTraceLogType(LogType.Log, StackTraceLogType.ScriptOnly);
+        
         oxygenSliderCoroutine = StartCoroutine(HandleOxygenSlider());
         oxygenTimerCoroutine = StartCoroutine(HandleOxygenTimer());
         
         oxygenDivisor = 1f / oxygeneUpdateRate;
     }
 
+    // this updates the oxygen SLIDER every (oxygeneUpdateRate) seconds
     IEnumerator HandleOxygenSlider()
     {
         while(true)
         {
             yield return new WaitForSeconds(oxygeneUpdateRate);
-            if (isInWater)
+            if (!canBreathe)
             {
                 UpdateOxygenSlider(-oxygenDecreaseRate / oxygenDivisor);
             }
@@ -49,19 +52,13 @@ public class Player : MonoBehaviour
         }
     }
 
+    // this updates the oxygen timer TEXT VALUE every second
     IEnumerator HandleOxygenTimer()
     {
         while (true)
         {
             yield return new WaitForSeconds(1f);
-            if (isInWater)
-            {
-                UpdateOxygenTimer();
-            }
-            else
-            {
-                UpdateOxygenTimer();
-            }
+            UpdateOxygenTimer();
         }
     }
 
@@ -87,5 +84,15 @@ public class Player : MonoBehaviour
     public bool IsInWater()
     {
         return isInWater;
+    }
+
+    public void SetCanBreathe(bool canBreathe)
+    {
+        this.canBreathe = canBreathe;
+    }
+
+    public bool CanBreathe()
+    {
+        return canBreathe;
     }
 }

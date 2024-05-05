@@ -16,7 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 velocity;
     private Rigidbody2D rb;
     [SerializeField] private float speed = 5f;
-    [SerializeField, Range(0f, 1f)] private float lerpSpeed = 0.1f;
+    [SerializeField, Range(0f, 0.3f)] private float moveLerpSpeed = 0.1f;
+    [SerializeField, Range(0f, 0.3f)] private float rotationLerpSpeed = 0.1f;
     [SerializeField] private ContactFilter2D contactFilter;
     private List<RaycastHit2D> hitBuffer = new List<RaycastHit2D>();
     private Vector2 lastMoveDirection = Vector2.zero;
@@ -41,49 +42,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Move();
     }
-
-    // private void Move()
-    // {
-    //     Vector2 input = playerInput.actions["Move"].ReadValue<Vector2>();
-    //
-    //     var inputClamped = Vector2.ClampMagnitude(input, 1f);
-    //     if (input.magnitude > 0.05f)
-    //     {
-    //         lastMoveDirection = inputClamped;
-    //         movementState = MovementState.Moving;
-    //     }
-    //     else
-    //     {
-    //         movementState = MovementState.Idle;
-    //     }
-    //     Vector2 newVelocity;
-    //     float currentLerpSpeed = this.lerpSpeed;
-    //     if (player.IsInWater())
-    //     {
-    //         newVelocity = speed * Time.fixedDeltaTime * inputClamped;
-    //     }
-    //     else
-    //     {
-    //         // apply gravity manually
-    //         newVelocity = Physics2D.gravity * Time.fixedDeltaTime;
-    //         currentLerpSpeed = lerpSpeed* 0.66f;
-    //     }
-    //         
-    //     velocity = Vector2.Lerp(velocity, newVelocity, currentLerpSpeed);
-    //
-    //     if (!TryMove(velocity.x, velocity.y))
-    //     {
-    //         bool[] flags = new bool[2];
-    //         flags[0] = TryMove(velocity.x, 0f);
-    //         flags[1] = TryMove(0f, velocity.y);
-    //         if (!flags[0] && !flags[1])
-    //         {
-    //             velocity = Vector2.zero;
-    //         }
-    //     }
-    //     Quaternion rotation = Quaternion.Euler(0, 0, Mathf.Atan2(lastMoveDirection.y, lastMoveDirection.x) * Mathf.Rad2Deg);
-    //     rb.MoveRotation(rotation);
-    // }
     
     private void Move()
     {
@@ -92,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         CalculateMovementState(inputClamped.magnitude, inputClamped);
 
         Vector2 newVelocity = CalculateNewVelocity(inputClamped);
-
+        lastMoveDirection = newVelocity.normalized;
         if (!TryMove(newVelocity.x, newVelocity.y))
         {
             HandleCollision();
@@ -108,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (inputMagnitude > 0.05f)
         {
-            lastMoveDirection = inputClamped;
+            // lastMoveDirection = inputClamped;
             movementState = MovementState.Moving;
         }
         else
@@ -119,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 CalculateNewVelocity(Vector2 inputClamped)
     {
-        float currentLerpSpeed = player.IsInWater() ? lerpSpeed : lerpSpeed * 0.66f;
+        float currentLerpSpeed = player.IsInWater() ? moveLerpSpeed : moveLerpSpeed * 0.66f;
         Vector2 newVelocity = player.IsInWater() ? speed * Time.fixedDeltaTime * inputClamped : Physics2D.gravity * Time.fixedDeltaTime;
         return Vector2.Lerp(velocity, newVelocity, currentLerpSpeed);
     }
@@ -139,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Quaternion targetRotation = Quaternion.Euler(0, 0, Mathf.Atan2(lastMoveDirection.y, lastMoveDirection.x) * Mathf.Rad2Deg);
         Quaternion currentRotation = Quaternion.Euler(0, 0, rb.rotation);
-        Quaternion newRotation = Quaternion.Lerp(currentRotation, targetRotation, lerpSpeed);
+        Quaternion newRotation = Quaternion.Lerp(currentRotation, targetRotation, rotationLerpSpeed);
         rb.MoveRotation(newRotation.eulerAngles.z);
     }
     
