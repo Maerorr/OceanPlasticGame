@@ -15,14 +15,26 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInput playerInput;
     private Vector2 velocity;
     private Rigidbody2D rb;
-    [SerializeField] private float speed = 5f;
-    [SerializeField, Range(0f, 0.3f)] private float moveLerpSpeed = 0.1f;
-    [SerializeField, Range(0f, 0.3f)] private float rotationLerpSpeed = 0.1f;
-    [SerializeField] private ContactFilter2D contactFilter;
+    
+    [SerializeField] 
+    private float speed = 5f;
+    [SerializeField, Range(0f, 0.3f)] 
+    private float moveLerpSpeed = 0.1f;
+    [SerializeField, Range(0f, 0.3f)] 
+    private float rotationLerpSpeed = 0.1f;
+    [SerializeField] 
+    private ContactFilter2D contactFilter;
+    
     private List<RaycastHit2D> hitBuffer = new List<RaycastHit2D>();
     private Vector2 lastMoveDirection = Vector2.zero;
     private MovementState movementState = MovementState.Idle;
     private Player player;
+    
+    [SerializeField]
+    private DepthMeter depthMeter;
+
+    [SerializeField] 
+    private Transform waterLevel;
     
     // Start is called before the first frame update
     void Awake()
@@ -32,10 +44,9 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        depthMeter.SetDepth(Mathf.FloorToInt(rb.position.y - waterLevel.position.y));
     }
 
     private void FixedUpdate()
