@@ -57,7 +57,7 @@ public class TrashSpawner : MonoBehaviour
     {
         float randomX = UnityEngine.Random.Range(-width / 2f, width / 2f);
         float randomY = UnityEngine.Random.Range(-height / 2f, height / 2f);
-        Vector3 pos = new Vector3(randomX, randomY, spawnedObjectsZ);
+        Vector3 pos = transform.position + new Vector3(randomX, randomY, spawnedObjectsZ);
         
         if (activeObjects.Any(obj => Vector3.Distance(obj.transform.position, pos) < minDistanceFromAnother))
         {
