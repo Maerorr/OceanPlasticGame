@@ -2005,7 +2005,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -3138,6 +3138,15 @@ MonoBehaviour:
   oxygenIncreaseModifier: 1
   oxygeneUpdateRate: 0.1
   oxygenMeter: {fileID: 1086335354}
+  maxHealth: 100
+  healPerSecond: 5
+  maxSafeDepth: 75
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  onDamageTaken:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &994476992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4683,8 +4692,8 @@ MonoBehaviour:
   - trashPrefab: {fileID: 7950774253478984909, guid: 52d533742fd94744e9cde65d26f7c793, type: 3}
     spawnChance: 1
   spawnedObjectsZ: -1
-  density: 0.21
-  minDistanceFromAnother: 1.65
+  density: 0.42
+  minDistanceFromAnother: 0.93
   width: 99.1
   height: 36.2
 --- !u!4 &1608367069

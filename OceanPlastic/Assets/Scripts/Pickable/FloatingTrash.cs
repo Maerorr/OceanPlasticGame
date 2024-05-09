@@ -3,15 +3,17 @@ using UnityEngine;
 
 public class FloatingTrash : MonoBehaviour
 {
-    [SerializeField]
-    private FloatingTrashSO data;
+    [SerializeField] private FloatingTrashSO data;
 
     private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        spriteRenderer.sprite = data.sprite;
+        int size = data.spriteVariants.Count;
+        var randomSprite = data.spriteVariants[UnityEngine.Random.Range(0, size)];
+        spriteRenderer.sprite = randomSprite;
+        transform.rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360));
     }
 
     private void OnTriggerEnter2D(Collider2D other)

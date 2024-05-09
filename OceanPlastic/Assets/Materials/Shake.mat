@@ -81,7 +81,7 @@ Material:
     - _ZWrite: 1
     - _scale: 0.21
     - _speed: 0.99
-    - _strength: 0.55
+    - _strength: 0.77
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
