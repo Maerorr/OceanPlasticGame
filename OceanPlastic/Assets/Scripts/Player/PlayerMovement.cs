@@ -36,17 +36,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] 
     private Transform waterLevel;
     
+    private Coroutine updateDepth;
+    
     // Start is called before the first frame update
     void Awake()
     {
+        updateDepth = StartCoroutine(UpdateDepth());
         player = GetComponent<Player>();
         playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
-    }
-
-    private void Update()
-    {
-        depthMeter.SetDepth(Mathf.FloorToInt(rb.position.y - waterLevel.position.y));
     }
 
     private void FixedUpdate()
@@ -61,11 +59,8 @@ public class PlayerMovement : MonoBehaviour
         CalculateMovementState(inputClamped.magnitude, inputClamped);
 
         Vector2 newVelocity = CalculateNewVelocity(inputClamped);
-        lastMoveDirection = newVelocity.normalized;
-        if (!TryMove(newVelocity.x, newVelocity.y))
-        {
-            HandleCollision();
-        }
+        lastMoveDirection = newVelocity.normalized; 
+        rb.velocity = velocity;
 
         RotatePlayer();
 
@@ -89,19 +84,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 CalculateNewVelocity(Vector2 inputClamped)
     {
         float currentLerpSpeed = player.IsInWater() ? moveLerpSpeed : moveLerpSpeed * 0.66f;
-        Vector2 newVelocity = player.IsInWater() ? speed * Time.fixedDeltaTime * inputClamped : Physics2D.gravity * Time.fixedDeltaTime;
+        Vector2 newVelocity = player.IsInWater() ? speed * inputClamped : Physics2D.gravity ;
         return Vector2.Lerp(velocity, newVelocity, currentLerpSpeed);
-    }
-
-    private void HandleCollision()
-    {
-        bool[] flags = new bool[2];
-        flags[0] = TryMove(velocity.x, 0f);
-        flags[1] = TryMove(0f, velocity.y);
-        if (!flags[0] && !flags[1])
-        {
-            velocity = Vector2.zero;
-        }
     }
 
     private void RotatePlayer()
@@ -110,31 +94,6 @@ public class PlayerMovement : MonoBehaviour
         Quaternion currentRotation = Quaternion.Euler(0, 0, rb.rotation);
         Quaternion newRotation = Quaternion.Lerp(currentRotation, targetRotation, rotationLerpSpeed);
         rb.MoveRotation(newRotation.eulerAngles.z);
-    }
-    
-    private bool TryMove(float x, float y)
-    {
-        var move = new Vector2(x, y);
-        var hits = rb.Cast(
-            move,
-            contactFilter,
-            hitBuffer,
-            move.magnitude + 0.1f
-        );
-        
-        if (hits != 0)
-        {
-            string debug = "";
-            foreach (var var in hitBuffer)
-            {
-                debug += var.collider.name + " ";
-            }
-            Debug.Log(debug);
-            return false;
-        }
-        
-        rb.MovePosition(rb.position + move);
-        return true;
     }
     
     public MovementState GetMovementState()
@@ -151,9 +110,15 @@ public class PlayerMovement : MonoBehaviour
     {
         return rb.position;
     }
-
-    private void OnTriggerEnter(Collider other)
+    
+    private IEnumerator UpdateDepth()
     {
-        Debug.Log("Player entered trigger");
+        while (true)
+        {
+            yield return new WaitForSeconds(0.1f);
+            int depthFlooredInt = Mathf.FloorToInt(rb.position.y - waterLevel.position.y);
+            depthMeter.SetDepth(depthFlooredInt);
+            player.SetCurrentDepth(depthFlooredInt);
+        }
     }
 }

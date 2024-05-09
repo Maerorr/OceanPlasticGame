@@ -86,4 +86,9 @@ public class PlayerInventory : MonoBehaviour
     {
         trashMeter.SetTrashValue(currentCapacity, maxCapacity);
     }
+    
+    public void SetBagModifier(int maxBagCapacity)
+    {
+        maxCapacity = maxBagCapacity;
+    }
 }
