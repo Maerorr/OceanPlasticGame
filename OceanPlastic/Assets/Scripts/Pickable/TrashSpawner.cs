@@ -32,6 +32,8 @@ public class TrashSpawner : MonoBehaviour
 
     private List<GameObject> activeObjects = new List<GameObject>();
 
+    RaycastHit2D[] raycastHits = new RaycastHit2D[128];
+    
     private void Awake()
     {
         // normalization of spawn chances
@@ -58,6 +60,21 @@ public class TrashSpawner : MonoBehaviour
         float randomX = UnityEngine.Random.Range(-width / 2f, width / 2f);
         float randomY = UnityEngine.Random.Range(-height / 2f, height / 2f);
         Vector3 pos = transform.position + new Vector3(randomX, randomY, spawnedObjectsZ);
+        Vector3 raycastOrigin = transform.position + new Vector3(randomX, randomY, -50f);
+        
+        // raycast to find if it intersects with any object tagged terrain or other trash
+        Array.Clear(raycastHits, 0, raycastHits.Length);
+        int hitCount = Physics2D.RaycastNonAlloc(raycastOrigin, Vector3.forward, raycastHits);
+
+        for (int i = 0; i < hitCount; i++ )
+        {
+            
+            if (!raycastHits[i].transform.TryGetComponent(out Tag tagComponent))
+            {
+                return false;
+            }
+            if (tagComponent.HasTag(Tags.Terrain)) return false;
+        }
         
         if (activeObjects.Any(obj => Vector3.Distance(obj.transform.position, pos) < minDistanceFromAnother))
         {

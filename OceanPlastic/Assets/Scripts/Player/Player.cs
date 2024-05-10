@@ -35,17 +35,19 @@ public class Player : MonoBehaviour
     
     [SerializeField]
     private OxygenMeter oxygenMeter;
-    private Coroutine oxygenSliderCoroutine;
-    private Coroutine oxygenTimerCoroutine;
 
     #endregion
     
     [Header("Health")]
     
+    [SerializeField]
+    Slider healthSlider;
+    
     [SerializeField] 
     private float maxHealth = 100f;
 
     private float currentHealth;
+    private bool canHeal = true;
 
     [SerializeField] 
     private float healPerSecond = 5f;
@@ -54,13 +56,21 @@ public class Player : MonoBehaviour
     private int maxSafeDepth = 75;
 
     private int currentDepth = 0;
-
+    
     [Header("Events")]
     [SerializeField] 
     private UnityEvent onDeath;
 
     [SerializeField] 
     private UnityEvent onDamageTaken;
+
+    #region Coroutines
+
+    private Coroutine oxygenSliderCoroutine;
+    private Coroutine oxygenTimerCoroutine;
+    private Coroutine disableHealingCoroutine;
+
+    #endregion
     
     void Start()
     {
@@ -69,12 +79,19 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
         oxygenSliderCoroutine = StartCoroutine(HandleOxygenSlider());
         oxygenTimerCoroutine = StartCoroutine(HandleOxygenTimer());
+        StartCoroutine(HandleDepth());
         oxygenDivisor = 1f / oxygeneUpdateRate;
     }
 
     private void Update()
     {
-        currentHealth += healPerSecond * Time.deltaTime;
+        if (canHeal)
+        {
+            currentHealth += healPerSecond * Time.deltaTime;
+            currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        }
+        
+        UpdateHealthSlider();
     }
 
     // this updates the oxygen SLIDER every (oxygenUpdateRate) seconds
@@ -113,15 +130,22 @@ public class Player : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.5f);
-            if (currentDepth < maxSafeDepth)
+            if (currentDepth < -maxSafeDepth)
             {
-                TakeDamage();
+                TakeDamage(10f);
             }
         }
     }
 
-    private void TakeDamage()
+    private void TakeDamage(float damage)
     {
+        currentHealth -= damage;
+        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        if (disableHealingCoroutine != null)
+        {
+            StopCoroutine(disableHealingCoroutine);
+        }
+        disableHealingCoroutine = StartCoroutine(DisableHealing());
         onDamageTaken.Invoke();
     }
 
@@ -168,5 +192,17 @@ public class Player : MonoBehaviour
     {
         oxygenDecreaseModifier = decreaseModifier;
         oxygenIncreaseModifier = 1f / decreaseModifier;
+    }
+    
+    private void UpdateHealthSlider()
+    {
+        healthSlider.value = currentHealth / maxHealth;
+    }
+
+    IEnumerator DisableHealing()
+    {
+        canHeal = false;
+        yield return new WaitForSeconds(1f);
+        canHeal = true;
     }
 }

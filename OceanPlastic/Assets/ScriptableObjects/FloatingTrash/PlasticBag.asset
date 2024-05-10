@@ -10,13 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df44848625225f74887d65d46d180c75, type: 3}
-  m_Name: DrinkBottle
+  m_Name: PlasticBag
   m_EditorClassIdentifier: 
-  name: Plastic Bottle
+  name: Plastic Bag
   spriteVariants:
-  - {fileID: 1195578218, guid: dca095f345003fc439164c74125fe6c7, type: 3}
-  - {fileID: 119519429, guid: dca095f345003fc439164c74125fe6c7, type: 3}
-  - {fileID: 1015284839, guid: dca095f345003fc439164c74125fe6c7, type: 3}
-  - {fileID: 1361330203, guid: dca095f345003fc439164c74125fe6c7, type: 3}
-  weight: 2
-  value: 5
+  - {fileID: 21300000, guid: 7259ed98a4143564681de901a96356c0, type: 3}
+  weight: 1
+  value: 2
