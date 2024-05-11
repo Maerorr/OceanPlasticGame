@@ -36,7 +36,8 @@ public enum OxygenUpgrades
 
 public enum DepthUpgrades
 {
-    Basic = 75,
+    Basic = 50,
+    Upgrade100 = 100,
     Upgrade200 = 200,
     Upgrade400 = 400,
 }
@@ -47,4 +48,12 @@ public enum BagUpgrades
     Upgrade30 = 30,
     Upgrade60 = 60,
     Upgrade90 = 90
+}
+
+public enum FinUpgrades
+{
+    Basic10 = 100,
+    Upgrade133 = 133,
+    Upgrade166 = 166,
+    Upgrade200 = 200
 }
