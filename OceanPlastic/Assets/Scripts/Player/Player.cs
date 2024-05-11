@@ -16,7 +16,8 @@ public class Player : MonoBehaviour
     private float bonusMaxOxygen = 0f;
     
     private float currentOxygen = 100f;
-    [SerializeField, Range(1f, 10f)]
+    [SerializeField, Range(1f, 500f)] 
+    private float secondsOfOxygen;
     private float oxygenDecreaseRate = 5f;
     private float oxygenIncreaseRate = 20f;
     
@@ -76,6 +77,8 @@ public class Player : MonoBehaviour
     {
         Application.SetStackTraceLogType(LogType.Log, StackTraceLogType.ScriptOnly);
 
+        oxygenDecreaseRate = baseMaxOxygen / secondsOfOxygen;
+        
         currentHealth = maxHealth;
         oxygenSliderCoroutine = StartCoroutine(HandleOxygenSlider());
         oxygenTimerCoroutine = StartCoroutine(HandleOxygenTimer());
