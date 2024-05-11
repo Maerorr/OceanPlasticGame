@@ -1,8 +1,29 @@
+using System;
 using UnityEngine;
 
 public class PlayerUpgrades : MonoBehaviour
 {
-    
+    OxygenUpgrades oxygenUpgrade = OxygenUpgrades.Basic;
+    DepthUpgrades depthUpgrade = DepthUpgrades.Basic;
+    BagUpgrades bagUpgrade = BagUpgrades.Basic;
+
+    private Player player;
+    private PlayerMovement playerMovement;
+    private PlayerInventory playerInventory;
+
+    private void Awake()
+    {
+        player = GetComponent<Player>();
+        playerMovement = GetComponent<PlayerMovement>();
+        playerInventory = GetComponent<PlayerInventory>();
+    }
+
+    private void ApplyUpgrades()
+    {
+        player.SetOxygenModifier((float)oxygenUpgrade);
+        player.SetMaxSafeDepth((int)depthUpgrade);
+        playerInventory.SetBagModifier((int) bagUpgrade);
+    }
 }
 
 public enum OxygenUpgrades

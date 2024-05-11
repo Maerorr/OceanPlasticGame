@@ -198,6 +198,11 @@ public class Player : MonoBehaviour
     {
         healthSlider.value = currentHealth / maxHealth;
     }
+    
+    public void SetMaxSafeDepth(int depth)
+    {
+        maxSafeDepth = depth;
+    }
 
     IEnumerator DisableHealing()
     {

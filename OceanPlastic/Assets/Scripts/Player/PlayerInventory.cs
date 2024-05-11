@@ -9,7 +9,7 @@ public class PlayerInventory : MonoBehaviour
 {
     [SerializeField]
     private int maxCapacity = 5;
-    private List<FloatingTrashSO> collectedTrash = new List<FloatingTrashSO>();
+    private List<(FloatingTrashSO, int)> collectedTrash = new List<(FloatingTrashSO, int)>();
     private int currentCapacity = 0;
     
     private int money = 0;
@@ -33,17 +33,43 @@ public class PlayerInventory : MonoBehaviour
             Debug.Log("Inventory is full");
             return false;
         }
-        collectedTrash.Add(item);
+
+        int currentCount = 0;
+        if (collectedTrash.Count == 0)
+        {
+            collectedTrash.Add((item, 1));
+        }
+        else
+        {
+            var found = collectedTrash.Find(entry => entry.Item1.name == item.name);
+            currentCount = found.Item2;
+            if (found.Item1 != null)
+            {
+                var index = collectedTrash.IndexOf(found);
+                var newEntry = (found.Item1, found.Item2 + 1);
+                collectedTrash[index] = newEntry;
+            }
+            else
+            {
+                collectedTrash.Add((item, 1));
+            }
+        }
         currentCapacity += item.weight;
         UpdateTrashMeter();
         
-        Debug.Log($"new item added to inventory: {item.name}, current capacity: {currentCapacity} / {maxCapacity}");
+        Debug.Log($"new item added to inventory: {item.name}, this item count: {currentCount}, current capacity: {currentCapacity} / {maxCapacity}");
         return true;
     }
 
     public void RemoveTrash(FloatingTrashSO trash)
     {
-        collectedTrash.Remove(trash);
+        var found = collectedTrash.Find(entry => entry.Item1.name == trash.name);
+        if (found.Item1 != null)
+        {
+            var index = collectedTrash.IndexOf(found);
+            var newEntry = (found.Item1, found.Item2 - 1);
+            collectedTrash[index] = newEntry;
+        }
         currentCapacity -= trash.weight;
         UpdateTrashMeter();
     }
@@ -72,7 +98,7 @@ public class PlayerInventory : MonoBehaviour
         return true;
     }
 
-    public List<FloatingTrashSO> GetInventory()
+    public List<(FloatingTrashSO, int)> GetInventory()
     {
         return collectedTrash;
     }

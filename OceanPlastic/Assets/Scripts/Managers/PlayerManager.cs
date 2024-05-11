@@ -4,15 +4,40 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Player player;
+    private PlayerInventory playerInventory;
+    private PlayerMovement playerMovement;
+    
+    public static PlayerManager Instance { get; private set; }
+    
+    private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         
+        player = FindObjectOfType<Player>();
+        playerInventory = FindObjectOfType<PlayerInventory>();
+        playerMovement = FindObjectOfType<PlayerMovement>();
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public Player Player
     {
-        
+        get { return player; }
+    }
+    
+    public PlayerInventory PlayerInventory
+    {
+        get { return playerInventory; }
+    }
+    
+    public PlayerMovement PlayerMovement
+    {
+        get { return playerMovement; }
     }
 }
