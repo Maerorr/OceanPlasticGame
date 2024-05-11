@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df44848625225f74887d65d46d180c75, type: 3}
   m_Name: DrinkBottle
   m_EditorClassIdentifier: 
-  name: Plastic Bottle
+  name: Glass Bottle
   spriteVariants:
   - {fileID: 1195578218, guid: dca095f345003fc439164c74125fe6c7, type: 3}
   - {fileID: 119519429, guid: dca095f345003fc439164c74125fe6c7, type: 3}
   - {fileID: 1015284839, guid: dca095f345003fc439164c74125fe6c7, type: 3}
   - {fileID: 1361330203, guid: dca095f345003fc439164c74125fe6c7, type: 3}
-  weight: 2
+  weight: 1
   value: 5
