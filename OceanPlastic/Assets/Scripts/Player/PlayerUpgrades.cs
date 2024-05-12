@@ -25,6 +25,7 @@ public class PlayerUpgrades : MonoBehaviour
         player.SetOxygenModifier((float)oxygenUpgrade);
         player.SetMaxSafeDepth((int)depthUpgrade);
         playerInventory.SetBagModifier((int)pocketUpgrade);
+        playerMovement.SetSpeedModifier(((float)finUpgrade)/100f);
         PrintUpgrades();
     }
 

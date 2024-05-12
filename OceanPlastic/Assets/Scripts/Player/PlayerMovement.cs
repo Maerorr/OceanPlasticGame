@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     
     [SerializeField] 
     private float speed = 5f;
+    private float speedModifier = 1f;
     [SerializeField, Range(0f, 0.3f)] 
     private float moveLerpSpeed = 0.1f;
     [SerializeField, Range(0f, 0.3f)] 
@@ -84,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 CalculateNewVelocity(Vector2 inputClamped)
     {
         float currentLerpSpeed = player.IsInWater() ? moveLerpSpeed : moveLerpSpeed * 0.66f;
-        Vector2 newVelocity = player.IsInWater() ? speed * inputClamped : Physics2D.gravity ;
+        Vector2 newVelocity = player.IsInWater() ? (speed * speedModifier) * inputClamped : Physics2D.gravity ;
         return Vector2.Lerp(velocity, newVelocity, currentLerpSpeed);
     }
 
@@ -120,5 +121,10 @@ public class PlayerMovement : MonoBehaviour
             depthMeter.SetDepth(depthFlooredInt);
             player.SetCurrentDepth(depthFlooredInt);
         }
+    }
+
+    public void SetSpeedModifier(float mod)
+    {
+        speedModifier = mod;
     }
 }

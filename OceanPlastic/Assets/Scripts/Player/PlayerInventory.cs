@@ -125,6 +125,7 @@ public class PlayerInventory : MonoBehaviour
     public void SetBagModifier(int maxBagCapacity)
     {
         maxCapacity = maxBagCapacity;
+        UpdateTrashMeter();
     }
 
     private void ShowMessage(string message)
