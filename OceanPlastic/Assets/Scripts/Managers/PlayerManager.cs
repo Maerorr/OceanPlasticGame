@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
     private Player player;
     private PlayerInventory playerInventory;
     private PlayerMovement playerMovement;
+    private PlayerUpgrades playerUpgrades;
     
     public static PlayerManager Instance { get; private set; }
     
@@ -24,6 +25,7 @@ public class PlayerManager : MonoBehaviour
         player = FindObjectOfType<Player>();
         playerInventory = FindObjectOfType<PlayerInventory>();
         playerMovement = FindObjectOfType<PlayerMovement>();
+        playerUpgrades = FindObjectOfType<PlayerUpgrades>();
     }
     
     public Player Player
@@ -39,5 +41,10 @@ public class PlayerManager : MonoBehaviour
     public PlayerMovement PlayerMovement
     {
         get { return playerMovement; }
+    }
+    
+    public PlayerUpgrades PlayerUpgrades
+    {
+        get { return playerUpgrades; }
     }
 }

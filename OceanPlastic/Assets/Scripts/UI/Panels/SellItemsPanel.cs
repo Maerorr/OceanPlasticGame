@@ -44,7 +44,6 @@ public class SellItemsList : MonoBehaviour
         }
         
         // populate
-        Debug.Log(PlayerManager.Instance.PlayerInventory.GetInventory().Count);
         foreach (var item in PlayerManager.Instance.PlayerInventory.GetInventory())
         {
             var entry = Instantiate(sellItemEntryPrefab, entriesParent.transform);

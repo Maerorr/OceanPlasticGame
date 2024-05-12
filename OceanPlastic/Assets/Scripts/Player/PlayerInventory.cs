@@ -12,7 +12,7 @@ public class PlayerInventory : MonoBehaviour
     private List<(FloatingTrashSO, int)> collectedTrash = new List<(FloatingTrashSO, int)>();
     private int currentCapacity = 0;
     
-    private int money = 0;
+    private int money = 500;
     
     [SerializeField]
     private TrashMeter trashMeter;

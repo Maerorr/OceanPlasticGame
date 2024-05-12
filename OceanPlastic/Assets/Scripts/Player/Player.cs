@@ -193,8 +193,8 @@ public class Player : MonoBehaviour
     
     public void SetOxygenModifier(float decreaseModifier)
     {
-        oxygenDecreaseModifier = decreaseModifier;
-        oxygenIncreaseModifier = 1f / decreaseModifier;
+        oxygenDecreaseModifier = 1f / decreaseModifier;
+        oxygenIncreaseModifier = decreaseModifier;
     }
     
     private void UpdateHealthSlider()
