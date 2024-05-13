@@ -75,6 +75,8 @@ public class Player : MonoBehaviour
     
     void Start()
     {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
         Application.SetStackTraceLogType(LogType.Log, StackTraceLogType.ScriptOnly);
 
         oxygenDecreaseRate = baseMaxOxygen / secondsOfOxygen;
