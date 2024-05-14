@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/LevelPicker.unity
+    guid: 540a5545fe1ec004586193809c273fc2
+  - enabled: 1
+    path: Assets/Scenes/TerrainSpawnerTest.unity
+    guid: 5ab96b77688781047bdada90391d0d4f
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 77a30ab44e0b2444b9b540a4da3fd8e7, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: e3804e40b30804f429a9e7217e6fd5f9, type: 2}
