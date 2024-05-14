@@ -25,12 +25,11 @@ public class PlayerInventory : MonoBehaviour
     
     private void Awake()
     {
+        msg??= FindAnyObjectByType<Messenger>();
+        trashMeter??= FindAnyObjectByType<TrashMeter>();
+        moneyCounter??= FindAnyObjectByType<MoneyCounter>();
         trashMeter.SetTrashValue(currentCapacity, maxCapacity);
         UpdateMoneyCounter();
-        if (msg is null)
-        {
-            msg = FindAnyObjectByType<Messenger>();
-        }
     }
 
     public bool AddItem(FloatingTrashSO item)

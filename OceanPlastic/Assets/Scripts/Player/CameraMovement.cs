@@ -17,7 +17,12 @@ public class CameraMovement : MonoBehaviour
     {
         camZ = transform.position.z;
     }
-    
+
+    private void Start()
+    {
+        playerMoveScript ??= FindAnyObjectByType<PlayerMovement>();
+    }
+
     private void Update()
     {
         Vector2 selfPos = new Vector2(transform.position.x, transform.position.y);

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,7 +9,7 @@ public class BoatSellZone : MonoBehaviour
     private UnityEvent onOpenSellItemsPanel;
     [SerializeField]
     private UnityEvent onCloseSellItemsPanel;
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         PlayerInventory pi = other.GetComponentInParent<PlayerInventory>();
