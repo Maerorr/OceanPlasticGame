@@ -7541,8 +7541,12 @@ PrefabInstance:
       value: LEVEL INITIALIZER
       objectReference: {fileID: 0}
     - target: {fileID: 8274738147717999611, guid: 4ce75e0a35fe6e346b81a302e357bd71, type: 3}
+      propertyPath: trashSpawnerPrefab
+      value: 
+      objectReference: {fileID: 3660026568655905614, guid: a41799f97ae78fe418824a8f29c8df67, type: 3}
+    - target: {fileID: 8274738147717999611, guid: 4ce75e0a35fe6e346b81a302e357bd71, type: 3}
       propertyPath: environmentData.fishDensity
-      value: 0.25
+      value: 0.21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

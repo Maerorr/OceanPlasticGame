@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 63270396625736308}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.29, y: -5.77, z: 11}
+  m_LocalPosition: {x: 0, y: 0, z: 11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -51,5 +51,5 @@ MonoBehaviour:
   fishMinSize: 0.14
   fishMaxSize: 0.39
   schoolSize: 3
-  boundXleft: -35.53
-  boundXright: 29.4
+  boundXleft: -45
+  boundXright: 45

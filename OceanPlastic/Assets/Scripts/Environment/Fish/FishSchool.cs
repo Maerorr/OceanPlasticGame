@@ -48,6 +48,15 @@ public class FishSchool : MonoBehaviour
         fishXSpeed = fishXspeed;
         schoolSize = ySize;
         this.fishCount = fishCount;
+        if (fishXSpeed < 0f)
+        {
+            for (int i = 0; i < fish.Count; i++)
+            {
+                FishData fishData = fish[i];
+                fishData.fish.localScale = Vector3.Scale(fishData.fish.localScale, new Vector3(1, -1, 1));
+                Debug.Log("Scale changed FROM SETDATA to " + fishData.fish.localScale);
+            }
+        }
     }
     
     private void Awake()
@@ -106,11 +115,6 @@ public class FishSchool : MonoBehaviour
             float deltaX = oldPos.x - pos.x;
             float deltaY = oldPos.y - pos.y;
             fishData.fish.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(deltaY, deltaX) * Mathf.Rad2Deg);
-            if (fishXSpeed < 0f)
-            {
-                // flip sprite horizontally if moving left
-                fishData.fish.localScale = new Vector3(-1, 1, 1);
-            }
             
             // check if fish is out of bounds
             if (pos.x < boundXleft)

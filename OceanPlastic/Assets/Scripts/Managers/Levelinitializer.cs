@@ -15,12 +15,16 @@ public class Levelinitializer : MonoBehaviour
     private GameObject instantiatedTerrain;
     private List<GameObject> instantiatedFish = new List<GameObject>();
 
+    [SerializeField] private GameObject trashSpawnerPrefab;
+    private GameObject instantiatedTrashSpawner;
+
     private void Awake()
     {
         LevelDifficulty levelDifficulty = StaticLevelData.chosenDifficulty;
         Debug.Log(levelDifficulty);
         SpawnTerrain(levelDifficulty);
         SpawnAllFishSchools(levelDifficulty);
+        SpawnTrashSpawners(levelDifficulty);
     }
 
     private void SpawnTerrain(LevelDifficulty difficulty)
@@ -93,6 +97,15 @@ public class Levelinitializer : MonoBehaviour
         }
         fishSchool.SetData(Random.Range(3f, 10f), Random.Range(5, 15), speed);
         instantiatedFish.Add(fishSchool.gameObject);
+    }
+
+    private void SpawnTrashSpawners(LevelDifficulty difficulty)
+    {
+        Vector3 spawnPosition = new Vector3(0, -((int)difficulty) / 2f, 11f);
+        instantiatedTrashSpawner = Instantiate(trashSpawnerPrefab, spawnPosition, Quaternion.identity);
+        instantiatedTrashSpawner.name = "TrashSpawner";
+        TrashSpawner trashSpawner = instantiatedTrashSpawner.GetComponent<TrashSpawner>();
+        trashSpawner.ManualSpawn();
     }
 }
 

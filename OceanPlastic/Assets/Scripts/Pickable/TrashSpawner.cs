@@ -55,6 +55,30 @@ public class TrashSpawner : MonoBehaviour
         }
     }
 
+    public void ManualSpawn()
+    {
+        for (int i = 0; i < activeObjects.Count; i++)
+        {
+            Destroy(activeObjects[i]);
+        }
+        float sumOfChances = trashPrefabs.Sum(entry => entry.spawnChance);
+        foreach (var entry in trashPrefabs)
+        {
+            entry.spawnChance /= sumOfChances;
+        }
+
+        int maxTries = 50;
+        int tries = 0;
+        
+        softMax = width * height * density;
+        while (activeObjects.Count < softMax && tries < maxTries)
+        {
+            float randomValue = UnityEngine.Random.value;
+            SpawnTrash(randomValue);
+            tries++;
+        }
+    }
+
     private bool SpawnTrash(float randomValue)
     {
         float randomX = UnityEngine.Random.Range(-width / 2f, width / 2f);
