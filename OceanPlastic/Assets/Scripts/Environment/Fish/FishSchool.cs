@@ -43,6 +43,13 @@ public class FishSchool : MonoBehaviour
     [SerializeField] 
     private float boundXright;
 
+    public void SetData(float ySize, int fishCount, float fishXspeed)
+    {
+        fishXSpeed = fishXspeed;
+        schoolSize = ySize;
+        this.fishCount = fishCount;
+    }
+    
     private void Awake()
     {
         var z = transform.position.z;
@@ -92,9 +99,8 @@ public class FishSchool : MonoBehaviour
             var sin1 = Mathf.Sin(Time.time * fishData.frequency + fishData.phase);
             var sin2 = Mathf.Sin(Time.time * fishData.frequency * 1.4f + fishData.phase);
             var sin3 = Mathf.Sin(Time.time * fishData.frequency * 2.2f + fishData.phase);
-            var sin4 = Mathf.Sin(Time.time * fishData.frequency * 3.1f + fishData.phase);
             
-            pos.y += (sin1 + sin2 / 2.2f + sin3 / 3.3f + sin4 / 5.4f) * fishData.yAmplitude * Time.deltaTime;
+            pos.y += (sin1 + sin2 / 2.2f + sin3 / 3.3f) * fishData.yAmplitude * Time.deltaTime;
             
             fishData.fish.position = pos;
             float deltaX = oldPos.x - pos.x;

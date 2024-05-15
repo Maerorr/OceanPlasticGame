@@ -44,10 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87a1188696dce343b5a294d4ad128f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terVars:
+  terrainVariants:
     easy35mTerrainVariants:
     - {fileID: 1913214216639583999, guid: 6037106871f1c7647b8701ec0977895e, type: 3}
     medium75mTerrainVariants:
     - {fileID: 7985149467116031373, guid: 56c527c0255bfe149bfd40c4c4a00865, type: 3}
     hard150mTerrainVariants:
     - {fileID: 7080333322204677070, guid: 081307cd4030a2a4cbbf5feeb9431179, type: 3}
+  environmentData:
+    fish35mVariants:
+    - {fileID: 63270396625736308, guid: 97235f9984828894b94638ec02598f48, type: 3}
+    - {fileID: 63270396625736308, guid: c3dd641bdece4c44d844a5ac9324ebea, type: 3}
+    fish75mVariants:
+    - {fileID: 63270396625736308, guid: c3dd641bdece4c44d844a5ac9324ebea, type: 3}
+    fish150mVariants: []
+    fishDensity: 0.1

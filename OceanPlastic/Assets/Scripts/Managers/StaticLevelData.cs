@@ -1,6 +1,6 @@
 public static class StaticLevelData
 {
-    public static LevelDifficulty chosenDifficulty;
+    public static LevelDifficulty chosenDifficulty = LevelDifficulty.Easy;
     
     public static void SetDifficulty(LevelDifficulty difficulty)
     {
@@ -10,7 +10,7 @@ public static class StaticLevelData
 
 public enum LevelDifficulty
 {
-    Easy,
-    Medium,
-    Hard
+    Easy = 35,
+    Medium = 75,
+    Hard = 150
 }

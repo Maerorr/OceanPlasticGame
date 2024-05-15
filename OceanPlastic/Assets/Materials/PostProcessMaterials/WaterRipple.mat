@@ -120,12 +120,12 @@ Material:
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 0.03
+    - _Speed: 0.022
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Strength: 0.019
     - _Surface: 0
-    - _WaterLevel: 0.49999982
+    - _WaterLevel: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
     - _Zoom: 0.0028
