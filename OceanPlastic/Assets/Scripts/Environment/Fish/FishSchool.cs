@@ -1,16 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
-
-public class FishData
-{
-    public Transform fish;
-    public float phase;
-    public float frequency;
-    public float yAmplitude;
-}
 
 public class FishSchool : MonoBehaviour
 {
@@ -42,6 +35,9 @@ public class FishSchool : MonoBehaviour
 
     [SerializeField] 
     private float boundXright;
+    
+    [SerializeField]
+    private EditorDisplayData editorDisplayData;
 
     public void SetData(float ySize, int fishCount, float fishXspeed)
     {
@@ -79,6 +75,10 @@ public class FishSchool : MonoBehaviour
             }
             float scale = Random.Range(fishMinSize, fishMaxSize);
             fishObj.transform.localScale = new Vector3(scale, scale, 1f);
+            if (fishXSpeed < 0f)
+            {
+                fishObj.transform.localScale = Vector3.Scale(fishObj.transform.localScale, new Vector3(1, -1, 1));
+            }
             var fishSpriteRenderer = fishObj.AddComponent<SpriteRenderer>();
             fishSpriteRenderer.sprite = fishSprite;
             fishSpriteRenderer.sortingOrder = 0;
@@ -130,11 +130,29 @@ public class FishSchool : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.yellow;
+        Gizmos.color = editorDisplayData.color;
         var centerX = (boundXleft + boundXright) / 2;
         var scale = Mathf.Abs(boundXleft) + Mathf.Abs(boundXright);
         Gizmos.DrawWireCube(new Vector3(centerX, transform.position.y, transform.position.z), new Vector3(scale, schoolSize * 2, 1));
+        Handles.color = Color.white;
+        Handles.Label(transform.position, editorDisplayData.label);
     }
+}
+
+[Serializable]
+public class FishData
+{
+    public Transform fish;
+    public float phase;
+    public float frequency;
+    public float yAmplitude;
+}
+
+[Serializable]
+public class EditorDisplayData
+{
+    public string label;
+    public Color color;
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1368983173896666164}
   - component: {fileID: 89575703913980289}
   m_Layer: 0
-  m_Name: FishSchool
+  m_Name: PufferfishSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishXSpeed: 1.6
   fishYAmplitude: 0.1
-  fishSprite: {fileID: 789228520, guid: e97566bd426922a40924be76e4e458e8, type: 3}
+  fishSprite: {fileID: -1846844647, guid: e97566bd426922a40924be76e4e458e8, type: 3}
   fishCount: 5
   fishMinSize: 0.14
   fishMaxSize: 0.39
