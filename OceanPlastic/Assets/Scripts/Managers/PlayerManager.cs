@@ -10,6 +10,7 @@ public class PlayerManager : MonoBehaviour
     private PlayerUpgrades playerUpgrades;
     
     public static PlayerManager Instance { get; private set; }
+    private Vector3 startingPlayerPosition;
     
     private void Awake()
     {
@@ -23,9 +24,11 @@ public class PlayerManager : MonoBehaviour
         }
         
         player = FindObjectOfType<Player>();
+        player.onDeath.AddListener(ResetPlayerOnDeath);
         playerInventory = FindObjectOfType<PlayerInventory>();
         playerMovement = FindObjectOfType<PlayerMovement>();
         playerUpgrades = FindObjectOfType<PlayerUpgrades>();
+        startingPlayerPosition = player.transform.position;
     }
     
     public Player Player
@@ -46,5 +49,13 @@ public class PlayerManager : MonoBehaviour
     public PlayerUpgrades PlayerUpgrades
     {
         get { return playerUpgrades; }
+    }
+
+    public void ResetPlayerOnDeath()
+    {
+        Debug.Log("ON PLAYER DEATH");
+        playerMovement.transform.position = startingPlayerPosition;
+        playerInventory.RemovePercentageOfTrash(0.5f);
+        player.Heal(1000000f); // this will be clamped to 100 anyway
     }
 }

@@ -59,11 +59,9 @@ public class Player : MonoBehaviour
     private int currentDepth = 0;
     
     [Header("Events")]
-    [SerializeField] 
-    private UnityEvent onDeath;
-
-    [SerializeField] 
-    private UnityEvent onDamageTaken;
+    public UnityEvent onDeath;
+    
+    public UnityEvent onDamageTaken;
 
     #region Coroutines
 
@@ -108,10 +106,6 @@ public class Player : MonoBehaviour
             if (!canBreathe)
             {
                 UpdateOxygenSlider(-(oxygenDecreaseRate * oxygenDecreaseModifier) / oxygenDivisor);
-                if (currentOxygen <= 0f)
-                {
-                    onDeath.Invoke();
-                }
             }
             else
             {
@@ -142,9 +136,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        if (currentHealth <= 0f)
+        {
+            onDeath.Invoke();
+        }
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         if (disableHealingCoroutine != null)
         {
@@ -152,6 +150,12 @@ public class Player : MonoBehaviour
         }
         disableHealingCoroutine = StartCoroutine(DisableHealing());
         onDamageTaken.Invoke();
+    }
+    
+    public void Heal(float heal)
+    {
+        currentHealth += heal;
+        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
     }
 
     private void UpdateOxygenSlider(float delta)

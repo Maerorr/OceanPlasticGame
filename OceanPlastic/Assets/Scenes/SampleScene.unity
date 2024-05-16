@@ -651,7 +651,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -265.07693}
+  m_AnchoredPosition: {x: 0, y: -289.02704}
   m_SizeDelta: {x: 1200, y: 460.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &159354594
@@ -4330,6 +4330,9 @@ MonoBehaviour:
   schoolSize: 3
   boundXleft: -35.53
   boundXright: 29.4
+  editorDisplayData:
+    label: 
+    color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &850883724
 GameObject:
   m_ObjectHideFlags: 0
@@ -4368,6 +4371,9 @@ MonoBehaviour:
   schoolSize: 3
   boundXleft: -35.53
   boundXright: 29.4
+  editorDisplayData:
+    label: 
+    color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &850883726
 Transform:
   m_ObjectHideFlags: 0
@@ -4787,7 +4793,7 @@ MonoBehaviour:
   healthSlider: {fileID: 219146261}
   maxHealth: 100
   healPerSecond: 1
-  maxSafeDepth: 75
+  maxSafeDepth: 20
   onDeath:
     m_PersistentCalls:
       m_Calls: []

@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -77,6 +74,10 @@ public class PlayerInventory : MonoBehaviour
             var index = collectedTrash.IndexOf(found);
             var newEntry = (found.Item1, found.Item2 - 1);
             collectedTrash[index] = newEntry;
+            if (newEntry.Item2 == 0)
+            {
+                collectedTrash.RemoveAt(index);
+            }
         }
         currentCapacity -= trash.weight;
         UpdateTrashMeter();
@@ -86,6 +87,18 @@ public class PlayerInventory : MonoBehaviour
     {
         collectedTrash.Clear();
         currentCapacity = 0;
+        UpdateTrashMeter();
+    }
+
+    public void RemovePercentageOfTrash(float percentage)
+    {
+        int trashToRemove = Mathf.CeilToInt(collectedTrash.Sum(tuple => tuple.Item2) * percentage);
+        Debug.Log("removing " + trashToRemove + " trash items");
+        var trashArray = collectedTrash.ToArray();
+        for (int i = 0; i < trashToRemove; i++)
+        {
+            RemoveTrash(trashArray[Random.Range(0, trashArray.Length)].Item1);
+        }
         UpdateTrashMeter();
     }
     
