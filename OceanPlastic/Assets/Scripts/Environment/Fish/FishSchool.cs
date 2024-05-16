@@ -37,7 +37,7 @@ public class FishSchool : MonoBehaviour
     private float boundXright;
     
     [SerializeField]
-    private EditorDisplayData editorDisplayData;
+    private EditorGizmoData editorDisplayData;
 
     public void SetData(float ySize, int fishCount, float fishXspeed)
     {
@@ -136,7 +136,7 @@ public class FishSchool : MonoBehaviour
         var centerX = (boundXleft + boundXright) / 2;
         var scale = Mathf.Abs(boundXleft) + Mathf.Abs(boundXright);
         Gizmos.DrawWireCube(new Vector3(centerX, transform.position.y, transform.position.z), new Vector3(scale, schoolSize * 2, 1));
-        Handles.color = Color.white;
+        Handles.color = editorDisplayData.color;
         Handles.Label(transform.position, editorDisplayData.label);
     }
 }
@@ -148,11 +148,4 @@ public class FishData
     public float phase;
     public float frequency;
     public float yAmplitude;
-}
-
-[Serializable]
-public class EditorDisplayData
-{
-    public string label;
-    public Color color;
 }

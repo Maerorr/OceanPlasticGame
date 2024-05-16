@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 
 [Serializable]
 public class TrashEntry
@@ -33,7 +34,9 @@ public class TrashSpawner : MonoBehaviour
     private List<GameObject> activeObjects = new List<GameObject>();
 
     RaycastHit2D[] raycastHits = new RaycastHit2D[128];
-    
+
+    [SerializeField]
+    private EditorGizmoData editorGizmoData;
     private void Awake()
     {
         // normalization of spawn chances
@@ -120,9 +123,11 @@ public class TrashSpawner : MonoBehaviour
         return false;
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.white;
+        Gizmos.color = editorGizmoData.color;
         Gizmos.DrawWireCube(transform.position, new Vector3(width, height, 0f));
+        Handles.color = editorGizmoData.color;
+        Handles.Label(transform.position, editorGizmoData.label);
     }
 }
