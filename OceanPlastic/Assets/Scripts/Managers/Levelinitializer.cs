@@ -101,7 +101,7 @@ public class Levelinitializer : MonoBehaviour
 
     private void SpawnTrashSpawners(LevelDifficulty difficulty)
     {
-        Vector3 spawnPosition = new Vector3(0, -((int)difficulty) / 2f, 11f);
+        Vector3 spawnPosition = new Vector3(0, -((int)difficulty) / 2f, 0f);
         instantiatedTrashSpawner = Instantiate(trashSpawnerPrefab, spawnPosition, Quaternion.identity);
         instantiatedTrashSpawner.name = "TrashSpawner";
         TrashSpawner trashSpawner = instantiatedTrashSpawner.GetComponent<TrashSpawner>();
