@@ -53,6 +53,9 @@ public class Player : MonoBehaviour
     [SerializeField] 
     private float healPerSecond = 5f;
 
+    private bool isDrowning = false;
+    private bool isTooDeep = false;
+    
     [SerializeField] 
     private int maxSafeDepth = 75;
 
@@ -68,6 +71,7 @@ public class Player : MonoBehaviour
     private Coroutine oxygenSliderCoroutine;
     private Coroutine oxygenTimerCoroutine;
     private Coroutine disableHealingCoroutine;
+    private Coroutine damageCoroutine;
 
     #endregion
     
@@ -82,6 +86,7 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
         oxygenSliderCoroutine = StartCoroutine(HandleOxygenSlider());
         oxygenTimerCoroutine = StartCoroutine(HandleOxygenTimer());
+        damageCoroutine = StartCoroutine(DamageCoroutine());
         StartCoroutine(HandleDepth());
         oxygenDivisor = 1f / oxygeneUpdateRate;
     }
@@ -131,7 +136,11 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             if (currentDepth < -maxSafeDepth)
             {
-                TakeDamage(10f);
+                isTooDeep = true;
+            }
+            else
+            {
+                isTooDeep = false;
             }
         }
     }
@@ -161,6 +170,14 @@ public class Player : MonoBehaviour
     private void UpdateOxygenSlider(float delta)
     {
         currentOxygen += delta;
+        if (currentOxygen <= 0f)
+        {
+            isDrowning = true;
+        }
+        else
+        {
+            isDrowning = false;
+        }
         currentOxygen = Mathf.Clamp(currentOxygen, 0f, 100f);
         oxygenMeter.SetSliderValue(currentOxygen);
     }
@@ -212,11 +229,28 @@ public class Player : MonoBehaviour
     {
         maxSafeDepth = depth;
     }
+    
+    public float GetMaxSafeDepth()
+    {
+        return maxSafeDepth;
+    }
 
     IEnumerator DisableHealing()
     {
         canHeal = false;
         yield return new WaitForSeconds(1f);
         canHeal = true;
+    }
+    
+    IEnumerator DamageCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            float damage = Convert.ToInt32(isDrowning) * 10f + Convert.ToInt32(isTooDeep) * 10f;
+            if (damage < 0.1f) continue;
+            TakeDamage(damage);
+            onDamageTaken.Invoke();
+        }
     }
 }

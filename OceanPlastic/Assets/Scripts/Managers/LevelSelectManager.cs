@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelectManager : MonoBehaviour
 {
+    [SerializeField] private List<SceneData> easyScenes;
+    [SerializeField] private List<SceneData> mediumScenes;
+    [SerializeField] private List<SceneData> hardScenes;
+
     public void SelectEasyLevel()
     {
         StaticLevelData.SetDifficulty(LevelDifficulty.Easy);
@@ -27,4 +31,10 @@ public class LevelSelectManager : MonoBehaviour
     {
         SceneManager.LoadScene("TerrainSpawnerTest");
     }
+}
+
+public class SceneData
+{
+    public Scene scene;
+    public List<FloatingTrashSO> relevantTrash;
 }
