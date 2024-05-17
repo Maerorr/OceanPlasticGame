@@ -15,6 +15,11 @@ public class FloatingTrash : MonoBehaviour
         spriteRenderer.sprite = randomSprite;
         transform.rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360));
     }
+    
+    public FloatingTrashSO GetData()
+    {
+        return data;
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {

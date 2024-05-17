@@ -9,6 +9,8 @@ public class BoatSellZone : MonoBehaviour
     private UnityEvent onOpenSellItemsPanel;
     [SerializeField]
     private UnityEvent onCloseSellItemsPanel;
+    
+    public UnityEvent<FloatingTrashSO> onSellTrash;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -31,6 +33,10 @@ public class BoatSellZone : MonoBehaviour
         for (int i = 0; i < inv.Count; i++)
         {
             var item = inv[i];
+            for (int o = 0; o < item.Item2; o++)
+            {
+                onSellTrash.Invoke(item.Item1);
+            }
             playerInventory.AddMoney(item.Item1.value * item.Item2);
         }
         playerInventory.RemoveAllTrash();
