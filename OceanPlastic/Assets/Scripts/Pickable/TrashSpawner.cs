@@ -23,6 +23,8 @@ public class TrashSpawner : MonoBehaviour
     private float density = 0.1f;
     [SerializeField]
     private float minDistanceFromAnother = 3f;
+    [SerializeField]
+    private float minDistanceFromTerrain = 1f;
 
     [SerializeField]
     private float width;
@@ -91,7 +93,8 @@ public class TrashSpawner : MonoBehaviour
         
         // raycast to find if it intersects with any object tagged terrain or other trash
         Array.Clear(raycastHits, 0, raycastHits.Length);
-        int hitCount = Physics2D.RaycastNonAlloc(raycastOrigin, Vector3.forward, raycastHits);
+        //int hitCount = Physics2D.RaycastNonAlloc(raycastOrigin, Vector3.forward, raycastHits);
+        int hitCount = Physics2D.CircleCastNonAlloc(raycastOrigin, minDistanceFromAnother / 3f, Vector2.zero, raycastHits);
 
         for (int i = 0; i < hitCount; i++ )
         {
@@ -127,6 +130,10 @@ public class TrashSpawner : MonoBehaviour
     {
         Gizmos.color = editorGizmoData.color;
         Gizmos.DrawWireCube(transform.position, new Vector3(width, height, 0f));
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireSphere(transform.position, minDistanceFromAnother);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, minDistanceFromTerrain);
         Handles.color = editorGizmoData.color;
         Handles.Label(transform.position, editorGizmoData.label);
     }
