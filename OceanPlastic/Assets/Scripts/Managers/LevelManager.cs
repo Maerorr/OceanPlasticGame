@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,9 +11,12 @@ public class LevelManager : MonoBehaviour
     int allTrashCount;
     
     private Objectives objectives;
+    private GameObject finishLevelArea;
 
     private void Start()
     {
+        finishLevelArea = FindObjectOfType<FinishLevel>().transform.parent.gameObject;
+        finishLevelArea.SetActive(false);
         FindAnyObjectByType<BoatSellZone>().onSellTrash.AddListener(TrashCollected);
         
         objectives = FindObjectOfType<Objectives>();
@@ -51,8 +52,14 @@ public class LevelManager : MonoBehaviour
         bool isCompleted = objectives.UpdateTrashObjectives(trash);
         if (isCompleted)
         {
-            var entry = collectionObjective.Find(entry => entry.Item1.name == trash.name);
-            entry.Item3 = true;
+            collectionObjective[collectionObjective.FindIndex(entry => entry.Item1.name == trash.name)] = (trash, 0, true);
+        }
+        
+        if (collectionObjective.All(entry => entry.Item3))
+        {
+            finishLevelArea.SetActive(true);
+            
+            // TODO: implement a voice that will tell the player to go to the finish level area
         }
     }
 }
