@@ -23,4 +23,6 @@ public enum Tags
     Player,
     FloatingTrash,
     Terrain,
+    Tool,
+    Vacuum,
 }

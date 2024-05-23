@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Air : MonoBehaviour
@@ -38,6 +35,11 @@ public class Air : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Tag tags = other.gameObject.GetComponent<Tag>();
+        if (tags != null)
+        {
+            if (!tags.HasTag(Tags.Player)) return;
+        }
         player = other.gameObject.GetComponentInParent<Player>();
         if (player == null) return;
         
@@ -47,7 +49,11 @@ public class Air : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        
+        Tag tags = other.gameObject.GetComponent<Tag>();
+        if (tags != null)
+        {
+            if (!tags.HasTag(Tags.Player)) return;
+        }
         player = other.gameObject.GetComponentInParent<Player>();
         if (player == null) return;
         
