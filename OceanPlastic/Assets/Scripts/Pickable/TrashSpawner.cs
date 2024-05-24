@@ -99,11 +99,10 @@ public class TrashSpawner : MonoBehaviour
         for (int i = 0; i < hitCount; i++ )
         {
             
-            if (!raycastHits[i].transform.TryGetComponent(out Tag tagComponent))
+            if (raycastHits[i].transform.TryGetComponent(out Tag tagComponent))
             {
-                return false;
+                if (tagComponent.HasTag(Tags.Terrain)) return false;
             }
-            if (tagComponent.HasTag(Tags.Terrain)) return false;
         }
         
         if (activeObjects.Any(obj => Vector3.Distance(obj.transform.position, pos) < minDistanceFromAnother))

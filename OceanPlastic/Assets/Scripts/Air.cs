@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Air : MonoBehaviour
@@ -35,21 +36,30 @@ public class Air : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other.name);
         Tag tags = other.gameObject.GetComponent<Tag>();
-        if (tags != null)
+        if (tags is null) return;
+        if (tags.HasTag(Tags.Player))
         {
-            if (!tags.HasTag(Tags.Player)) return;
-        }
-        player = other.gameObject.GetComponentInParent<Player>();
-        if (player == null) return;
+            player = other.gameObject.GetComponentInParent<Player>();
+            if (player == null) return;
         
-        player.SetCanBreathe(true);
-        isPlayerInside = true;
+            player.SetCanBreathe(true);
+            isPlayerInside = true; 
+            return;
+        }
+
+        if (tags.HasTag(Tags.FloatingTrash))
+        {
+            var rb = other.gameObject.GetComponent<Rigidbody2D>();
+            rb.gravityScale = 1f;
+        }
+        
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        Tag tags = other.gameObject.GetComponent<Tag>();
+        /*Tag tags = other.gameObject.GetComponent<Tag>();
         if (tags != null)
         {
             if (!tags.HasTag(Tags.Player)) return;
@@ -58,7 +68,25 @@ public class Air : MonoBehaviour
         if (player == null) return;
         
         player.SetCanBreathe(false);
-        isPlayerInside = false;
+        isPlayerInside = false;*/
+        
+        Tag tags = other.gameObject.GetComponent<Tag>();
+        if (tags == null) return;
+        if (tags.HasTag(Tags.Player))
+        {
+            player = other.gameObject.GetComponentInParent<Player>();
+            if (player == null) return;
+        
+            player.SetCanBreathe(false);
+            isPlayerInside = false; 
+            return;
+        }
+        
+        if (tags.HasTag(Tags.FloatingTrash))
+        {
+            var rb = other.gameObject.GetComponent<Rigidbody2D>();
+            rb.gravityScale = 0f;
+        }
     }
 
     private void OnDrawGizmos()
@@ -68,5 +96,16 @@ public class Air : MonoBehaviour
         Vector3 pos = transform.position;
         pos.y += breathableOffset / 2f;
         Gizmos.DrawWireCube(pos, new Vector3(box2d.size.x, box2d.size.y - breathableOffset, 1f));
+    }
+    
+    private bool CheckIfItsPlayer(Collider2D other)
+    {
+        Tag tags = other.gameObject.GetComponent<Tag>();
+        if (tags != null)
+        {
+            if (!tags.HasTag(Tags.Player)) return false;
+        }
+        player = other.gameObject.GetComponentInParent<Player>();
+        return player != null;
     }
 }
