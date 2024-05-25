@@ -1,3 +1,5 @@
+using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,24 +11,37 @@ public class SellItemsList : MonoBehaviour
     [SerializeField]
     private GameObject sellItemEntryPrefab;
 
+    [SerializeField]
+    private Vector2 openPosition;
+    [SerializeField]
+    private Vector2 closedPosition;
+    
+    private RectTransform rect;
+    
     [SerializeField] 
     private UnityEvent onSell;
-
+    
     private void Awake()
     {
+        rect = GetComponent<RectTransform>();
         root = transform.gameObject;
-        root.SetActive(false);
+        rect.DOAnchorPos(closedPosition, 0.75f).SetEase(Ease.OutQuad).OnComplete(
+            () => root.SetActive(false)
+        );
     }
     
     public void ShowSellItemsList()
     {
         root.SetActive(true);
+        rect.DOAnchorPos(openPosition, 0.75f).SetEase(Ease.OutQuad);
         PopulateSellItemsList();
     }
     
     public void HideSellItemsList()
     {
-        root.SetActive(false);
+        rect.DOAnchorPos(closedPosition, 0.75f).SetEase(Ease.OutQuad).OnComplete(
+            () => root.SetActive(false)
+        );
     }
 
     public void SellItems()
@@ -56,5 +71,10 @@ public class SellItemsList : MonoBehaviour
                 item.Item1.value, 
                 item.Item2 * item.Item1.value);
         }
+    }
+
+    private void OnDestroy()
+    {
+        DOTween.Kill(rect);
     }
 }
