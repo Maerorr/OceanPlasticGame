@@ -116,8 +116,7 @@ public class Player : MonoBehaviour
             }
         }
     }
-
-    // this updates the oxygen timer TEXT VALUE every second
+    
     IEnumerator HandleOxygenTimer()
     {
         while (true)

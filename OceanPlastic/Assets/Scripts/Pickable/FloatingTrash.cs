@@ -8,6 +8,7 @@ public class FloatingTrash : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     Coroutine moveCoroutine;
+    private TrashSpawner spawnerParent;
     
     private void Awake()
     {
@@ -17,6 +18,11 @@ public class FloatingTrash : MonoBehaviour
         var randomSprite = data.spriteVariants[UnityEngine.Random.Range(0, size)];
         spriteRenderer.sprite = randomSprite;
         transform.rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360));
+    }
+
+    public void SetSpawnerParent(TrashSpawner parent)
+    {
+        spawnerParent = parent;
     }
     
     public FloatingTrashSO GetData()
@@ -36,6 +42,7 @@ public class FloatingTrash : MonoBehaviour
         {
             if (pi.AddItem(data))
             {
+                spawnerParent.RemoveTrash(this);
                 Destroy(gameObject);
             }
         }

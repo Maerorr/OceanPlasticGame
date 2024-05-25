@@ -147,4 +147,9 @@ public class PlayerInventory : MonoBehaviour
         msgPos.y += 1;
         msg.ShowMessage(message, msgPos, Color.red, 3f);
     }
+
+    public int GetTrashCount()
+    {
+        return collectedTrash.Sum(tuple => tuple.Item2);
+    }
 }

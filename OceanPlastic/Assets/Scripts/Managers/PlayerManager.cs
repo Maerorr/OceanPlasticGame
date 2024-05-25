@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
     private PlayerInventory playerInventory;
     private PlayerMovement playerMovement;
     private PlayerUpgrades playerUpgrades;
+    private List<TrashSpawner> trashSpawners;
     
     public static PlayerManager Instance { get; private set; }
     private Vector3 startingPlayerPosition;
@@ -29,6 +30,8 @@ public class PlayerManager : MonoBehaviour
         playerMovement = FindObjectOfType<PlayerMovement>();
         playerUpgrades = FindObjectOfType<PlayerUpgrades>();
         startingPlayerPosition = player.transform.position;
+        
+        trashSpawners = new List<TrashSpawner>(FindObjectsOfType<TrashSpawner>());
     }
     
     public Player Player
@@ -53,9 +56,30 @@ public class PlayerManager : MonoBehaviour
 
     public void ResetPlayerOnDeath()
     {
-        Debug.Log("ON PLAYER DEATH");
         playerMovement.transform.position = startingPlayerPosition;
+        int trashInInv = playerInventory.GetTrashCount();
+        int amountToSpawn = Mathf.FloorToInt(trashInInv * 0.66f);
+        Debug.Log("Amount To Spawn = " + amountToSpawn);
         playerInventory.RemovePercentageOfTrash(0.5f);
+        int currentTrash = 0;
+        int maxTrash = 0;
+        int spawned = 0;
+        // player loses half his inv on death, we need to ensure he can finish the game even after dying
+        foreach (var trashSpawner in trashSpawners)
+        {
+            currentTrash = trashSpawner.GetCurrentObjectsCount();
+            maxTrash = trashSpawner.GetMaxTrashCount();
+            spawned += trashSpawner.SpawnAdditionalTrash(
+                (1 - (float)(maxTrash - currentTrash) / (float)maxTrash) * 0.9f,
+                amountToSpawn
+            );
+            Debug.Log(spawned + " trash spawned");
+            if (spawned >= amountToSpawn)
+            {
+                break;
+            }
+            amountToSpawn -= spawned;
+        }
         player.Heal(1000000f); // this will be clamped to 100 anyway
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -32,12 +33,19 @@ public class ForceCannon : MonoBehaviour
     [SerializeField]
     LayerMask layerMask;
     
+    [SerializeField]
+    SpriteRenderer spriteRenderer;
+
+    private Material shockwaveMaterial;
+    private float waveTime = 0;
+    
     private RaycastHit2D[] hits = new RaycastHit2D[32];
     
     // Start is called before the first frame update
     void Start()
     {
         playerInput = GetComponentInParent<PlayerInput>();
+        shockwaveMaterial = spriteRenderer.sharedMaterial;
     }
 
     // Update is called once per frame
@@ -55,7 +63,13 @@ public class ForceCannon : MonoBehaviour
     {
         if (canShoot)
         {
-            Debug.Log("Shooting");
+            DOTween.To(() => waveTime, x => waveTime = x, 1f, 0.5f).OnUpdate(() =>
+            {
+                shockwaveMaterial.SetFloat("_ShootTime", waveTime);
+            }).OnComplete(() =>
+            {
+                waveTime = 0f;
+            });
             Array.Clear(hits, 0, hits.Length);
             Rigidbody2D rb;
             int hitCount = Physics2D.BoxCastNonAlloc(castStart.position, boxCastSize, 0f, castStart.right, hits, cannonRange - boxCastSize.x / 2f, layerMask);

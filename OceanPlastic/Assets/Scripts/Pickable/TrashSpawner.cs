@@ -34,6 +34,7 @@ public class TrashSpawner : MonoBehaviour
     private float softMax;
 
     private List<GameObject> activeObjects = new List<GameObject>();
+    private int initiallySpawnedObjects = 0;
 
     RaycastHit2D[] raycastHits = new RaycastHit2D[128];
 
@@ -60,7 +61,7 @@ public class TrashSpawner : MonoBehaviour
         }
     }
 
-    public void ManualSpawn()
+    /*public void ManualSpawn()
     {
         for (int i = 0; i < activeObjects.Count; i++)
         {
@@ -82,7 +83,7 @@ public class TrashSpawner : MonoBehaviour
             SpawnTrash(randomValue);
             tries++;
         }
-    }
+    }*/
 
     private bool SpawnTrash(float randomValue)
     {
@@ -91,9 +92,8 @@ public class TrashSpawner : MonoBehaviour
         Vector3 pos = transform.position + new Vector3(randomX, randomY, spawnedObjectsZ);
         Vector3 raycastOrigin = transform.position + new Vector3(randomX, randomY, -50f);
         
-        // raycast to find if it intersects with any object tagged terrain or other trash
         Array.Clear(raycastHits, 0, raycastHits.Length);
-        //int hitCount = Physics2D.RaycastNonAlloc(raycastOrigin, Vector3.forward, raycastHits);
+
         int hitCount = Physics2D.CircleCastNonAlloc(raycastOrigin, minDistanceFromAnother / 3f, Vector2.zero, raycastHits);
 
         for (int i = 0; i < hitCount; i++ )
@@ -117,12 +117,19 @@ public class TrashSpawner : MonoBehaviour
             if (randomValue < sum)
             {
                 GameObject trash = Instantiate(entry.trashPrefab, pos, Quaternion.identity);
+                trash.GetComponent<FloatingTrash>().SetSpawnerParent(this);
                 activeObjects.Add(trash);
+                initiallySpawnedObjects++;
                 return true;
             }
         }
 
         return false;
+    }
+
+    public void RemoveTrash(FloatingTrash trash)
+    {
+        activeObjects.Remove(trash.gameObject);
     }
 
     private void OnDrawGizmosSelected()
@@ -135,5 +142,36 @@ public class TrashSpawner : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, minDistanceFromTerrain);
         Handles.color = editorGizmoData.color;
         Handles.Label(transform.position, editorGizmoData.label);
+    }
+
+    public int GetCurrentObjectsCount()
+    {
+        return activeObjects.Count;
+    }
+    
+    public int GetMaxTrashCount()
+    {
+        return initiallySpawnedObjects;
+    }
+
+    public int SpawnAdditionalTrash(float percentOfOriginal, int max)
+    {
+        int spawned = 0;
+        int needToSpawn = Mathf.CeilToInt(percentOfOriginal * (float)initiallySpawnedObjects);
+        while (spawned < needToSpawn)
+        {
+            float randomValue = UnityEngine.Random.value;
+            if (SpawnTrash(randomValue))
+            {
+                spawned++;
+            }
+
+            if (spawned >= max)
+            {
+                return spawned;
+            }
+        }
+
+        return spawned;
     }
 }

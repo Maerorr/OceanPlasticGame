@@ -34,7 +34,7 @@ public class Vacuum : MonoBehaviour
             {
                 Vector2 distance = castStart.position - hit.transform.position;
                 Vector2 velocity = distance.normalized / distance.magnitude;
-                Vector2.ClampMagnitude(velocity, 10f);
+                velocity = Vector2.ClampMagnitude(velocity, 10f);
                 hit.transform.GetComponent<FloatingTrash>().MoveTowardsVacuum(velocity * vacuumPower);
                 Debug.DrawLine(castStart.position, hit.transform.position, Color.green);
             }
@@ -49,7 +49,6 @@ public class Vacuum : MonoBehaviour
         Debug.DrawLine(castStart.position, castStart.position + castStart.right * vacuumRange, Color.blue);
         Debug.DrawLine(castStart.position, castStart.position + Quaternion.Euler(0, 0, maxConeAngle) * transform.right * vacuumRange, Color.red);
         Debug.DrawLine(castStart.position, castStart.position + Quaternion.Euler(0, 0, -maxConeAngle) * transform.right * vacuumRange, Color.red);
-        
     }
 
     private void OnDrawGizmosSelected()

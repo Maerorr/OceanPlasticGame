@@ -24,7 +24,7 @@ public class Levelinitializer : MonoBehaviour
         Debug.Log(levelDifficulty);
         SpawnTerrain(levelDifficulty);
         SpawnAllFishSchools(levelDifficulty);
-        SpawnTrashSpawners(levelDifficulty);
+        //SpawnTrashSpawners(levelDifficulty);
     }
 
     private void SpawnTerrain(LevelDifficulty difficulty)
@@ -99,14 +99,14 @@ public class Levelinitializer : MonoBehaviour
         instantiatedFish.Add(fishSchool.gameObject);
     }
 
-    private void SpawnTrashSpawners(LevelDifficulty difficulty)
+    /*private void SpawnTrashSpawners(LevelDifficulty difficulty)
     {
         Vector3 spawnPosition = new Vector3(0, -((int)difficulty) / 2f, 0f);
         instantiatedTrashSpawner = Instantiate(trashSpawnerPrefab, spawnPosition, Quaternion.identity);
         instantiatedTrashSpawner.name = "TrashSpawner";
         TrashSpawner trashSpawner = instantiatedTrashSpawner.GetComponent<TrashSpawner>();
         trashSpawner.ManualSpawn();
-    }
+    }*/
 }
 
 [Serializable]
