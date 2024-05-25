@@ -14,7 +14,7 @@ public class DataPersistanceManagere : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            LoadGameData();
+            LoadGame();
         }
         else
         {

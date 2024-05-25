@@ -37,7 +37,6 @@ public class BoatSellZone : MonoBehaviour
             {
                 onSellTrash.Invoke(item.Item1);
             }
-            playerInventory.AddMoney(item.Item1.value * item.Item2);
         }
         playerInventory.RemoveAllTrash();
     }
