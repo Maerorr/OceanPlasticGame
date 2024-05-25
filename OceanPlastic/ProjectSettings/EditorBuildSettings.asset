@@ -5,15 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   - enabled: 1
-    path: Assets/Scenes/LevelPicker.unity
+    path: Assets/Scenes/TheHub.unity
     guid: 540a5545fe1ec004586193809c273fc2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TerrainSpawnerTest.unity
     guid: 5ab96b77688781047bdada90391d0d4f
+  - enabled: 1
+    path: Assets/Scenes/Levels/Easy35m/Easy35m_1.unity
+    guid: 30dec4d2b35adaf4992896ef929aa13e
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 77a30ab44e0b2444b9b540a4da3fd8e7, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: e3804e40b30804f429a9e7217e6fd5f9, type: 2}

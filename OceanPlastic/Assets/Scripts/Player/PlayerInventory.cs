@@ -10,8 +10,6 @@ public class PlayerInventory : MonoBehaviour
     private List<(FloatingTrashSO, int)> collectedTrash = new List<(FloatingTrashSO, int)>();
     private int currentCapacity = 0;
     
-    private int money = 500;
-    
     [SerializeField]
     private TrashMeter trashMeter;
 
@@ -27,7 +25,7 @@ public class PlayerInventory : MonoBehaviour
         trashMeter??= FindAnyObjectByType<TrashMeter>();
         moneyCounter??= FindAnyObjectByType<MoneyCounter>();
         trashMeter.SetTrashValue(currentCapacity, maxCapacity);
-        UpdateMoneyCounter();
+        //UpdateMoneyCounter();
     }
 
     public bool AddItem(FloatingTrashSO item)
@@ -103,7 +101,7 @@ public class PlayerInventory : MonoBehaviour
         UpdateTrashMeter();
     }
     
-    public void AddMoney(int amount)
+    /*public void AddMoney(int amount)
     {
         money += amount;
         UpdateMoneyCounter();
@@ -118,17 +116,17 @@ public class PlayerInventory : MonoBehaviour
         money -= amount;
         UpdateMoneyCounter();
         return true;
-    }
+    }*/
 
     public List<(FloatingTrashSO, int)> GetInventory()
     {
         return collectedTrash;
     }
 
-    private void UpdateMoneyCounter()
+    /*private void UpdateMoneyCounter()
     {
         moneyCounter.SetMoneyValue(money);
-    }
+    }*/
 
     private void UpdateTrashMeter()
     {

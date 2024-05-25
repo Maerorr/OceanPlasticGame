@@ -42,7 +42,7 @@ public class PlayerTools : MonoBehaviour
     }
 }
 
-
+[Serializable]
 public enum CurrentTool
 {
     None,

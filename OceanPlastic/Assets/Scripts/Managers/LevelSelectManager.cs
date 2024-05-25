@@ -29,7 +29,7 @@ public class LevelSelectManager : MonoBehaviour
 
     private void StartGame()
     {
-        SceneManager.LoadScene("TerrainSpawnerTest");
+        SceneManager.LoadScene("Scenes/Levels/Easy35m/Easy35m_1");
     }
 }
 

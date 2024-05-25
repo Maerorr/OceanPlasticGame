@@ -36,7 +36,6 @@ public class Air : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.name);
         Tag tags = other.gameObject.GetComponent<Tag>();
         if (tags is null) return;
         if (tags.HasTag(Tags.Player))
