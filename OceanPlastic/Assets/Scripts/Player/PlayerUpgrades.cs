@@ -18,6 +18,13 @@ public class PlayerUpgrades : MonoBehaviour
         player = GetComponent<Player>();
         playerMovement = GetComponent<PlayerMovement>();
         playerInventory = GetComponent<PlayerInventory>();
+        
+        var data = StaticGameData.instance;
+        
+        oxygenUpgrade = data.oxygenUpgrade;
+        finUpgrade = data.finUpgrade;
+        depthUpgrade = data.depthUpgrade;
+        pocketUpgrade = data.pocketUpgrade;
     }
 
     private void ApplyUpgrades()

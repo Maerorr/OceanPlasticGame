@@ -28,6 +28,7 @@ public class PlanetLevelEntry : MonoBehaviour
     private float animationTime = 0.4f;
     
     private float moveY;
+    private Vector2 initialScale;
 
     private PlanetEntryManager planetEntryManager;
     
@@ -40,6 +41,7 @@ public class PlanetLevelEntry : MonoBehaviour
         planetInfoPanel.transform.DOScaleX(0f, 0.0f);
         moveY = planetInfoPanel.anchoredPosition.y;
         planetEntryManager = FindObjectOfType<PlanetEntryManager>();
+        initialScale = planetInfoPanel.transform.localScale;
     }
 
     public void SetID(int id)
@@ -96,8 +98,8 @@ public class PlanetLevelEntry : MonoBehaviour
         //var moveYTween = planetInfoPanel.transform.DOMoveY(130f, 0.2f).SetEase(Ease.OutCubic);
         var colorTween = highlight.DOColor(new Color(1f, 1f, 1f, 0.3f), animationTime).SetEase(Ease.OutCubic).SetId(gameObject.GetInstanceID()).intId;
         var moveYTween = planetInfoPanel.DOAnchorPos(new Vector2(0f, moveY), animationTime).SetEase(Ease.OutCubic).SetId(gameObject.GetInstanceID()+1).intId;
-        var scaleYTween = planetInfoPanel.transform.DOScaleY(1f, animationTime).SetEase(Ease.OutCubic).SetId(gameObject.GetInstanceID()+2).intId;
-        var scaleXTween = planetInfoPanel.transform.DOScaleX(1f, animationTime).SetEase(Ease.OutCubic).SetId(gameObject.GetInstanceID()+3).intId;
+        var scaleYTween = planetInfoPanel.transform.DOScaleY(initialScale.x, animationTime).SetEase(Ease.OutCubic).SetId(gameObject.GetInstanceID()+2).intId;
+        var scaleXTween = planetInfoPanel.transform.DOScaleX(initialScale.x, animationTime).SetEase(Ease.OutCubic).SetId(gameObject.GetInstanceID()+3).intId;
         
         tweens.Add(colorTween);
         tweens.Add(moveYTween);

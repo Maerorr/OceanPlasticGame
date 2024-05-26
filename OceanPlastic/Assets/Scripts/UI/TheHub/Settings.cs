@@ -15,13 +15,13 @@ public class Settings : MonoBehaviour
     {
         if (active)
         {
-            postprocessCheck.text = "";
+            postprocessCheck.text = "X";
             feature.SetActive(false);
             active = false;
         }
         else
         {
-            postprocessCheck.text = "X";
+            postprocessCheck.text = "";
             feature.SetActive(true);
             active = true;
         }

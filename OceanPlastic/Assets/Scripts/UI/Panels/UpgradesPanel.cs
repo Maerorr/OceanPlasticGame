@@ -104,12 +104,12 @@ public class UpgradesPanel : MonoBehaviour
 
     private void UpdateUpgrades()
     {
-        var upgrades = PlayerManager.Instance.PlayerUpgrades;
+        var data = StaticGameData.instance;
         
-        oxygenUpgrade = upgrades.GetOxygenUpgrade();
-        finUpgrade = upgrades.GetFinUpgrade();
-        suitUpgrade = upgrades.GetDepthUpgrade();
-        pocketUpgrade = upgrades.GetPocketUpgrade();
+        oxygenUpgrade = data.oxygenUpgrade;
+        finUpgrade = data.finUpgrade;
+        suitUpgrade = data.depthUpgrade;
+        pocketUpgrade = data.pocketUpgrade;
     }
 
     private void MarkAlreadyBoughtUpgrades()

@@ -48,11 +48,11 @@ public class UpgradeEntry : MonoBehaviour
 
     public void Buy()
     {
-        /*if (!PlayerManager.Instance.PlayerInventory.RemoveMoney(upgradeCost))
+        if (!StaticGameData.instance.RemoveMoney(upgradeCost))
         {
             return;
-        }*/
-        PlayerManager.Instance.PlayerUpgrades.Upgrade(upgradeType, upgradeNumber);
+        }
+        StaticGameData.instance.AddUpgrade(upgradeType, upgradeNumber);
         onBuy.Invoke();
     }
 

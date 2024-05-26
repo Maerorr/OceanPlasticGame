@@ -6,8 +6,15 @@ public class MoneyCounter : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI moneyText;
 
-    public void SetMoneyValue(int money)
+    private void Start()
     {
+        UpdateMoney();
+        StaticGameData.instance.onMoneyChange.AddListener(UpdateMoney);
+    }
+
+    public void UpdateMoney()
+    {
+        int money = StaticGameData.instance.money;
         moneyText.text = $"{money}g";
     }
 }
