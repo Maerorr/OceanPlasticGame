@@ -25,4 +25,5 @@ public enum Tags
     Terrain,
     Tool,
     Vacuum,
+    Enemy,
 }

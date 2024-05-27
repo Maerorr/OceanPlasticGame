@@ -1702,6 +1702,7 @@ MonoBehaviour:
   onMoneyChange:
     m_PersistentCalls:
       m_Calls: []
+  ripplePostProcess: 1
 --- !u!4 &910731419
 Transform:
   m_ObjectHideFlags: 0

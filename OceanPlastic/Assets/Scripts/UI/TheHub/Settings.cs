@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,7 +11,21 @@ public class Settings : MonoBehaviour
     public ScriptableRendererFeature feature;
     [SerializeField] 
     private TextMeshProUGUI postprocessCheck;
-    
+
+    private void Start()
+    {
+        if (StaticGameData.instance.ripplePostProcess)
+        {
+            feature.SetActive(true);
+            postprocessCheck.text = "";
+        }
+        else
+        {
+            feature.SetActive(false);
+            postprocessCheck.text = "X";
+        }
+    }
+
     public void TogglePostProcess()
     {
         if (active)
@@ -18,12 +33,14 @@ public class Settings : MonoBehaviour
             postprocessCheck.text = "X";
             feature.SetActive(false);
             active = false;
+            StaticGameData.instance.ripplePostProcess = false;
         }
         else
         {
             postprocessCheck.text = "";
             feature.SetActive(true);
             active = true;
+            StaticGameData.instance.ripplePostProcess = true;
         }
     }
 }

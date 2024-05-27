@@ -33,6 +33,11 @@ public class PlayerManager : MonoBehaviour
         
         trashSpawners = new List<TrashSpawner>(FindObjectsOfType<TrashSpawner>());
     }
+
+    public Vector2 Position()
+    {
+        return player.transform.position;
+    }
     
     public Player Player
     {

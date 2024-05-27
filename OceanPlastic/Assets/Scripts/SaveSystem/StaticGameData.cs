@@ -15,6 +15,11 @@ public class StaticGameData : MonoBehaviour
     [HideInInspector] public UnityEvent onMoneyChange;
     #endregion
     
+    #region SETTINGS
+    
+    public bool ripplePostProcess = true;
+    #endregion"
+    
     private void Awake()
     {
         if (instance != null)
