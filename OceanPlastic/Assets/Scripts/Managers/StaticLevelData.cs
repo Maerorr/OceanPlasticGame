@@ -3,16 +3,16 @@ using System.Collections.Generic;
 public static class StaticLevelData
 {
     public static LevelDifficulty chosenDifficulty = LevelDifficulty.Easy;
-    public static List<(FloatingTrashSO, int)> collectionObjective;
+    public static List<FloatingTrashSO> collectionObjective;
     
     public static void SetDifficulty(LevelDifficulty difficulty)
     {
         chosenDifficulty = difficulty;
     }
     
-    public static void SetCollectionObjective(FloatingTrashSO trash, int amount)
+    public static void AddCollectionObjective(FloatingTrashSO trash)
     {
-        collectionObjective.Add((trash, amount));
+        collectionObjective.Add(trash);
     }
 }
 

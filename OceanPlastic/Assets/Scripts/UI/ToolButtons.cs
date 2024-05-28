@@ -10,6 +10,8 @@ public class ToolButtons : MonoBehaviour
     Button vacuumButton;
     [SerializeField]
     Button forceCannonButton;
+    [SerializeField]
+    Button repairButton;
     
     private PlayerTools playerTools;
     private CurrentTool currentTool = CurrentTool.None;
@@ -17,6 +19,7 @@ public class ToolButtons : MonoBehaviour
     private void Start()
     {
         playerTools = FindObjectOfType<PlayerTools>();
+        DisableRepairButton();
     }
 
     public void OnVacuumButtonClicked()
@@ -52,5 +55,15 @@ public class ToolButtons : MonoBehaviour
             forceCannonButton.transform.GetComponent<Image>().color = Color.green;
         }
         playerTools.SetCurrentTool(currentTool);
+    }
+
+    public void EnableRepairButton()
+    {
+        repairButton.gameObject.SetActive(true);
+    }
+    
+    public void DisableRepairButton()
+    {
+        repairButton.gameObject.SetActive(false);
     }
 }
