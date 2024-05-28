@@ -24,7 +24,8 @@ public class EnemyFish : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private float currentSpeed;
     private bool isNearPlayer;
-    [SerializeField] private float noiseStrength;
+    
+    private Animator animator;
     
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class EnemyFish : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         target = initialPosition + new Vector3(-patrolArea.x, 0, 0);
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        animator = GetComponentInChildren<Animator>();
         StartCoroutine(StateCheck());
     }
 
@@ -116,12 +118,11 @@ public class EnemyFish : MonoBehaviour
             {
                 if (tag.HasTag(Tags.Player))
                 {
-                    PlayerManager.Instance.Player.TakeDamage(5f);
                     if (attackCooldownCoroutine is not null)
                     {
                         StopCoroutine(attackCooldownCoroutine);
                     }
-                    attackCooldownCoroutine = StartCoroutine(AttackCooldown());
+                    attackCooldownCoroutine = StartCoroutine(Attack());
                 }
             }
         }
@@ -157,9 +158,12 @@ public class EnemyFish : MonoBehaviour
         }
     }
 
-    IEnumerator AttackCooldown()
+    IEnumerator Attack()
     {
         canAttack = false;
+        animator.SetTrigger("Attack");
+        yield return new WaitForSeconds(0.05f);
+        PlayerManager.Instance.Player.TakeDamage(5f);
         yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
     }

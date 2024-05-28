@@ -94,7 +94,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.87
+    - _Alpha: 0.92
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0
@@ -133,5 +133,5 @@ Material:
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _WaterDeepColor: {r: 0.01995149, g: 0.013387541, b: 0.042360574, a: 0}
     - _WaterMidColor: {r: 0.10508569, g: 0.632302, b: 1.1725354, a: 0}
-    - _WaterShallowColor: {r: 0.60255176, g: 1.2647622, b: 0.81518817, a: 0}
+    - _WaterShallowColor: {r: 0.60172504, g: 1.4018209, b: 0.883037, a: 0}
   m_BuildTextureStacks: []
