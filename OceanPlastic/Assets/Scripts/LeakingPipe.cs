@@ -1,7 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class LeakingPipe : MonoBehaviour
 {
@@ -24,6 +23,10 @@ public class LeakingPipe : MonoBehaviour
     private Coroutine repairCoroutine;
     private float timeStep;
 
+    private bool isRepaired = false;
+    
+    private LevelManager levelManager;
+
     private void Start()
     {
         spriteRenderer = crack.GetComponent<SpriteRenderer>();
@@ -31,10 +34,12 @@ public class LeakingPipe : MonoBehaviour
         pipeCracks.gameObject.SetActive(false);
         toolButtons = FindObjectOfType<ToolButtons>();
         timeStep = (1f / timeToRepair) / 100f;
+        levelManager = FindObjectOfType<LevelManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (isRepaired) return;
         if (other.gameObject.TryGetComponent(out Tag tag))
         {
             if (tag.HasTag(Tags.Player))
@@ -47,6 +52,7 @@ public class LeakingPipe : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D other)
     {
+        if (isRepaired) return;
         if (other.gameObject.TryGetComponent(out Tag tag))
         {
             if (tag.HasTag(Tags.Player))
@@ -59,11 +65,13 @@ public class LeakingPipe : MonoBehaviour
 
     public void StartRepair()
     {
+        if (isRepaired) return;
         repairCoroutine = StartCoroutine(Repair());
     }
     
     public void StopRepair()
     {
+        if (isRepaired) return;
         if (repairCoroutine != null)
         {
             StopCoroutine(repairCoroutine);
@@ -86,9 +94,11 @@ public class LeakingPipe : MonoBehaviour
             {
                 pipeCracks.gameObject.SetActive(false);
                 toolButtons.DisableRepairButton();
+                isRepaired = true;
+                levelManager.PipeRepaired();
                 break;
             }
-            yield return new WaitForSeconds(timeStep);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 }

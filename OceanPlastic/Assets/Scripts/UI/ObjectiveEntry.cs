@@ -12,6 +12,8 @@ public class ObjectiveEntry : MonoBehaviour
     private TextMeshProUGUI progressText;
     [SerializeField]
     private Image spriteImage;
+    [SerializeField]
+    private ObjectiveEntryType type;
     
     private string trashName;
 
@@ -22,6 +24,11 @@ public class ObjectiveEntry : MonoBehaviour
     {
         spriteImage.sprite = sprite;
         UpdateText();
+    }
+    
+    public void SetEntryType(ObjectiveEntryType type)
+    {
+        this.type = type;
     }
 
     public void SetObjectiveText(string text)
@@ -56,4 +63,15 @@ public class ObjectiveEntry : MonoBehaviour
     {
         return trashName;
     }
+    
+    public ObjectiveEntryType GetEntryType()
+    {
+        return type;
+    }
+}
+
+public enum ObjectiveEntryType
+{
+    Trash,
+    Pipe
 }

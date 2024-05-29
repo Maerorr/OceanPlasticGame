@@ -15,6 +15,8 @@ public class CameraMovement : MonoBehaviour
     
     private void Awake()
     {
+        Application.targetFrameRate = 60;
+        
         camZ = transform.position.z;
     }
 

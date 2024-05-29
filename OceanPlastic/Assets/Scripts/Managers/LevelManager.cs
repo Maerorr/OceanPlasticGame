@@ -8,6 +8,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     // (trash type, amount, isCompleted)
     private List<(FloatingTrashSO, int, bool)> collectionObjective;
+    private int allRepairObjectives;
+    private int currentRepairObjectives;
     int allTrashCount;
     
     private Objectives objectives;
@@ -43,8 +45,13 @@ public class LevelManager : MonoBehaviour
 
         foreach (var obj in collectionObjective)
         {
-            objectives.AddObjective(obj.Item1, obj.Item2);
+            objectives.AddTrashObjective(obj.Item1, obj.Item2);
         }
+
+        var allPipes = FindObjectsOfType<LeakingPipe>();
+        allRepairObjectives = allPipes.Length;
+        objectives.AddRepairObjectives(allRepairObjectives);
+        currentRepairObjectives = 0;
     }
 
     public void TrashCollected(FloatingTrashSO trash)
@@ -55,11 +62,24 @@ public class LevelManager : MonoBehaviour
             collectionObjective[collectionObjective.FindIndex(entry => entry.Item1.name == trash.name)] = (trash, 0, true);
         }
         
-        if (collectionObjective.All(entry => entry.Item3))
+        if (CheckIfAllObjectivesCompleted())
         {
             finishLevelArea.SetActive(true);
-            
-            // TODO: implement a voice that will tell the player to go to the finish level area
         }
+    }
+
+    public void PipeRepaired()
+    {
+        currentRepairObjectives++;
+        objectives.UpdateRepairObjective();
+        if (CheckIfAllObjectivesCompleted())
+        {
+            finishLevelArea.SetActive(true);
+        }
+    }
+    
+    private bool CheckIfAllObjectivesCompleted()
+    {
+        return collectionObjective.All(entry => entry.Item3) && currentRepairObjectives == allRepairObjectives;
     }
 }
