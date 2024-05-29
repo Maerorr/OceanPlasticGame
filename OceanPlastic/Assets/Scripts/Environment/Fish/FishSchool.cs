@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -129,7 +127,7 @@ public class FishSchool : MonoBehaviour
             }
         }
     }
-
+#if UNITY_Editor
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = editorDisplayData.color;
@@ -139,6 +137,7 @@ public class FishSchool : MonoBehaviour
         Handles.color = editorDisplayData.color;
         Handles.Label(transform.position, editorDisplayData.label);
     }
+#endif
 }
 
 [Serializable]

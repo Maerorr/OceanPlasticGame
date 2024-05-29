@@ -9,6 +9,11 @@ public class MainMenu : MonoBehaviour
     [SerializeField] 
     private List<MenuEntry> menuEntries;
 
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
+
     private void Start()
     {
         foreach (var menuEntry in menuEntries)

@@ -168,12 +168,14 @@ public class EnemyFish : MonoBehaviour
         canAttack = true;
     }
 
+#if UNITY_Editor
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.white;
         Gizmos.DrawWireCube(transform.position, patrolArea * 2);
         Gizmos.DrawWireSphere(transform.position, range);
     }
+#endif
     
     private void DrawCircle(Vector2 center, float radius)
     {

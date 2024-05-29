@@ -132,6 +132,7 @@ public class TrashSpawner : MonoBehaviour
         activeObjects.Remove(trash.gameObject);
     }
 
+#if UNITY_Editor
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = editorGizmoData.color;
@@ -143,6 +144,7 @@ public class TrashSpawner : MonoBehaviour
         Handles.color = editorGizmoData.color;
         Handles.Label(transform.position, editorGizmoData.label);
     }
+#endif
 
     public int GetCurrentObjectsCount()
     {

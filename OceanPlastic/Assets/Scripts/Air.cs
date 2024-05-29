@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Air : MonoBehaviour
@@ -87,7 +86,7 @@ public class Air : MonoBehaviour
             rb.gravityScale = 0f;
         }
     }
-
+#if UNITY_Editor
     private void OnDrawGizmos()
     {
         var box2d = GetComponent<BoxCollider2D>();
@@ -96,6 +95,7 @@ public class Air : MonoBehaviour
         pos.y += breathableOffset / 2f;
         Gizmos.DrawWireCube(pos, new Vector3(box2d.size.x, box2d.size.y - breathableOffset, 1f));
     }
+#endif
     
     private bool CheckIfItsPlayer(Collider2D other)
     {

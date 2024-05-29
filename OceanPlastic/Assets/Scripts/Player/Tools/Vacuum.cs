@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Vacuum : MonoBehaviour
@@ -51,9 +50,11 @@ public class Vacuum : MonoBehaviour
         Debug.DrawLine(castStart.position, castStart.position + Quaternion.Euler(0, 0, -maxConeAngle) * transform.right * vacuumRange, Color.red);
     }
 
+#if UNITY_Editor
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(castStart.position, boxCastSize);
     }
+#endif
 }
