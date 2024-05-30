@@ -53,3 +53,7 @@ MonoBehaviour:
   schoolSize: 3
   boundXleft: -45
   boundXright: 45
+  editorDisplayData:
+    label: 
+    color: {r: 0, g: 0, b: 0, a: 0}
+  bubblesParticlePrefab: {fileID: 7362569768100283499, guid: 3a0ed238ac0ebaf44a1c6025df378593, type: 3}

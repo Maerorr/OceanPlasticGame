@@ -37,6 +37,11 @@ public class FishSchool : MonoBehaviour
     [SerializeField]
     private EditorGizmoData editorDisplayData;
 
+    [SerializeField] 
+    private GameObject bubblesParticlePrefab;
+
+    private ParticleSystem bubblesPS;
+
     public void SetData(float ySize, int fishCount, float fishXspeed)
     {
         fishXSpeed = fishXspeed;
@@ -77,6 +82,14 @@ public class FishSchool : MonoBehaviour
             {
                 fishObj.transform.localScale = Vector3.Scale(fishObj.transform.localScale, new Vector3(1, -1, 1));
             }
+            GameObject bubbles = Instantiate(bubblesParticlePrefab, fishObj.transform);
+            bubbles.transform.localPosition = new Vector3(-0.8f, 0f, 0);
+            if (fishXSpeed < 0f)
+            {
+                bubbles.transform.localScale = Vector3.Scale(bubbles.transform.localScale, new Vector3(1, -1, 1));
+            }
+            bubbles.transform.parent = fishObj.transform;
+            bubblesPS = bubbles.GetComponent<ParticleSystem>();
             var fishSpriteRenderer = fishObj.AddComponent<SpriteRenderer>();
             fishSpriteRenderer.sprite = fishSprite;
             fishSpriteRenderer.sortingOrder = 0;
