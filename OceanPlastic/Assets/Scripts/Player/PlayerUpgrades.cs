@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerUpgrades : MonoBehaviour
 {
     OxygenUpgrades oxygenUpgrade = OxygenUpgrades.Basic;
-    DepthUpgrades depthUpgrade = DepthUpgrades.Basic;
+    //DepthUpgrades depthUpgrade = DepthUpgrades.Basic;
     PocketUpgrades pocketUpgrade = PocketUpgrades.Basic;
     FinUpgrades finUpgrade = FinUpgrades.Basic10;
 
@@ -23,14 +23,14 @@ public class PlayerUpgrades : MonoBehaviour
         
         oxygenUpgrade = data.oxygenUpgrade;
         finUpgrade = data.finUpgrade;
-        depthUpgrade = data.depthUpgrade;
+        //depthUpgrade = data.depthUpgrade;
         pocketUpgrade = data.pocketUpgrade;
     }
 
     private void ApplyUpgrades()
     {
         player.SetOxygenModifier((float)oxygenUpgrade);
-        player.SetMaxSafeDepth((int)depthUpgrade);
+        //player.SetMaxSafeDepth((int)depthUpgrade);
         playerInventory.SetBagModifier((int)pocketUpgrade);
         playerMovement.SetSpeedModifier(((float)finUpgrade)/100f);
         PrintUpgrades();
@@ -41,10 +41,10 @@ public class PlayerUpgrades : MonoBehaviour
         return oxygenUpgrade;
     }
 
-    public DepthUpgrades GetDepthUpgrade()
-    {
-        return depthUpgrade;
-    }
+    // public DepthUpgrades GetDepthUpgrade()
+    // {
+    //     return depthUpgrade;
+    // }
 
     public PocketUpgrades GetPocketUpgrade()
     {
@@ -66,9 +66,9 @@ public class PlayerUpgrades : MonoBehaviour
             case UpgradeType.Fin:
                 finUpgrade = UpgradeConversions.FinFromInt(lvl);
                 break;
-            case UpgradeType.Suit:
-                depthUpgrade = UpgradeConversions.DepthFromInt(lvl);
-                break;
+            // case UpgradeType.Suit:
+            //     depthUpgrade = UpgradeConversions.DepthFromInt(lvl);
+            //     break;
             case UpgradeType.Pocket:
                 pocketUpgrade = UpgradeConversions.PocketFromInt(lvl);
                 break;
@@ -80,7 +80,7 @@ public class PlayerUpgrades : MonoBehaviour
     private void PrintUpgrades()
     {
         Debug.Log("Oxygen: " + oxygenUpgrade);
-        Debug.Log("Depth: " + depthUpgrade);
+        //Debug.Log("Depth: " + depthUpgrade);
         Debug.Log("Pocket: " + pocketUpgrade);
         Debug.Log("Fin: " + finUpgrade);
     }
@@ -94,13 +94,13 @@ public enum OxygenUpgrades
         Upgrade8X = 8,
     }
 
-    public enum DepthUpgrades
-    {
-        Basic = 50,
-        Upgrade100 = 100,
-        Upgrade200 = 200,
-        Upgrade400 = 400,
-    }
+    // public enum DepthUpgrades
+    // {
+    //     Basic = 50,
+    //     Upgrade100 = 100,
+    //     Upgrade200 = 200,
+    //     Upgrade400 = 400,
+    // }
 
     public enum PocketUpgrades
     {
@@ -137,22 +137,22 @@ public class UpgradeConversions
         return OxygenUpgrades.Basic;
     }
 
-    public static DepthUpgrades DepthFromInt(int i)
-    {
-        switch (i)
-        {
-            case 0:
-                return DepthUpgrades.Basic;
-            case 1:
-                return DepthUpgrades.Upgrade100;
-            case 2:
-                return DepthUpgrades.Upgrade200;
-            case 3:
-                return DepthUpgrades.Upgrade400;
-        }
-
-        return DepthUpgrades.Basic;
-    }
+    // public static DepthUpgrades DepthFromInt(int i)
+    // {
+    //     switch (i)
+    //     {
+    //         case 0:
+    //             return DepthUpgrades.Basic;
+    //         case 1:
+    //             return DepthUpgrades.Upgrade100;
+    //         case 2:
+    //             return DepthUpgrades.Upgrade200;
+    //         case 3:
+    //             return DepthUpgrades.Upgrade400;
+    //     }
+    //
+    //     return DepthUpgrades.Basic;
+    // }
 
     public static PocketUpgrades PocketFromInt(int i)
     {

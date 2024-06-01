@@ -67,6 +67,6 @@ public enum UpgradeType
 {
     Oxygen,
     Fin,
-    Suit,
+    //Suit,
     Pocket
 }

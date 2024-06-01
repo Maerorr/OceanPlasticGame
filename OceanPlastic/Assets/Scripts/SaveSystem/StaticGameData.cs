@@ -8,7 +8,7 @@ public class StaticGameData : MonoBehaviour
     #region UPGRADES
 
     [HideInInspector] public OxygenUpgrades oxygenUpgrade = OxygenUpgrades.Basic;
-    [HideInInspector] public DepthUpgrades depthUpgrade = DepthUpgrades.Basic;
+    //[HideInInspector] public DepthUpgrades depthUpgrade = DepthUpgrades.Basic;
     [HideInInspector] public PocketUpgrades pocketUpgrade = PocketUpgrades.Basic;
     [HideInInspector] public FinUpgrades finUpgrade = FinUpgrades.Basic10;
     [HideInInspector] public int money;
@@ -54,9 +54,9 @@ public class StaticGameData : MonoBehaviour
             case UpgradeType.Fin:
                 finUpgrade = UpgradeConversions.FinFromInt(lvl);
                 break;
-            case UpgradeType.Suit:
-                depthUpgrade = UpgradeConversions.DepthFromInt(lvl);
-                break;
+            // case UpgradeType.Suit:
+            //     depthUpgrade = UpgradeConversions.DepthFromInt(lvl);
+            //     break;
             case UpgradeType.Pocket:
                 pocketUpgrade = UpgradeConversions.PocketFromInt(lvl);
                 break;

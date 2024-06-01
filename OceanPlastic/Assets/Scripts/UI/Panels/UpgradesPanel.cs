@@ -15,12 +15,12 @@ public class UpgradesPanel : MonoBehaviour
     [Header("Upgrade Entries")]
     [SerializeField] private List<UpgradeEntry> oxygenUpgrades;
     [SerializeField] private List<UpgradeEntry> finUpgrades;
-    [SerializeField] private List<UpgradeEntry> suitUpgrades;
+    //[SerializeField] private List<UpgradeEntry> suitUpgrades;
     [SerializeField] private List<UpgradeEntry> pocketUpgrades;
     
     OxygenUpgrades oxygenUpgrade;
     FinUpgrades finUpgrade; 
-    DepthUpgrades suitUpgrade;
+    // DepthUpgrades suitUpgrade;
     PocketUpgrades pocketUpgrade;
     
     private void Start()
@@ -40,12 +40,12 @@ public class UpgradesPanel : MonoBehaviour
             i++;
         });
         i = 1;
-        suitUpgrades.ForEach(entry => { 
-            entry.SetUpgradeData(UpgradeType.Suit, i);
-            entry.onBuy.AddListener(MarkAlreadyBoughtUpgrades);
-            i++;
-        });
-        i = 1;
+        // suitUpgrades.ForEach(entry => { 
+        //     entry.SetUpgradeData(UpgradeType.Suit, i);
+        //     entry.onBuy.AddListener(MarkAlreadyBoughtUpgrades);
+        //     i++;
+        // });
+        // i = 1;
         pocketUpgrades.ForEach(entry => { 
             entry.SetUpgradeData(UpgradeType.Pocket, i);
             entry.onBuy.AddListener(MarkAlreadyBoughtUpgrades);
@@ -98,7 +98,7 @@ public class UpgradesPanel : MonoBehaviour
     {
         oxygenUpgradesRoot.SetActive(false);
         finUpgradeRoot.SetActive(false);
-        suitUpgradeRoot.SetActive(false);
+        //suitUpgradeRoot.SetActive(false);
         pocketUpgradeRoot.SetActive(false);
     }
 
@@ -108,7 +108,7 @@ public class UpgradesPanel : MonoBehaviour
         
         oxygenUpgrade = data.oxygenUpgrade;
         finUpgrade = data.finUpgrade;
-        suitUpgrade = data.depthUpgrade;
+        //suitUpgrade = data.depthUpgrade;
         pocketUpgrade = data.pocketUpgrade;
     }
 
@@ -141,18 +141,18 @@ public class UpgradesPanel : MonoBehaviour
                 break;
         }
         
-        switch (suitUpgrade)
-        {
-            case DepthUpgrades.Upgrade100:
-                suitUpgrades.Take(1).ToList().ForEach(x => x.SetSold());
-                break;
-            case DepthUpgrades.Upgrade200:
-                suitUpgrades.Take(2).ToList().ForEach(x => x.SetSold());
-                break;
-            case DepthUpgrades.Upgrade400:
-                suitUpgrades.Take(3).ToList().ForEach(x => x.SetSold());
-                break;
-        }
+        // switch (suitUpgrade)
+        // {
+        //     case DepthUpgrades.Upgrade100:
+        //         suitUpgrades.Take(1).ToList().ForEach(x => x.SetSold());
+        //         break;
+        //     case DepthUpgrades.Upgrade200:
+        //         suitUpgrades.Take(2).ToList().ForEach(x => x.SetSold());
+        //         break;
+        //     case DepthUpgrades.Upgrade400:
+        //         suitUpgrades.Take(3).ToList().ForEach(x => x.SetSold());
+        //         break;
+        // }
         
         switch (pocketUpgrade)
         {
