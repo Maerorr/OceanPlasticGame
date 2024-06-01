@@ -19,10 +19,25 @@ public class SellItemEntry : MonoBehaviour
     
     public void SetItemEntryValues(Sprite icon, string itemName, int amount, int value, int total)
     {
-        itemIcon.sprite = icon;
-        itemNameText.text = itemName;
-        amountText.text = amount.ToString();
-        valueText.text = value.ToString();
-        totalText.text = total.ToString();
+        if (itemIcon != null)
+        {
+            itemIcon.sprite = icon;
+        }
+        if (itemNameText != null)
+        {
+            itemNameText.text = itemName;
+        }
+        if (amountText != null)
+        {
+            amountText.text = amount.ToString();
+        }
+        if (valueText != null)
+        {
+            valueText.text = value.ToString();
+        }
+        if (totalText != null)
+        {
+            totalText.text = total.ToString();
+        }
     }
 }

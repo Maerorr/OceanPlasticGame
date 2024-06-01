@@ -14,7 +14,8 @@ public class Objectives : MonoBehaviour
     [SerializeField]
     GameObject layoutRoot;
     
-    private List<ObjectiveEntry> objectiveEntries = new List<ObjectiveEntry>();
+    [HideInInspector]
+    public List<ObjectiveEntry> objectiveEntries = new List<ObjectiveEntry>();
     
     public void AddTrashObjective(FloatingTrashSO trash, int amount)
     {
@@ -24,6 +25,7 @@ public class Objectives : MonoBehaviour
         newObjective.SetEntryType(ObjectiveEntryType.Trash);
         newObjective.SetMaxValue(amount);
         newObjective.SetTrashName(trash.name);
+        newObjective.trash = trash;
         objectiveEntries.Add(newObjective);
     }
     

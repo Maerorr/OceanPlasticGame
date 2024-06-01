@@ -7,7 +7,7 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField]
     // (trash type, amount, isCompleted)
-    private List<(FloatingTrashSO, int, bool)> collectionObjective;
+    public List<(FloatingTrashSO, int, bool)> collectionObjective;
     private int allRepairObjectives;
     private int currentRepairObjectives;
     int allTrashCount;

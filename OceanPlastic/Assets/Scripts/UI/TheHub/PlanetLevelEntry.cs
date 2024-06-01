@@ -32,6 +32,8 @@ public class PlanetLevelEntry : MonoBehaviour
 
     private PlanetEntryManager planetEntryManager;
     
+    private SceneTransitionEffect sceneTransitionEffect;
+    
     private void Start()
     {
         highlight.color = new Color(1f, 1f, 1f, 0f);
@@ -42,6 +44,7 @@ public class PlanetLevelEntry : MonoBehaviour
         moveY = planetInfoPanel.anchoredPosition.y;
         planetEntryManager = FindObjectOfType<PlanetEntryManager>();
         initialScale = planetInfoPanel.transform.localScale;
+        sceneTransitionEffect = FindObjectOfType<SceneTransitionEffect>();
     }
 
     public void SetID(int id)
@@ -109,6 +112,7 @@ public class PlanetLevelEntry : MonoBehaviour
 
     public void OnStart()
     {
-        SceneManager.LoadScene(scene);
+        //SceneManager.LoadScene(scene);
+        sceneTransitionEffect.FromHubToLevel(scene);
     }
 }

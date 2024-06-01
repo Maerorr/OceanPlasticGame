@@ -10,6 +10,11 @@ public class LevelSelectManager : MonoBehaviour
     [SerializeField] private LevelData mediumScene;
     [SerializeField] private LevelData hardScene;
 
+    private void Start()
+    {
+        StaticLevelData.isInLevel = false;
+    }
+
     public void SelectEasyLevel()
     {
         StaticLevelData.SetDifficulty(LevelDifficulty.Easy);
@@ -30,11 +35,13 @@ public class LevelSelectManager : MonoBehaviour
 
     private void StartGame(LevelData level)
     {
-        SceneManager.LoadScene("Scenes/Levels/" + level.LevelPath);
+        
+        StaticLevelData.isInLevel = true;
         foreach (var obj in level.objectives)
         {
             if (obj.type == ObjectiveType.Trash)
                 StaticLevelData.AddCollectionObjective(obj.trash);
         }
+        SceneManager.LoadScene("Scenes/Levels/" + level.LevelPath);
     }
 }

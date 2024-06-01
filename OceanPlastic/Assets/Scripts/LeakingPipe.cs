@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -14,6 +15,9 @@ public class LeakingPipe : MonoBehaviour
     
     [SerializeField]
     float timeToRepair = 2f;
+
+    [SerializeField]
+    private int value = 10;
 
     private float repairProgress = 0f;
     private SpriteRenderer spriteRenderer;
@@ -100,5 +104,10 @@ public class LeakingPipe : MonoBehaviour
             }
             yield return new WaitForSeconds(0.01f);
         }
+    }
+
+    public int GetValue()
+    {
+        return value;
     }
 }

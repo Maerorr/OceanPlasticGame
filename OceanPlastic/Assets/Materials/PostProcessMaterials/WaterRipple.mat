@@ -116,19 +116,19 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Scale: 26
+    - _Scale: 40
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 0.022
+    - _Speed: 0.049
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Strength: 0.019
     - _Surface: 0
-    - _WaterLevel: -0.42484236
+    - _WaterLevel: 0.43959934
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _Zoom: 0.0028
+    - _Zoom: 0.003
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

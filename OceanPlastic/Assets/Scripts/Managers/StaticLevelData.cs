@@ -4,6 +4,7 @@ public static class StaticLevelData
 {
     public static LevelDifficulty chosenDifficulty = LevelDifficulty.Easy;
     public static List<FloatingTrashSO> collectionObjective;
+    public static bool isInLevel = false;
     
     public static void SetDifficulty(LevelDifficulty difficulty)
     {

@@ -10,12 +10,11 @@ public class ObjectiveEntry : MonoBehaviour
     private string objectiveText;
     [SerializeField]
     private TextMeshProUGUI progressText;
-    [SerializeField]
-    private Image spriteImage;
-    [SerializeField]
-    private ObjectiveEntryType type;
+    public Image spriteImage;
+    public FloatingTrashSO trash;
+    public ObjectiveEntryType type;
     
-    private string trashName;
+    public string trashName;
 
     public int maxValue;
     public int currentValue;
