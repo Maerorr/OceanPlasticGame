@@ -130,6 +130,7 @@ public class PlayerInventory : MonoBehaviour
 
     private void UpdateTrashMeter()
     {
+        trashMeter??= FindAnyObjectByType<TrashMeter>();
         trashMeter.SetTrashValue(currentCapacity, maxCapacity);
     }
     

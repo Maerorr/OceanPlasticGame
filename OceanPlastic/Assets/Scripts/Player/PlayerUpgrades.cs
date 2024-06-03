@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerUpgrades : MonoBehaviour
@@ -25,6 +23,7 @@ public class PlayerUpgrades : MonoBehaviour
         finUpgrade = data.finUpgrade;
         //depthUpgrade = data.depthUpgrade;
         pocketUpgrade = data.pocketUpgrade;
+        ApplyUpgrades();
     }
 
     private void ApplyUpgrades()

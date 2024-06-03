@@ -86,7 +86,8 @@ public class Air : MonoBehaviour
             rb.gravityScale = 0f;
         }
     }
-#if UNITY_Editor
+    
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         var box2d = GetComponent<BoxCollider2D>();

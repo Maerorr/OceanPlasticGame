@@ -17,13 +17,17 @@ public class EnemyFish : MonoBehaviour
     private Vector2 target;
     private Vector2 noiseMove;
     private Vector2 direction;
-    private Coroutine stateCheckCoroutine;
+    
     private bool canAttack = true;
     [SerializeField] private float attackCooldown;
-    private Coroutine attackCooldownCoroutine;
+    
     private SpriteRenderer spriteRenderer;
     private float currentSpeed;
     private bool isNearPlayer;
+    private bool ignoresPlayer = false;
+    private Coroutine stateCheckCoroutine;
+    private Coroutine ignorePlayerCooldownCoroutine;
+    private Coroutine attackCooldownCoroutine;
     
     private Animator animator;
     
@@ -35,7 +39,7 @@ public class EnemyFish : MonoBehaviour
         target = initialPosition + new Vector3(-patrolArea.x, 0, 0);
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
-        StartCoroutine(StateCheck());
+        stateCheckCoroutine = StartCoroutine(StateCheck());
     }
 
     // Update is called once per frame
@@ -97,11 +101,11 @@ public class EnemyFish : MonoBehaviour
 
     private void Chase()
     {
-
         target = Vector2.Lerp(target, PlayerManager.Instance.Position(), Time.deltaTime * 4f);
         DrawCircle(target, 0.5f);
         direction = (target - (Vector2)transform.position).normalized;
-        rb.velocity = speed * chaseSpeedup * (direction);
+        //rb.velocity = speed * chaseSpeedup * (direction);
+        //rb.MovePosition((Vector2)transform.position + (Time.deltaTime * speed * chaseSpeedup * (direction)));
 
         if (Vector2.Distance((Vector2)transform.position, PlayerManager.Instance.Position()) < 0.5f)
             isNearPlayer = true;
@@ -135,7 +139,8 @@ public class EnemyFish : MonoBehaviour
         if (isNearPlayer) calcSpeed /= 4f;
         currentSpeed = Mathf.Lerp(currentSpeed, calcSpeed, Time.deltaTime);
         var pos = new Vector2(transform.position.x, transform.position.y);
-        rb.MovePosition(pos + (Time.deltaTime * calcSpeed * (direction)));
+        //rb.MovePosition(pos + (Time.deltaTime * calcSpeed * (direction)));
+        rb.AddForce(calcSpeed * (direction), ForceMode2D.Force);
         rb.MoveRotation(Quaternion.Euler(0f, 0f, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg));
     }
 
@@ -144,7 +149,8 @@ public class EnemyFish : MonoBehaviour
         while (true)
         {
             if (Vector2.Distance(transform.position, PlayerManager.Instance.Position()) < range
-                && state != EnemyState.Chase)
+                && state != EnemyState.Chase
+                && ignoresPlayer == false)
             {
                 EnterChase();
             }
@@ -168,7 +174,25 @@ public class EnemyFish : MonoBehaviour
         canAttack = true;
     }
 
-#if UNITY_Editor
+    public void TriggerIgnorePlayer()
+    {
+        StopCoroutine(stateCheckCoroutine);
+        if (ignorePlayerCooldownCoroutine is not null)
+        {
+            StopCoroutine(ignorePlayerCooldownCoroutine);
+        }
+        ignorePlayerCooldownCoroutine = StartCoroutine(IgnorePlayerCooldown());
+    }
+    IEnumerator IgnorePlayerCooldown()
+    {
+        EnterPatrol();
+        ignoresPlayer = true;
+        yield return new WaitForSeconds(5f);
+        ignoresPlayer = false;
+        stateCheckCoroutine = StartCoroutine(StateCheck());
+    }
+
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.white;

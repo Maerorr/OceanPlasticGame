@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,8 +13,7 @@ public class SceneTransitionEffect : MonoBehaviour
         Debug.Log(waterTransition.rectTransform.position);
         if (StaticLevelData.isInLevel)
         {
-            Debug.Log("IS IN LEVEL");
-            waterTransition.rectTransform.DOAnchorPos(new Vector2(-1300, 170f), 0f);
+            waterTransition.rectTransform.DOAnchorPos(new Vector2(-1300, 250f), 0f);
             waterTransition.rectTransform.DOAnchorPos(new Vector2(200f, -1200f), 2f);
         }
     }

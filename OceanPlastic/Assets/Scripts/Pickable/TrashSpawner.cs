@@ -2,7 +2,9 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
 
 [Serializable]
 public class TrashEntry
@@ -132,7 +134,7 @@ public class TrashSpawner : MonoBehaviour
         activeObjects.Remove(trash.gameObject);
     }
 
-#if UNITY_Editor
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = editorGizmoData.color;

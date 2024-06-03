@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInput playerInput;
     private Vector2 velocity;
     private Rigidbody2D rb;
+    private float joystickMagnitude;
     
     [SerializeField] 
     private float speed = 5f;
@@ -57,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 input = playerInput.actions["Move"].ReadValue<Vector2>();
         Vector2 inputClamped = Vector2.ClampMagnitude(input, 1f);
+        joystickMagnitude = input.magnitude;
         CalculateMovementState(inputClamped.magnitude, inputClamped);
 
         Vector2 newVelocity = CalculateNewVelocity(inputClamped);
@@ -110,6 +112,11 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 GetPosition()
     {
         return rb.position;
+    }
+
+    public float GetInputMagnitude()
+    {
+        return joystickMagnitude;
     }
     
     private IEnumerator UpdateDepth()

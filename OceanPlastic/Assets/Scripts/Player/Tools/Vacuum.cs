@@ -50,7 +50,7 @@ public class Vacuum : MonoBehaviour
         Debug.DrawLine(castStart.position, castStart.position + Quaternion.Euler(0, 0, -maxConeAngle) * transform.right * vacuumRange, Color.red);
     }
 
-#if UNITY_Editor
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

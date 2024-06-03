@@ -39,7 +39,7 @@ public class CameraMovement : MonoBehaviour
             }
             case MovementState.Moving:
             {
-                var offset = playerMoveScript.GetVelocity().normalized * cameraOffset;
+                var offset = playerMoveScript.GetVelocity().normalized * cameraOffset * playerMoveScript.GetInputMagnitude();
                 currentOffset = Vector2.Lerp(currentOffset, offset, 0.6f);
                 targetPos = new Vector2(targetPos.x, targetPos.y) + currentOffset;
                 break;

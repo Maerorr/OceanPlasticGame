@@ -76,14 +76,20 @@ public class ForceCannon : MonoBehaviour
             for (int i = 0; i < hitCount; i++)
             {
                 var hit = hits[i];
+                
                 float angle = Vector2.Angle(transform.right, hit.transform.position - castStart.position);
             
                 if (angle < maxConeAngle)
                 {
                     if (hit.transform.TryGetComponent(out rb))
                     {
-                        Vector2 distance = hit.transform.position - castStart.position;
-                        rb.AddForce(distance.normalized * cannonPower, ForceMode2D.Impulse);
+                        EnemyFish fish;
+                        if (hit.transform.TryGetComponent(out fish))
+                        {
+                            fish.TriggerIgnorePlayer();
+                        }
+                        Vector2 direction = hit.transform.position - castStart.position;
+                        rb.AddForce(direction.normalized * cannonPower, ForceMode2D.Impulse);
                     }
                     Debug.DrawLine(castStart.position, hit.transform.position, Color.green);
                 }
