@@ -78,10 +78,10 @@ public class PlayerUpgrades : MonoBehaviour
 
     private void PrintUpgrades()
     {
-        Debug.Log("Oxygen: " + oxygenUpgrade);
+        //Debug.Log("Oxygen: " + oxygenUpgrade);
         //Debug.Log("Depth: " + depthUpgrade);
-        Debug.Log("Pocket: " + pocketUpgrade);
-        Debug.Log("Fin: " + finUpgrade);
+        //Debug.Log("Pocket: " + pocketUpgrade);
+        //Debug.Log("Fin: " + finUpgrade);
     }
 }
 

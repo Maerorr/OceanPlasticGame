@@ -1,4 +1,5 @@
 using System.Collections;
+using DG.Tweening;
 using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -19,6 +20,11 @@ public class LeakingPipe : MonoBehaviour
     [SerializeField]
     private int value = 10;
 
+    [SerializeField] 
+    private GameObject repairMinigamePrefab;
+    
+    private GameObject repairMinigame;
+
     private float repairProgress = 0f;
     private SpriteRenderer spriteRenderer;
     private MaterialPropertyBlock propertyBlock;
@@ -28,8 +34,10 @@ public class LeakingPipe : MonoBehaviour
     private float timeStep;
 
     private bool isRepaired = false;
+    private bool repairStarted = false;
     
     private LevelManager levelManager;
+    private GameUIController gameUIController;
 
     private void Start()
     {
@@ -39,6 +47,8 @@ public class LeakingPipe : MonoBehaviour
         toolButtons = FindObjectOfType<ToolButtons>();
         timeStep = (1f / timeToRepair) / 100f;
         levelManager = FindObjectOfType<LevelManager>();
+        
+        gameUIController = FindObjectOfType<GameUIController>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -69,18 +79,27 @@ public class LeakingPipe : MonoBehaviour
 
     public void StartRepair()
     {
-        if (isRepaired) return;
-        repairCoroutine = StartCoroutine(Repair());
+        if (isRepaired || repairStarted) return;
+        repairStarted = true;
+        gameUIController.MoveAside();
+        repairMinigame = Instantiate(repairMinigamePrefab, Vector3.zero, Quaternion.identity);
+        repairMinigame.transform.parent = Camera.main.transform;
+        repairMinigame.transform.localPosition = new Vector3(0f, -12f, 1f);
+        repairMinigame.transform.DOLocalMove(Vector3.forward, 1f).SetEase(Ease.OutQuad).OnComplete(
+            () => Time.timeScale = 0f);
+        repairMinigame.GetComponent<RepairMinigame>().onFinished.AddListener(MinigameCompleted);
+        
     }
     
     public void StopRepair()
     {
         if (isRepaired) return;
-        if (repairCoroutine != null)
-        {
-            StopCoroutine(repairCoroutine);
-        }
-        pipeCracks.gameObject.SetActive(false);
+        
+        // if (repairCoroutine != null)
+        // {
+        //     StopCoroutine(repairCoroutine);
+        // }
+        // pipeCracks.gameObject.SetActive(false);
     }
 
     IEnumerator Repair()
@@ -109,5 +128,19 @@ public class LeakingPipe : MonoBehaviour
     public int GetValue()
     {
         return value;
+    }
+
+    private void MinigameCompleted()
+    {
+        Time.timeScale = 1f;
+        toolButtons.DisableRepairButton();
+        isRepaired = true;
+        levelManager.PipeRepaired();
+        gameUIController.MoveToNormal();
+        crack.SetActive(false);
+        repairMinigame.transform.DOLocalMove(new Vector3(0f, -12f, 1f), 1f)
+            .OnComplete( 
+                () => Destroy(repairMinigame)
+            );
     }
 }
