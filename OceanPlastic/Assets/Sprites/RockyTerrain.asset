@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RockyTerrain
   m_EditorClassIdentifier: 
   m_Angles: []
-  m_FillTexture: {fileID: 2800000, guid: ade53fc93fc7d9e429b685fcb3a9af8a, type: 3}
+  m_FillTexture: {fileID: 2800000, guid: 76649f76bcd8bbe418734a47db11e228, type: 3}
   m_CornerSprites:
   - m_CornerType: 0
     m_Sprites:
