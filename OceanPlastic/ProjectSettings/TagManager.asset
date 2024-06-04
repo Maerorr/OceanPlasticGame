@@ -41,3 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: StaticEnvironmentObjects
+    uniqueID: 2822084473
+    locked: 0

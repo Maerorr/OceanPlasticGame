@@ -10,7 +10,6 @@ public class SceneTransitionEffect : MonoBehaviour
     private void Start()
     {
         waterTransition = GetComponent<Image>();
-        Debug.Log(waterTransition.rectTransform.position);
         if (StaticLevelData.isInLevel)
         {
             waterTransition.rectTransform.DOAnchorPos(new Vector2(-1300, 250f), 0f);

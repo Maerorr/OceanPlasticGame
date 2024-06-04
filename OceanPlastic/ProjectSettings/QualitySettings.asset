@@ -110,7 +110,7 @@ QualitySettings:
     - Android
     - Server
   - serializedVersion: 3
-    name: Medium
+    name: 2DMedium
     pixelLightCount: 1
     shadows: 1
     shadowResolution: 0
@@ -147,7 +147,7 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 11400000, guid: c00019a8cad507c458d717c0280d11c0, type: 2}
+    customRenderPipeline: {fileID: 11400000, guid: b3d5ba62cbe7552478b4305a9e8ee4b0, type: 2}
     terrainQualityOverrides: 0
     terrainPixelError: 1
     terrainDetailDensityScale: 1

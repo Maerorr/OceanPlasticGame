@@ -68,6 +68,9 @@
         },
         {
             "m_Id": "7270eda5d2bd4c34adbb378a19a4b1b6"
+        },
+        {
+            "m_Id": "ef67a0f1fb094deebc7c1de5b9484bba"
         }
     ],
     "m_GroupDatas": [],
@@ -231,6 +234,9 @@
             },
             {
                 "m_Id": "7270eda5d2bd4c34adbb378a19a4b1b6"
+            },
+            {
+                "m_Id": "ef67a0f1fb094deebc7c1de5b9484bba"
             }
         ]
     },
@@ -1006,8 +1012,26 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalSpriteUnlitSubTarget",
-    "m_ObjectId": "a7aa53a73568498fae8bb5056368ea5d"
+    "m_Type": "UnityEditor.ShaderGraph.NormalMaterialSlot",
+    "m_ObjectId": "a9366adca2f34a64923e11a2a225c746",
+    "m_Id": 0,
+    "m_DisplayName": "Normal (Tangent Space)",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "NormalTS",
+    "m_StageCapability": 2,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_Labels": [],
+    "m_Space": 3
 }
 
 {
@@ -1047,6 +1071,12 @@
         "z": 0.0,
         "w": 0.0
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalSpriteLitSubTarget",
+    "m_ObjectId": "ba5f15210f92486dbb6b78a684369af4"
 }
 
 {
@@ -1202,7 +1232,7 @@
     "m_ObjectId": "cab96889b2e94188b69c6ec3fef769cf",
     "m_Datas": [],
     "m_ActiveSubTarget": {
-        "m_Id": "a7aa53a73568498fae8bb5056368ea5d"
+        "m_Id": "ba5f15210f92486dbb6b78a684369af4"
     },
     "m_AllowMaterialOverride": false,
     "m_SurfaceType": 0,
@@ -1390,6 +1420,40 @@
         "z": 0.0
     },
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BlockNode",
+    "m_ObjectId": "ef67a0f1fb094deebc7c1de5b9484bba",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "SurfaceDescription.NormalTS",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "a9366adca2f34a64923e11a2a225c746"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_SerializedDescriptor": "SurfaceDescription.NormalTS"
 }
 
 {
