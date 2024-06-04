@@ -35,7 +35,7 @@ public class LeakingPipe : MonoBehaviour
 
     private bool isRepaired = false;
     private bool repairStarted = false;
-    
+
     private LevelManager levelManager;
     private GameUIController gameUIController;
 
@@ -59,7 +59,8 @@ public class LeakingPipe : MonoBehaviour
             if (tag.HasTag(Tags.Player))
             {
                 isPlayerInside = true;
-                toolButtons.EnableRepairButton();
+                toolButtons.EnableExtraButton();
+                toolButtons.SetTooltip("Tap to start repairing.");
             }
         }
     }
@@ -72,13 +73,15 @@ public class LeakingPipe : MonoBehaviour
             if (tag.HasTag(Tags.Player))
             {
                 isPlayerInside = false;
-                toolButtons.DisableRepairButton();
+                toolButtons.DisableExtraButton();
+                toolButtons.ClearTooltip();
             }
         }
     }
 
     public void StartRepair()
     {
+        if (!isPlayerInside) return;
         if (isRepaired || repairStarted) return;
         repairStarted = true;
         gameUIController.MoveAside();
@@ -116,7 +119,7 @@ public class LeakingPipe : MonoBehaviour
             if (repairProgress >= 1f)
             {
                 pipeCracks.gameObject.SetActive(false);
-                toolButtons.DisableRepairButton();
+                toolButtons.DisableExtraButton();
                 isRepaired = true;
                 levelManager.PipeRepaired();
                 break;
@@ -133,7 +136,7 @@ public class LeakingPipe : MonoBehaviour
     private void MinigameCompleted()
     {
         Time.timeScale = 1f;
-        toolButtons.DisableRepairButton();
+        toolButtons.DisableExtraButton();
         isRepaired = true;
         levelManager.PipeRepaired();
         gameUIController.MoveToNormal();

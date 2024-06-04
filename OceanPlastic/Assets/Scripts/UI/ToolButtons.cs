@@ -1,7 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class ToolButtons : MonoBehaviour
@@ -10,8 +9,11 @@ public class ToolButtons : MonoBehaviour
     Button vacuumButton;
     [SerializeField]
     Button forceCannonButton;
-    [SerializeField]
-    Button repairButton;
+    [FormerlySerializedAs("repairButton")] [SerializeField]
+    public Button extraButton;
+
+    [SerializeField] 
+    private TextMeshProUGUI extraButtonTooltip;
     
     private PlayerTools playerTools;
     private CurrentTool currentTool = CurrentTool.None;
@@ -19,7 +21,7 @@ public class ToolButtons : MonoBehaviour
     private void Start()
     {
         playerTools = FindObjectOfType<PlayerTools>();
-        DisableRepairButton();
+        DisableExtraButton();
     }
 
     public void OnVacuumButtonClicked()
@@ -57,13 +59,23 @@ public class ToolButtons : MonoBehaviour
         playerTools.SetCurrentTool(currentTool);
     }
 
-    public void EnableRepairButton()
+    public void EnableExtraButton()
     {
-        repairButton.gameObject.SetActive(true);
+        extraButton.gameObject.SetActive(true);
     }
     
-    public void DisableRepairButton()
+    public void DisableExtraButton()
     {
-        repairButton.gameObject.SetActive(false);
+        extraButton.gameObject.SetActive(false);
+    }
+    
+    public void SetTooltip(string text)
+    {
+        extraButtonTooltip.text = text;
+    }
+
+    public void ClearTooltip()
+    {
+        extraButtonTooltip.text = "";
     }
 }
