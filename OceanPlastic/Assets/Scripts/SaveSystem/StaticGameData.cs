@@ -54,9 +54,9 @@ public class StaticGameData : MonoBehaviour
             case UpgradeType.Fin:
                 finUpgrade = UpgradeConversions.FinFromInt(lvl);
                 break;
-            // case UpgradeType.Suit:
-            //     depthUpgrade = UpgradeConversions.DepthFromInt(lvl);
-            //     break;
+            /*case UpgradeType.Suit:
+                depthUpgrade = UpgradeConversions.DepthFromInt(lvl);
+                break;*/
             case UpgradeType.Pocket:
                 pocketUpgrade = UpgradeConversions.PocketFromInt(lvl);
                 break;
