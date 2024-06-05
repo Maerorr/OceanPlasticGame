@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
         foreach (var menuEntry in menuEntries)
         {
             menuEntry.initialPos = menuEntry.rect.anchoredPosition;
