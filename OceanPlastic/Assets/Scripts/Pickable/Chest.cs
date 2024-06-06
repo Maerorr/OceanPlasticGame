@@ -11,6 +11,7 @@ public class Chest : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     
     public bool isOpen = false;
+    private bool isPlayerNear = false;
     ToolButtons toolButtons;
     public SpriteRenderer hiddenImage;
 
@@ -24,7 +25,7 @@ public class Chest : MonoBehaviour
 
     public void OpenChest()
     {
-        if (!isOpen)
+        if (!isOpen && isPlayerNear)
         {
             isOpen = true;
             spriteRenderer.sprite = openChest;
@@ -39,12 +40,12 @@ public class Chest : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("NEAR CHEST");
         if (isOpen) return;
         if (other.gameObject.TryGetComponent(out Tag tag))
         {
             if (tag.HasTag(Tags.Player))
             {
+                isPlayerNear = true;
                 toolButtons.EnableExtraButton();
                 toolButtons.SetTooltip("Tap to open.");
             }
@@ -57,6 +58,7 @@ public class Chest : MonoBehaviour
         {
             if (tag.HasTag(Tags.Player))
             {
+                isPlayerNear = false;
                 toolButtons.DisableExtraButton();
                 toolButtons.ClearTooltip();
             }
