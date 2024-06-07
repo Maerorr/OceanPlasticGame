@@ -39,8 +39,7 @@ public class PlanetLevelEntry : MonoBehaviour
         highlight.color = new Color(1f, 1f, 1f, 0f);
         active = false;
         planetInfoPanel.DOAnchorPos(new Vector2(0f, 0f), 0.0f);
-        planetInfoPanel.transform.DOScaleY(0f, 0.0f);
-        planetInfoPanel.transform.DOScaleX(0f, 0.0f);
+        planetInfoPanel.transform.localScale = new Vector3(0f, 0f, 0f);
         moveY = planetInfoPanel.anchoredPosition.y;
         planetEntryManager = FindObjectOfType<PlanetEntryManager>();
         initialScale = planetInfoPanel.transform.localScale;

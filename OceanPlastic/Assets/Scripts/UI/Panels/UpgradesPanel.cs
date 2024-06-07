@@ -54,7 +54,6 @@ public class UpgradesPanel : MonoBehaviour
 
         
         root = transform.gameObject;
-        root.SetActive(false);
         DisableAllTabs();
     }
     

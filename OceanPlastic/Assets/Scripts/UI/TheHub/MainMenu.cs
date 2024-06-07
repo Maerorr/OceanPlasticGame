@@ -9,9 +9,17 @@ public class MainMenu : MonoBehaviour
     [SerializeField] 
     private List<MenuEntry> menuEntries;
 
+    public GameObject noise;
+    
+    private Coroutine switchPanelCoroutine;
+
     private void Awake()
     {
-        Application.targetFrameRate = 60;
+        noise.SetActive(false);
+        foreach (var entry in menuEntries)
+        {
+            entry.rect.gameObject.SetActive(false);
+        }
     }
 
     private void Start()
@@ -25,25 +33,69 @@ public class MainMenu : MonoBehaviour
 
     public void LevelsPress()
     {
-        MoveEntry(MenuEntryType.Levels);
-        MoveEntry(MenuEntryType.Upgrades, true);
-        MoveEntry(MenuEntryType.Settings, true);
+        // MoveEntry(MenuEntryType.Levels);
+        // MoveEntry(MenuEntryType.Upgrades, true);
+        // MoveEntry(MenuEntryType.Settings, true);
+        
+        if (switchPanelCoroutine != null)
+        {
+            StopCoroutine(switchPanelCoroutine);
+        }
+        switchPanelCoroutine = StartCoroutine(SwitchPanel(MenuEntryType.Levels));
     }
     
     public void UpgradesPress()
     {
-        MoveEntry(MenuEntryType.Upgrades);
-        MoveEntry(MenuEntryType.Levels, true);
-        MoveEntry(MenuEntryType.Settings, true);
+        // MoveEntry(MenuEntryType.Upgrades);
+        // MoveEntry(MenuEntryType.Levels, true);
+        // MoveEntry(MenuEntryType.Settings, true);
+        
+        if (switchPanelCoroutine != null)
+        {
+            StopCoroutine(switchPanelCoroutine);
+        }
+        switchPanelCoroutine = StartCoroutine(SwitchPanel(MenuEntryType.Upgrades));
     }
     
     public void SettingsPress()
     {
-        MoveEntry(MenuEntryType.Settings);
-        MoveEntry(MenuEntryType.Levels, true);
-        MoveEntry(MenuEntryType.Upgrades, true);
+        // MoveEntry(MenuEntryType.Settings);
+        // MoveEntry(MenuEntryType.Levels, true);
+        // MoveEntry(MenuEntryType.Upgrades, true);
+        
+        if (switchPanelCoroutine != null)
+        {
+            StopCoroutine(switchPanelCoroutine);
+        }
+        switchPanelCoroutine = StartCoroutine(SwitchPanel(MenuEntryType.Settings));
     }
 
+    IEnumerator SwitchPanel(MenuEntryType type)
+    {
+        noise.SetActive(true);
+        foreach (var entry in menuEntries)
+        {
+            if (entry.type == type)
+            {
+                Debug.Log("enabling " + entry.type + " entry");
+                entry.rect.gameObject.SetActive(true);
+                entry.isActive = true;
+            }
+            else
+            {
+                entry.rect.gameObject.SetActive(false);
+                entry.isActive = false;
+            }
+        }
+        yield return new WaitForSeconds(0.1f);
+        noise.SetActive(false);
+    }
+
+    public void OnQuitButton()
+    {
+        Application.Quit();
+    }
+    
     private void MoveEntry(MenuEntryType type, bool forceDisable = false)
     {
         var entry = menuEntries.Find(x => x.type == type);

@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class SellItemsList : MonoBehaviour
 {
@@ -71,6 +72,11 @@ public class SellItemsList : MonoBehaviour
         }
     }
 
+    public void AbandonMission()
+    {
+        SceneManager.LoadScene("TheHub");
+    }
+    
     private void OnDestroy()
     {
         DOTween.Kill(rect);
