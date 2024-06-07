@@ -20,9 +20,14 @@ public class CaveWithEyes : MonoBehaviour
     public UnityEvent onWin;
     
     public GameObject minigamePrefab;
+    public GameObject minigameInstance;
+
+    public Transform key;
     
     private void Start()
     {
+        toolButtons = FindObjectOfType<ToolButtons>();
+        gameUIController = FindObjectOfType<GameUIController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         StartCoroutine(Blink());
     }
@@ -76,26 +81,50 @@ public class CaveWithEyes : MonoBehaviour
 
     private void MinigameWon()
     {
+        gameUIController.MoveToNormal();
+        minigameInstance.transform.DOLocalMove(new Vector3(0f, -12f, 5f), 1f).SetEase(Ease.OutQuad).OnComplete(
+            () =>
+            {
+                Time.timeScale = 1f;
+                Destroy(minigameInstance);
+                key.DOLocalMoveY(3f, 1.5f).SetEase(Ease.OutQuad).SetUpdate(true);
+                key.DOScale(1f, 1f).SetEase(Ease.OutQuad).SetUpdate(true);
+                key.GetComponent<SpriteRenderer>().DOFade(0f, 2f).SetEase(Ease.InCubic).OnComplete(
+                    () =>
+                    {
+                        gameUIController.UpdateKey(true);
+                        Destroy(key.gameObject);
+                    });
+            }).SetUpdate(true);
         
+        hasPlayerWon = true;
+        PlayerManager.Instance.PlayerInventory.SetHasKey(true);
     }
 
     private void MinigameLost()
     {
-        
+        gameUIController.MoveToNormal();
+        minigameInstance.transform.DOLocalMove(new Vector3(0f, -12f, 5f), 1f).SetEase(Ease.OutQuad).OnComplete(
+            () =>
+            {
+                Time.timeScale = 1f;
+                Destroy(minigameInstance);
+            }).SetUpdate(true);
     }
 
-    private void StartMinigame()
+    public void StartMinigame()
     {
         if (!isPlayerInside) return;
         if (hasPlayerWon) return;
         toolButtons.DisableExtraButton();
         toolButtons.ClearTooltip();
-        var minigame = Instantiate(minigamePrefab, Vector3.zero, Quaternion.identity);
-        minigame.transform.parent = Camera.main.transform;
-        minigame.transform.localPosition = new Vector3(0f, -12f, 1f);
-        minigame.transform.DOLocalMove(Vector3.forward, 1f).SetEase(Ease.OutQuad).OnComplete(
+        gameUIController.MoveAside();
+        minigameInstance = Instantiate(minigamePrefab, Vector3.zero, Quaternion.identity);
+        minigameInstance.transform.parent = Camera.main.transform;
+        minigameInstance.transform.localPosition = new Vector3(0f, -12f, 5f);
+        minigameInstance.transform.DOLocalMove(new Vector3(0f, 0f, 5f), 1f).SetEase(Ease.OutQuad).OnComplete(
             () => Time.timeScale = 0f);
-        RPSMinigame game = minigame.GetComponent<RPSMinigame>();
+        RPSMinigame game = minigameInstance.GetComponent<RPSMinigame>();
         game.onWin.AddListener(MinigameWon);
         game.onLoseDraw.AddListener(MinigameLost);
         

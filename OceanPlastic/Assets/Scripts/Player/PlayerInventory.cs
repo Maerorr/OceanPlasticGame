@@ -18,6 +18,8 @@ public class PlayerInventory : MonoBehaviour
 
     [SerializeField] 
     private Messenger msg;
+
+    private bool hasKey = false;
     
     private void Awake()
     {
@@ -150,5 +152,15 @@ public class PlayerInventory : MonoBehaviour
     public int GetTrashCount()
     {
         return collectedTrash.Sum(tuple => tuple.Item2);
+    }
+    
+    public void SetHasKey(bool value)
+    {
+        hasKey = value;
+    }
+    
+    public bool HasKey()
+    {
+        return hasKey;
     }
 }

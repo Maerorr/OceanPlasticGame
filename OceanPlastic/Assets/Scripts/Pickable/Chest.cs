@@ -14,9 +14,14 @@ public class Chest : MonoBehaviour
     private bool isPlayerNear = false;
     ToolButtons toolButtons;
     public SpriteRenderer hiddenImage;
+    private GameUIController gameUIController;
+
+    public Messenger msg;
 
     private void Start()
     {
+        msg ??= FindAnyObjectByType<Messenger>();
+        gameUIController = FindAnyObjectByType<GameUIController>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         spriteRenderer.sprite = closedChest;
         toolButtons = FindAnyObjectByType<ToolButtons>();
@@ -27,6 +32,11 @@ public class Chest : MonoBehaviour
     {
         if (!isOpen && isPlayerNear)
         {
+            if (!PlayerManager.Instance.PlayerInventory.HasKey())
+            {
+                msg.ShowMessage("The chest is locked.", transform.position, Color.red, 3f);
+                return;
+            };
             isOpen = true;
             spriteRenderer.sprite = openChest;
             toolButtons.DisableExtraButton();
@@ -34,7 +44,7 @@ public class Chest : MonoBehaviour
             hiddenImage.transform.DOLocalMoveY(3f, 3f).SetEase(Ease.OutQuart);
             hiddenImage.transform.DOScale(0.6f, 3f).SetEase(Ease.OutQuart);
             hiddenImage.DOFade(0f, 6f).SetEase(Ease.InQuint).OnComplete(() => hiddenImage.gameObject.SetActive(false));
-
+            gameUIController.UpdateKey(false);
         }
     }
     

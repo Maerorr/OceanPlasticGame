@@ -17,6 +17,6 @@ public class HandCard : MonoBehaviour, IPointerEnterHandler
     {
         if (!enabled) return;
         minigame.CardSelected(choice);
-        transform.DOMove(endCardPos.position, 1f).SetEase(Ease.OutCubic);
+        transform.DOMove(endCardPos.position, 1f).SetEase(Ease.OutCubic).SetUpdate(true);
     }
 }
