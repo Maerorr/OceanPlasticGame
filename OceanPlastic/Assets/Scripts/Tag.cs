@@ -26,4 +26,5 @@ public enum Tags
     Tool,
     Vacuum,
     Enemy,
+    BlockPuzzle,
 }
