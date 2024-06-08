@@ -24,6 +24,7 @@ public class PuzzleBlock : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        isDragging = true;
         foreach (var tr in childBlocks)
         {
             Array.Clear(this.hits, 0, this.hits.Length);
@@ -35,7 +36,6 @@ public class PuzzleBlock : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 {
                     if (tag.HasTag(Tags.BlockPuzzle))
                     {
-                        Debug.Log("HIT BLOCK PUZZLE");
                         tag.transform.GetComponent<GridCell>().isChecked = false;
                     }
                 }
@@ -45,6 +45,7 @@ public class PuzzleBlock : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        isDragging = false;
         foreach (var tr in childBlocks)
         {
             Array.Clear(this.hits, 0, this.hits.Length);
@@ -56,7 +57,6 @@ public class PuzzleBlock : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 {
                     if (tag.HasTag(Tags.BlockPuzzle))
                     {
-                        Debug.Log("HIT BLOCK PUZZLE");
                         tag.transform.GetComponent<GridCell>().isChecked = true;
                     }
                 }
@@ -67,8 +67,7 @@ public class PuzzleBlock : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("DRAG");
-        // scale eventData.position to world position
+        if (!isDragging) return;
         transform.position = eventData.pointerCurrentRaycast.worldPosition;
     }
 }
