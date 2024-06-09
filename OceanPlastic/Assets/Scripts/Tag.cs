@@ -27,4 +27,5 @@ public enum Tags
     Vacuum,
     Enemy,
     BlockPuzzle,
+    Key,
 }

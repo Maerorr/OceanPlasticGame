@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,9 +11,12 @@ public class GameUIController : MonoBehaviour
     private List<RectTransform> children;
     private List<Vector2> defaultPositions;
     public Image key;
+    public int keysAmount;
+    public TextMeshProUGUI keysAmountText;
     
     private void Start()
     {
+        keysAmountText.text = "";
         key.color = Color.clear;
         children = new List<RectTransform>();
         defaultPositions = new List<Vector2>();
@@ -41,14 +46,17 @@ public class GameUIController : MonoBehaviour
         }
     }
 
-    public void UpdateKey(bool hasKey)
+    public void UpdateKey(bool addOne)
     {
-        if (hasKey)
+        keysAmount += addOne ? 1 : -1;
+        if (keysAmount > 0)
         {
+            keysAmountText.text = $"{keysAmount} x";
             key.color = Color.white;
         }
         else
         {
+            keysAmountText.text = "";
             key.color = Color.clear;
         }
     }

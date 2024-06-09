@@ -29,6 +29,7 @@ public class CaveWithEyes : MonoBehaviour
         toolButtons = FindObjectOfType<ToolButtons>();
         gameUIController = FindObjectOfType<GameUIController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        key.gameObject.SetActive(false);
         StartCoroutine(Blink());
     }
     
@@ -87,18 +88,17 @@ public class CaveWithEyes : MonoBehaviour
             {
                 Time.timeScale = 1f;
                 Destroy(minigameInstance);
-                key.DOLocalMoveY(3f, 1.5f).SetEase(Ease.OutQuad).SetUpdate(true);
-                key.DOScale(1f, 1f).SetEase(Ease.OutQuad).SetUpdate(true);
-                key.GetComponent<SpriteRenderer>().DOFade(0f, 2f).SetEase(Ease.InCubic).OnComplete(
+                key.gameObject.SetActive(true);
+                key.DOLocalMoveY(3f, 1.5f).SetEase(Ease.OutQuad).SetUpdate(true).OnComplete(
                     () =>
                     {
-                        gameUIController.UpdateKey(true);
-                        Destroy(key.gameObject);
+                        key.GetComponent<Key>().StartFloating();
                     });
+                key.DOScale(1f, 1f).SetEase(Ease.OutQuad).SetUpdate(true);
             }).SetUpdate(true);
         
         hasPlayerWon = true;
-        PlayerManager.Instance.PlayerInventory.SetHasKey(true);
+        //PlayerManager.Instance.PlayerInventory.SetHasKey(true);
     }
 
     private void MinigameLost()
