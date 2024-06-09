@@ -232,8 +232,8 @@ Transform:
   m_GameObject: {fileID: 100311391}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.78, y: 0, z: 0.41}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -5.11, y: 0, z: -0.12}
+  m_LocalScale: {x: 0.85858, y: 0.85858, z: 0.85858}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 801160589}
@@ -454,6 +454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChecked: 0
+  checkedBy: {fileID: 0}
 --- !u!212 &240065051
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -547,8 +548,8 @@ Transform:
   m_GameObject: {fileID: 256809884}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.32, y: 1.05, z: -0.13}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 4.7, y: 1.6, z: -0.41}
+  m_LocalScale: {x: 0.85858, y: 0.85858, z: 0.85858}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 285734448}
@@ -752,6 +753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChecked: 0
+  checkedBy: {fileID: 0}
 --- !u!212 &282583792
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1118,8 +1120,8 @@ Transform:
   m_GameObject: {fileID: 403227594}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.52, y: -3.61, z: -0.13}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3, y: -3.56, z: -0.41}
+  m_LocalScale: {x: 0.85858, y: 0.85858, z: 0.85858}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 587306483}
@@ -1322,6 +1324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChecked: 0
+  checkedBy: {fileID: 0}
 --- !u!212 &423348575
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1414,8 +1417,8 @@ Transform:
   m_GameObject: {fileID: 453756815}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.8, y: -3.6, z: -0.13}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.7, y: -2.95, z: -0.41}
+  m_LocalScale: {x: 0.85858, y: 0.85858, z: 0.85858}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 873102074}
@@ -1997,6 +2000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChecked: 0
+  checkedBy: {fileID: 0}
 --- !u!212 &712140912
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2155,6 +2159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChecked: 0
+  checkedBy: {fileID: 0}
 --- !u!212 &757624804
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2444,7 +2449,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 27.611284, y: 10, z: 1}
+  m_LocalScale: {x: 35.44121, y: 14.921585, z: 1.2835771}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 492119740}
@@ -2715,8 +2720,8 @@ Transform:
   m_GameObject: {fileID: 878379202}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.41, y: 0.95, z: -0.13}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.21, y: 0.61, z: -0.41}
+  m_LocalScale: {x: 0.85858, y: 0.85858, z: 0.85858}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1006300334}
@@ -2836,8 +2841,8 @@ Transform:
   m_GameObject: {fileID: 1096814183}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.71, y: 1.33, z: -0.13}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.5399999, y: 1.3100001, z: -0.41}
+  m_LocalScale: {x: 0.85858, y: 0.85858, z: 0.85858}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 68323030}
@@ -3079,6 +3084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChecked: 0
+  checkedBy: {fileID: 0}
 --- !u!212 &1114306397
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3237,6 +3243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChecked: 0
+  checkedBy: {fileID: 0}
 --- !u!212 &1121782198
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3563,6 +3570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChecked: 0
+  checkedBy: {fileID: 0}
 --- !u!212 &1342396862
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3889,6 +3897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChecked: 0
+  checkedBy: {fileID: 0}
 --- !u!212 &1501799178
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4047,6 +4056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChecked: 0
+  checkedBy: {fileID: 0}
 --- !u!212 &1552010050
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4205,6 +4215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChecked: 0
+  checkedBy: {fileID: 0}
 --- !u!212 &1618355029
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4447,6 +4458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChecked: 0
+  checkedBy: {fileID: 0}
 --- !u!212 &1780351725
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4605,6 +4617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChecked: 0
+  checkedBy: {fileID: 0}
 --- !u!212 &1967709407
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4763,6 +4776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChecked: 0
+  checkedBy: {fileID: 0}
 --- !u!212 &2077573040
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4876,6 +4890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChecked: 0
+  checkedBy: {fileID: 0}
 --- !u!61 &2101003739
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5079,6 +5094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChecked: 0
+  checkedBy: {fileID: 0}
 --- !u!212 &2136301488
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Object = System.Object;
 
 public class PuzzleBlock : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
@@ -12,6 +13,7 @@ public class PuzzleBlock : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private RaycastHit2D[] hits = new RaycastHit2D[8];
     
     BlocksPuzzleController blocksPuzzleController;
+    private Vector3 dragPos;
     
     private void Start()
     {
@@ -36,7 +38,16 @@ public class PuzzleBlock : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 {
                     if (tag.HasTag(Tags.BlockPuzzle))
                     {
-                        tag.transform.GetComponent<GridCell>().isChecked = false;
+                        var cell = tag.transform.GetComponent<GridCell>();
+                        if (cell.isChecked)
+                        {
+                            if (ReferenceEquals(gameObject, cell.checkedBy))
+                            {
+                                cell.isChecked = false;
+                                cell.checkedBy = null;
+                                return;
+                            }
+                        }
                     }
                 }
             }
@@ -57,7 +68,9 @@ public class PuzzleBlock : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 {
                     if (tag.HasTag(Tags.BlockPuzzle))
                     {
-                        tag.transform.GetComponent<GridCell>().isChecked = true;
+                        var cell = tag.transform.GetComponent<GridCell>();
+                        cell.isChecked = true;
+                        cell.checkedBy = gameObject;
                     }
                 }
             }
@@ -68,6 +81,8 @@ public class PuzzleBlock : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnDrag(PointerEventData eventData)
     {
         if (!isDragging) return;
-        transform.position = eventData.pointerCurrentRaycast.worldPosition;
+        dragPos = eventData.pointerCurrentRaycast.worldPosition;
+        dragPos.z = -1f;
+        transform.position = dragPos;
     }
 }
