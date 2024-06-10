@@ -21,11 +21,11 @@ public class PlanetEntryManager : MonoBehaviour
 
     public void OnPlanetPress(PlanetLevelEntry entry)
     {
-        Debug.Log(planetLevelEntries.Count);
         foreach (var planetLevelEntry in planetLevelEntries)
         {
             if (planetLevelEntry.GetID() != entry.GetID())
             {
+                Debug.Log("disabling a planet entry");
                 planetLevelEntry.Disable();
             }
         }

@@ -229,6 +229,13 @@ public class Player : MonoBehaviour
     {
         return maxSafeDepth;
     }
+    
+    public void AddOxygen(float oxygenSeconds)
+    {
+        float oxygenPercentage = oxygenSeconds / (baseMaxOxygen + bonusMaxOxygen) * 100f;
+        currentOxygen += oxygenPercentage;
+        currentOxygen = Mathf.Clamp(currentOxygen, 0f, 100f);
+    }
 
     IEnumerator DisableHealing()
     {

@@ -39,10 +39,10 @@ public class PlanetLevelEntry : MonoBehaviour
         highlight.color = new Color(1f, 1f, 1f, 0f);
         active = false;
         planetInfoPanel.DOAnchorPos(new Vector2(0f, 0f), 0.0f);
+        initialScale = planetInfoPanel.transform.localScale;
         planetInfoPanel.transform.localScale = new Vector3(0f, 0f, 0f);
         moveY = planetInfoPanel.anchoredPosition.y;
         planetEntryManager = FindObjectOfType<PlanetEntryManager>();
-        initialScale = planetInfoPanel.transform.localScale;
         sceneTransitionEffect = FindObjectOfType<SceneTransitionEffect>();
     }
 
@@ -79,7 +79,7 @@ public class PlanetLevelEntry : MonoBehaviour
         var moveYTween = planetInfoPanel.DOAnchorPos(new Vector2(0f, 0f), animationTime).SetEase(Ease.OutCubic).SetId(gameObject.GetInstanceID()+1).intId;
         var scaleYTween = planetInfoPanel.transform.DOScaleY(0f, animationTime).SetEase(Ease.OutCubic).SetId(gameObject.GetInstanceID()+2).intId;
         var scaleXTween = planetInfoPanel.transform.DOScaleX(0f, animationTime).SetEase(Ease.OutCubic).OnComplete(
-            () => planetInfoPanel.gameObject.SetActive(false)
+            () => { planetInfoPanel.gameObject.SetActive(false); Debug.Log("Setting planet to DISABLED"); }
         ).SetId(gameObject.GetInstanceID()+3).intId;
         
         tweens.Add(colorTween);
@@ -91,6 +91,7 @@ public class PlanetLevelEntry : MonoBehaviour
     public void Enable()
     {
         active = true;
+        Debug.Log("Setting planet to ACTIVE");
         planetInfoPanel.gameObject.SetActive(true);
         foreach (var tween in tweens)
         {
@@ -100,7 +101,8 @@ public class PlanetLevelEntry : MonoBehaviour
         //var moveYTween = planetInfoPanel.transform.DOMoveY(130f, 0.2f).SetEase(Ease.OutCubic);
         var colorTween = highlight.DOColor(new Color(1f, 1f, 1f, 0.3f), animationTime).SetEase(Ease.OutCubic).SetId(gameObject.GetInstanceID()).intId;
         var moveYTween = planetInfoPanel.DOAnchorPos(new Vector2(0f, moveY), animationTime).SetEase(Ease.OutCubic).SetId(gameObject.GetInstanceID()+1).intId;
-        var scaleYTween = planetInfoPanel.transform.DOScaleY(initialScale.x, animationTime).SetEase(Ease.OutCubic).SetId(gameObject.GetInstanceID()+2).intId;
+        Debug.Log(initialScale);
+        var scaleYTween = planetInfoPanel.transform.DOScaleY(initialScale.y, animationTime).SetEase(Ease.OutCubic).SetId(gameObject.GetInstanceID()+2).intId;
         var scaleXTween = planetInfoPanel.transform.DOScaleX(initialScale.x, animationTime).SetEase(Ease.OutCubic).SetId(gameObject.GetInstanceID()+3).intId;
         
         tweens.Add(colorTween);
