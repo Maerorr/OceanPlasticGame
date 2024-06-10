@@ -27,7 +27,7 @@ private void Start()
         {
             if (tag.HasTag(Tags.Player))
             {
-                PlayerManager.Instance.Player.AddOxygen(10f);
+                PlayerManager.Instance.Player.AddOxygen(2f);
                 Destroy(gameObject);
             }
         }
