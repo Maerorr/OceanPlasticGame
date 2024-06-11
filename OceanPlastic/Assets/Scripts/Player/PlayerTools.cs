@@ -7,11 +7,14 @@ public class PlayerTools : MonoBehaviour
     private GameObject vacuum;
     [SerializeField] 
     private GameObject forceCannon;
+
+    private PlayerAnimation anim;
     
     private CurrentTool currentTool = CurrentTool.None;
 
     private void Start()
     {
+        anim = FindAnyObjectByType<PlayerAnimation>();
         UpdateCurrentTool(currentTool);
     }
 
@@ -28,14 +31,17 @@ public class PlayerTools : MonoBehaviour
             case CurrentTool.None:
                 vacuum.SetActive(false);
                 forceCannon.SetActive(false);
+                anim.PlayerNoToolSpriteSheet();
                 break;
             case CurrentTool.Vacuum:
                 vacuum.SetActive(true);
                 forceCannon.SetActive(false);
+                anim.PlayerToolSpriteSheet();
                 break;
             case CurrentTool.ForceCannon:
                 vacuum.SetActive(false);
                 forceCannon.SetActive(true);
+                anim.PlayerToolSpriteSheet();
                 break;
         }
     

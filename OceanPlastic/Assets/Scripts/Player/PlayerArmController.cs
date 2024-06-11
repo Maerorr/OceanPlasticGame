@@ -10,23 +10,64 @@ public class PlayerArmController : MonoBehaviour
     [SerializeField]
     private Transform armTransform;
 
+    private Vector3 initialPosition;
+
+    public SpriteRenderer vacuumSprite;
+    public SpriteRenderer forceCannonSprite;
+
+    [SerializeField] 
+    private Transform armNonFlipXTransform;
+
     [SerializeField, Range(0f, 1f)] 
     private float armLerp = 0.001f;
+    bool previousFlipX = true;
     
     void Start()
     {
         playerInput = GetComponent<PlayerInput>();
+        initialPosition = armTransform.localPosition;
+    }
+
+    public void SetArmPivotPosition(bool flipX)
+    {
+        
+        if (flipX)
+        {
+            armTransform.localPosition = initialPosition;
+            FlipToolSprites(false);
+        }
+        else
+        {
+            armTransform.localPosition = armNonFlipXTransform.localPosition;
+            FlipToolSprites(true);
+        }
+
+        if (previousFlipX != flipX)
+        {
+            Vector3 rotation = armTransform.rotation.eulerAngles;
+            float newZ = - 180f - rotation.z;
+            Debug.Log($"Setting z rotation from {rotation.z} to {newZ}");
+            armTransform.rotation = Quaternion.Euler(rotation.x, rotation.y, newZ);
+        }
+        
+        previousFlipX = flipX;
     }
     
     void Update()
     {
         Vector2 input = playerInput.actions["Aim"].ReadValue<Vector2>();
         
-        if (input.magnitude > 0.01f)
+        if (input.magnitude > 0.05f)
         {
             float angle = Mathf.Atan2(input.y, input.x) * Mathf.Rad2Deg;
             Quaternion targetRotation = Quaternion.Euler(0, 0, angle);
             armTransform.rotation = Quaternion.Lerp(armTransform.rotation, targetRotation, armLerp);
         }
+    }
+    
+    void FlipToolSprites(bool flipY)
+    {
+        vacuumSprite.flipY = flipY;
+        forceCannonSprite.flipY = flipY;
     }
 }

@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 velocity;
     private Rigidbody2D rb;
     private float joystickMagnitude;
+    private Vector2 rawInput;
+    private Vector2 lastNonZeroInput;
     
     [SerializeField] 
     private float speed = 5f;
@@ -31,6 +33,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 lastMoveDirection = Vector2.zero;
     private MovementState movementState = MovementState.Idle;
     private Player player;
+
+    [SerializeField] 
+    private SpriteRenderer playerCharacterRenderer;
+    
+    private PlayerArmController armController;
     
     [SerializeField]
     private DepthMeter depthMeter;
@@ -47,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         player = GetComponent<Player>();
         playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
+        armController = GetComponent<PlayerArmController>();
     }
 
     private void FixedUpdate()
@@ -56,9 +64,13 @@ public class PlayerMovement : MonoBehaviour
     
     private void Move()
     {
-        Vector2 input = playerInput.actions["Move"].ReadValue<Vector2>();
-        Vector2 inputClamped = Vector2.ClampMagnitude(input, 1f);
-        joystickMagnitude = input.magnitude;
+        rawInput = playerInput.actions["Move"].ReadValue<Vector2>();
+        if (rawInput.magnitude > 0.05f)
+        {
+            lastNonZeroInput = rawInput;
+        }
+        Vector2 inputClamped = Vector2.ClampMagnitude(rawInput, 1f);
+        joystickMagnitude = rawInput.magnitude;
         CalculateMovementState(inputClamped.magnitude, inputClamped);
 
         Vector2 newVelocity = CalculateNewVelocity(inputClamped);
@@ -93,10 +105,23 @@ public class PlayerMovement : MonoBehaviour
 
     private void RotatePlayer()
     {
-        Quaternion targetRotation = Quaternion.Euler(0, 0, Mathf.Atan2(lastMoveDirection.y, lastMoveDirection.x) * Mathf.Rad2Deg);
-        Quaternion currentRotation = Quaternion.Euler(0, 0, rb.rotation);
-        Quaternion newRotation = Quaternion.Lerp(currentRotation, targetRotation, rotationLerpSpeed);
-        rb.MoveRotation(newRotation.eulerAngles.z);
+        // old rotation
+        // Quaternion targetRotation = Quaternion.Euler(0, 0, Mathf.Atan2(lastMoveDirection.y, lastMoveDirection.x) * Mathf.Rad2Deg);
+        // Quaternion currentRotation = Quaternion.Euler(0, 0, rb.rotation);
+        // Quaternion newRotation = Quaternion.Lerp(currentRotation, targetRotation, rotationLerpSpeed);
+        // rb.MoveRotation(newRotation.eulerAngles.z);
+        
+        // sprite rotation
+        if (lastNonZeroInput.x > 0)
+        {
+            playerCharacterRenderer.flipX = true;
+            armController.SetArmPivotPosition(true);
+        }
+        else
+        {
+            playerCharacterRenderer.flipX = false;
+            armController.SetArmPivotPosition(false);
+        }
     }
     
     public MovementState GetMovementState()

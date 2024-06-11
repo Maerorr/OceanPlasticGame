@@ -232,9 +232,11 @@ public class Player : MonoBehaviour
     
     public void AddOxygen(float oxygenSeconds)
     {
-        float oxygenPercentage = oxygenSeconds / (baseMaxOxygen + bonusMaxOxygen) * 100f;
-        currentOxygen += oxygenPercentage;
+        float secondsForEntireBar = (baseMaxOxygen + bonusMaxOxygen) / (oxygenDecreaseRate * oxygenDecreaseModifier);
+        float addition = oxygenSeconds * (baseMaxOxygen + bonusMaxOxygen) / secondsForEntireBar;
+        currentOxygen += addition;
         currentOxygen = Mathf.Clamp(currentOxygen, 0f, 100f);
+        UpdateOxygenTimer();
     }
 
     IEnumerator DisableHealing()
