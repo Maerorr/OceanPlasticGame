@@ -13,6 +13,9 @@ public class GameUIController : MonoBehaviour
     public Image key;
     public int keysAmount;
     public TextMeshProUGUI keysAmountText;
+
+    public GameObject pauseMenu;
+    bool pauseMenuActive = false;
     
     private void Start()
     {
@@ -25,6 +28,7 @@ public class GameUIController : MonoBehaviour
             children.Add(child.GetComponent<RectTransform>());
             defaultPositions.Add(child.GetComponent<RectTransform>().anchoredPosition);
         }
+        pauseMenu.SetActive(false);
     }
 
     public void MoveAside()
@@ -58,6 +62,20 @@ public class GameUIController : MonoBehaviour
         {
             keysAmountText.text = "";
             key.color = Color.clear;
+        }
+    }
+
+    public void OnBackPressed()
+    {
+        if (pauseMenuActive)
+        {
+            pauseMenu.SetActive(false);
+            pauseMenuActive = false;
+        }
+        else
+        {
+            pauseMenu.SetActive(true);
+            pauseMenuActive = true;
         }
     }
 }

@@ -86,5 +86,6 @@ public class PlayerManager : MonoBehaviour
             amountToSpawn -= spawned;
         }
         player.Heal(1000000f); // this will be clamped to 100 anyway
+        player.AddOxygen(1000f); // same
     }
 }

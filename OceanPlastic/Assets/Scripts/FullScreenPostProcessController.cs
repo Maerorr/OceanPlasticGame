@@ -23,6 +23,7 @@ public class FullScreenPostProcessController : MonoBehaviour
     {
         cam = Camera.main;
         cameraHalfSize = cam.orthographicSize;
+        waterRipple.SetActive(StaticGameData.instance.ripplePostProcess);
     }
 
     private void Update()

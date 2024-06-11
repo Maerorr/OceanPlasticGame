@@ -38,7 +38,9 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer playerCharacterRenderer;
     
     private PlayerArmController armController;
-    
+
+    public ParticleSystem trails;
+
     [SerializeField]
     private DepthMeter depthMeter;
 
@@ -57,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
         armController = GetComponent<PlayerArmController>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         Move();
     }
@@ -78,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = velocity;
 
         RotatePlayer();
-
+        
         // Update velocity and movement state after handling collision
         velocity = newVelocity;
     }
@@ -116,11 +118,13 @@ public class PlayerMovement : MonoBehaviour
         {
             playerCharacterRenderer.flipX = true;
             armController.SetArmPivotPosition(true);
+            trails.transform.rotation = Quaternion.Euler(180, 90, 0);
         }
         else
         {
             playerCharacterRenderer.flipX = false;
             armController.SetArmPivotPosition(false);
+            trails.transform.rotation = Quaternion.Euler(0, 90, 0);
         }
     }
     
