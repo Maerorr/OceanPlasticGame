@@ -111,12 +111,12 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Opacity: 0.19
+    - _Opacity: 0.27
     - _Parallax: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RippleSpeed: 0.26
-    - _Scale: 39
+    - _RippleSpeed: 1.09
+    - _Scale: 61.7
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -128,5 +128,5 @@ Material:
     - _WaterColor: {r: 0, g: 4.3541355, b: 5.2164755, a: 0}
     - _WaterEndColor: {r: 0.3792015, g: 0.2418002, b: 0.7219948, a: 0}
     - _WaterMidColor: {r: 0.1349075, g: 0.5474268, b: 1.0592736, a: 0}
-    - _WaterShallowColor: {r: 0, g: 1.3155276, b: 0.4047777, a: 0}
+    - _WaterShallowColor: {r: 0, g: 1.4980394, b: 0.4609352, a: 0}
   m_BuildTextureStacks: []

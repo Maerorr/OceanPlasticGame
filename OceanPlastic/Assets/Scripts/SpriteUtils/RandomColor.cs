@@ -8,6 +8,10 @@ public class RandomColor : MonoBehaviour
     float baseValue = 0.5f;
     [SerializeField]
     float maxOffset = 0.1f;
+
+    [SerializeField] 
+    private float alpha = 1f;
+    
     [SerializeField]
     bool hasShaderGraph = false;
     
@@ -28,7 +32,8 @@ public class RandomColor : MonoBehaviour
         return new Color(
             baseValue + Random.Range(-maxOffset, maxOffset),
             baseValue + Random.Range(-maxOffset, maxOffset),
-            baseValue + Random.Range(-maxOffset, maxOffset)
+            baseValue + Random.Range(-maxOffset, maxOffset),
+            alpha
         );
     }
     

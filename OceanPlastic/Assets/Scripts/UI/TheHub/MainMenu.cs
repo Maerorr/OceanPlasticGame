@@ -41,7 +41,15 @@ public class MainMenu : MonoBehaviour
         {
             StopCoroutine(switchPanelCoroutine);
         }
-        switchPanelCoroutine = StartCoroutine(SwitchPanel(MenuEntryType.Levels));
+
+        if (menuEntries.Find(x => x.type == MenuEntryType.Levels).isActive)
+        {
+            switchPanelCoroutine = StartCoroutine(SwitchPanel(MenuEntryType.None));
+        }
+        else
+        {
+            switchPanelCoroutine = StartCoroutine(SwitchPanel(MenuEntryType.Levels));
+        }
     }
     
     public void UpgradesPress()
@@ -54,7 +62,15 @@ public class MainMenu : MonoBehaviour
         {
             StopCoroutine(switchPanelCoroutine);
         }
-        switchPanelCoroutine = StartCoroutine(SwitchPanel(MenuEntryType.Upgrades));
+        //switchPanelCoroutine = StartCoroutine(SwitchPanel(MenuEntryType.Upgrades));
+        if (menuEntries.Find(x => x.type == MenuEntryType.Upgrades).isActive)
+        {
+            switchPanelCoroutine = StartCoroutine(SwitchPanel(MenuEntryType.None));
+        }
+        else
+        {
+            switchPanelCoroutine = StartCoroutine(SwitchPanel(MenuEntryType.Upgrades));
+        }
     }
     
     public void SettingsPress()
@@ -67,7 +83,15 @@ public class MainMenu : MonoBehaviour
         {
             StopCoroutine(switchPanelCoroutine);
         }
-        switchPanelCoroutine = StartCoroutine(SwitchPanel(MenuEntryType.Settings));
+        //switchPanelCoroutine = StartCoroutine(SwitchPanel(MenuEntryType.Settings));
+        if (menuEntries.Find(x => x.type == MenuEntryType.Settings).isActive)
+        {
+            switchPanelCoroutine = StartCoroutine(SwitchPanel(MenuEntryType.None));
+        }
+        else
+        {
+            switchPanelCoroutine = StartCoroutine(SwitchPanel(MenuEntryType.Settings));
+        }
     }
 
     IEnumerator SwitchPanel(MenuEntryType type)
@@ -149,6 +173,7 @@ public class MenuEntry
 [Serializable]
 public enum MenuEntryType
 {
+    None,
     Levels,
     Upgrades,
     Settings,

@@ -10,14 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df44848625225f74887d65d46d180c75, type: 3}
-  m_Name: DrinkBottle
+  m_Name: ChipsBag
   m_EditorClassIdentifier: 
-  name: Glass Bottle
-  materialType: 2
+  name: Chips
+  materialType: 0
   spriteVariants:
-  - {fileID: 1176361166, guid: 5fe87b9978b902e4a89a0a369989f7cf, type: 3}
-  - {fileID: 2103245352, guid: 5fe87b9978b902e4a89a0a369989f7cf, type: 3}
-  - {fileID: 848089050, guid: 5fe87b9978b902e4a89a0a369989f7cf, type: 3}
-  - {fileID: -2052443021, guid: 5fe87b9978b902e4a89a0a369989f7cf, type: 3}
-  weight: 2
-  value: 5
+  - {fileID: -545558372, guid: 5fe87b9978b902e4a89a0a369989f7cf, type: 3}
+  weight: 1
+  value: 2

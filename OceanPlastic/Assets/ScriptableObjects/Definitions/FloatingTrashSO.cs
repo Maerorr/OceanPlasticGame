@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,7 +6,18 @@ using UnityEngine;
 public class FloatingTrashSO : ScriptableObject
 {
     public string name;
+    public MaterialType materialType;
     public List<Sprite> spriteVariants;
     public int weight;
     public int value;
+}
+
+
+[Serializable]
+public enum MaterialType
+{
+    Plastic,
+    Metal,
+    Glass,
+    Rubber,
 }
