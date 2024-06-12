@@ -8,12 +8,15 @@ public class PlayerTools : MonoBehaviour
     [SerializeField] 
     private GameObject forceCannon;
 
+    private Vacuum vacuumScript;
+    
     private PlayerAnimation anim;
     
     private CurrentTool currentTool = CurrentTool.None;
 
     private void Start()
     {
+        vacuumScript = vacuum.GetComponent<Vacuum>();
         anim = FindAnyObjectByType<PlayerAnimation>();
         UpdateCurrentTool(currentTool);
     }

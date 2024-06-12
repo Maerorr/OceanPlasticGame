@@ -9,6 +9,9 @@ public class Vacuum : MonoBehaviour
     private float vacuumRange = 3f;
     [SerializeField]
     private float vacuumPower = 5f;
+
+    bool isActive = true;
+    
     [SerializeField]
     private float maxConeAngle = 45f;
     [SerializeField]
@@ -18,9 +21,17 @@ public class Vacuum : MonoBehaviour
 
     [SerializeField] private Transform castStart;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        isActive = true;
+    }
+
     void Update()
     {
+        if (!isActive)
+        {
+            return;
+        }
         Array.Clear(hits, 0, hits.Length);
         
         int hitCount = Physics2D.BoxCastNonAlloc(castStart.position, boxCastSize, 0f, castStart.right, hits, vacuumRange - boxCastSize.x / 2f, layerMask);
@@ -48,6 +59,16 @@ public class Vacuum : MonoBehaviour
         Debug.DrawLine(castStart.position, castStart.position + castStart.right * vacuumRange, Color.blue);
         Debug.DrawLine(castStart.position, castStart.position + Quaternion.Euler(0, 0, maxConeAngle) * transform.right * vacuumRange, Color.red);
         Debug.DrawLine(castStart.position, castStart.position + Quaternion.Euler(0, 0, -maxConeAngle) * transform.right * vacuumRange, Color.red);
+    }
+
+    public void DisableVacuumPower()
+    {
+        isActive = false;
+    }
+
+    public void EnableVacuumPower()
+    {
+        isActive = true;
     }
 
 #if UNITY_EDITOR

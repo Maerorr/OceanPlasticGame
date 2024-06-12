@@ -14,6 +14,8 @@ public class PauseMenu : MonoBehaviour
     
     public ScriptableRendererFeature feature;
     public GameObject rippleCheckmark;
+
+    public GameObject abandonConfirmationPanel;
     
     bool isOpen = false;
     
@@ -27,7 +29,8 @@ public class PauseMenu : MonoBehaviour
         {
             rippleCheckmark.SetActive(true);
         }
-        
+
+        abandonConfirmationPanel.SetActive(false);
         initialColor = pauseMenuRoot.color;
         pauseMenuRoot.color = Color.clear;
         pauseMenuChild.SetActive(false);
@@ -40,7 +43,17 @@ public class PauseMenu : MonoBehaviour
 
     public void OnAbandonPress()
     {
+        abandonConfirmationPanel.SetActive(true);
+    }
+
+    public void OnAbandonConfirm()
+    {
         SceneManager.LoadScene("TheHub");
+    }
+
+    public void OnAbandonCancel()
+    {
+        abandonConfirmationPanel.SetActive(false);
     }
     
     public void OnBackPress()

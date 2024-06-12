@@ -10,6 +10,8 @@ public class PlayerArmController : MonoBehaviour
     [SerializeField]
     private Transform armTransform;
 
+    private Vector2 rawAimInput;
+
     private Vector3 initialPosition;
 
     public SpriteRenderer vacuumSprite;
@@ -41,7 +43,14 @@ public class PlayerArmController : MonoBehaviour
             armTransform.localPosition = armNonFlipXTransform.localPosition;
             FlipToolSprites(true);
         }
-
+        
+        
+        Debug.Log(rawAimInput);
+        if (rawAimInput.magnitude > 0.05f)
+        {
+            previousFlipX = flipX;
+            return;
+        }
         if (previousFlipX != flipX)
         {
             Vector3 rotation = armTransform.rotation.eulerAngles;
@@ -49,17 +58,16 @@ public class PlayerArmController : MonoBehaviour
             Debug.Log($"Setting z rotation from {rotation.z} to {newZ}");
             armTransform.rotation = Quaternion.Euler(rotation.x, rotation.y, newZ);
         }
-        
         previousFlipX = flipX;
     }
     
     void Update()
     {
-        Vector2 input = playerInput.actions["Aim"].ReadValue<Vector2>();
+        rawAimInput = playerInput.actions["Aim"].ReadValue<Vector2>();
         
-        if (input.magnitude > 0.05f)
+        if (rawAimInput.magnitude > 0.05f)
         {
-            float angle = Mathf.Atan2(input.y, input.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(rawAimInput.y, rawAimInput.x) * Mathf.Rad2Deg;
             Quaternion targetRotation = Quaternion.Euler(0, 0, angle);
             armTransform.rotation = Quaternion.Lerp(armTransform.rotation, targetRotation, armLerp);
         }

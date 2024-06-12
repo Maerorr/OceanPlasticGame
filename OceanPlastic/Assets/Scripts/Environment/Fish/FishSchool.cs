@@ -113,6 +113,10 @@ public class FishSchool : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale < 0.01f)
+        {
+            return;
+        }
         for (int i = 0; i < fish.Count; i++)
         {
             FishData fishData = fish[i];

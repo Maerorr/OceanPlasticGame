@@ -50,9 +50,9 @@ Material:
     - _FlipX: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Scale: 5.5
+    - _Scale: 2.17
     - _Speed: 0.32
-    - _Strength: 2.13
+    - _Strength: 6.49
     - _flipX: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}

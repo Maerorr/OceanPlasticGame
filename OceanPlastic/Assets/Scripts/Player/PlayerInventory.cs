@@ -20,6 +20,9 @@ public class PlayerInventory : MonoBehaviour
     private Messenger msg;
 
     private bool hasKey = false;
+
+    public UnityEvent onInventoryFull;
+    public UnityEvent onInventoryHasSpace;
     
     private void Awake()
     {
@@ -62,8 +65,7 @@ public class PlayerInventory : MonoBehaviour
             ShowMessage("Inventory is full!");
         }
         UpdateTrashMeter();
-        
-        //Debug.Log($"new item added to inventory: {item.name}, this item count: {currentCount}, current capacity: {currentCapacity} / {maxCapacity}");
+
         return true;
     }
 
@@ -134,6 +136,14 @@ public class PlayerInventory : MonoBehaviour
     {
         trashMeter??= FindAnyObjectByType<TrashMeter>();
         trashMeter.SetTrashValue(currentCapacity, maxCapacity);
+        if (currentCapacity == maxCapacity)
+        {
+            onInventoryFull.Invoke();
+        }
+        if (currentCapacity < maxCapacity)
+        {
+            onInventoryHasSpace.Invoke();
+        }
     }
     
     public void SetBagModifier(int maxBagCapacity)
