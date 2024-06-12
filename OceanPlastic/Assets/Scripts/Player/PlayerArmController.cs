@@ -44,8 +44,6 @@ public class PlayerArmController : MonoBehaviour
             FlipToolSprites(true);
         }
         
-        
-        Debug.Log(rawAimInput);
         if (rawAimInput.magnitude > 0.05f)
         {
             previousFlipX = flipX;
@@ -55,7 +53,6 @@ public class PlayerArmController : MonoBehaviour
         {
             Vector3 rotation = armTransform.rotation.eulerAngles;
             float newZ = - 180f - rotation.z;
-            Debug.Log($"Setting z rotation from {rotation.z} to {newZ}");
             armTransform.rotation = Quaternion.Euler(rotation.x, rotation.y, newZ);
         }
         previousFlipX = flipX;

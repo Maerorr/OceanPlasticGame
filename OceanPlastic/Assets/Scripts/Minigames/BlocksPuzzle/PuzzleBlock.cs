@@ -81,7 +81,7 @@ public class PuzzleBlock : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnDrag(PointerEventData eventData)
     {
         if (!isDragging) return;
-        dragPos = eventData.pointerCurrentRaycast.worldPosition;
+        dragPos = Camera.main.ScreenToWorldPoint(eventData.position);//eventData.pointerCurrentRaycast.worldPosition;
         dragPos.z = -1f;
         transform.position = dragPos;
     }
