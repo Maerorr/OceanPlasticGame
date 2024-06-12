@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseValue: 0.8
   maxOffset: 0.1
-  alpha: 0.7
+  alpha: 0.75
   hasShaderGraph: 0
 --- !u!1 &8729759686657402562
 GameObject:
