@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e97566bd426922a40924be76e4e458e8
+guid: 380de9ac9d9263f409e0820ad427ca21
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,11 +110,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RybySpritesheet_0
+      name: Bubbles_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1792
+        y: 256
         width: 256
         height: 256
       alignment: 0
@@ -124,18 +124,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e15b6c0fd13fa0e49af882d6b6d00963
-      internalID: 545474837
+      spriteID: d22b577c9d105544c9387329b3307028
+      internalID: 1829117415
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RybySpritesheet_1
+      name: Bubbles_1
       rect:
         serializedVersion: 2
         x: 256
-        y: 1792
+        y: 256
         width: 256
         height: 256
       alignment: 0
@@ -145,18 +145,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7abc24844818e4e4f8a6a8de4adce011
-      internalID: 789228520
+      spriteID: f9c84e1f2a9f72149bd22e163eccd11b
+      internalID: -590587753
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RybySpritesheet_2
+      name: Bubbles_2
       rect:
         serializedVersion: 2
-        x: 512
-        y: 1792
+        x: 0
+        y: 0
         width: 256
         height: 256
       alignment: 0
@@ -166,8 +166,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd9049290a3e3af49a257ca2ffdfde10
-      internalID: -1846844647
+      spriteID: b31a60ef07a7a44498f989a70351beda
+      internalID: 352684658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bubbles_3
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89fb151fd31645f45b8434929d25a948
+      internalID: 986430909
       vertices: []
       indices: 
       edges: []
@@ -183,9 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      RybySpritesheet_0: 545474837
-      RybySpritesheet_1: 789228520
-      RybySpritesheet_2: -1846844647
+      Bubbles_0: 1829117415
+      Bubbles_1: -590587753
+      Bubbles_2: 352684658
+      Bubbles_3: 986430909
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

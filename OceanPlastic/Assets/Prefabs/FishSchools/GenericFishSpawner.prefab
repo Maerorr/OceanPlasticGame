@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishXSpeed: 1.6
   fishYAmplitude: 0.1
-  fishSprite: {fileID: 789228520, guid: e97566bd426922a40924be76e4e458e8, type: 3}
+  fishSprite: {fileID: -857588393, guid: 8920b003fd2e088468c631b7883862ed, type: 3}
   fishCount: 5
   fishMinSize: 0.14
   fishMaxSize: 0.39
