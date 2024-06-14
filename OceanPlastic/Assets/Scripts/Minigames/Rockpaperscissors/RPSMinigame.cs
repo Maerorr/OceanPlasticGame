@@ -14,6 +14,7 @@ public class RPSMinigame : MonoBehaviour
     public Transform enemyCardEndPos;
     public List<HandCard> enemyHandCards;
     public Sprite scissorsSprite;
+    public Sprite bubbleSprite;
     
     public List<HandCard> handCards;
     
@@ -40,9 +41,16 @@ public class RPSMinigame : MonoBehaviour
         {
             card.enabled = false;
         }
-        enemyHandCards[1].transform.GetComponent<SpriteRenderer>().sprite = scissorsSprite;
+        enemyHandCards[1].transform.GetComponent<SpriteRenderer>().sprite = bubbleSprite;
+        GameObject scissors = new GameObject("enemy scissors", typeof(SpriteRenderer));
+        scissors.GetComponent<SpriteRenderer>().sprite = scissorsSprite;
+        scissors.transform.parent = enemyHandCards[1].transform;
+        scissors.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+        scissors.transform.rotation = Quaternion.Euler(0, 0, -75);
+        scissors.transform.localPosition = new Vector3(0f, 0f, 0.05f);
         enemyHandCards[1].transform.DOMove(enemyCardEndPos.position, 1f).SetEase(Ease.OutCubic).SetUpdate(true);
         enemyHandCards[1].transform.DOScale(enemyCardEndPos.localScale, 1f).SetEase(Ease.OutCubic).SetUpdate(true);
+        enemyHandCards[1].transform.DORotate(enemyCardEndPos.rotation.eulerAngles, 1f).SetEase(Ease.OutCubic).SetUpdate(true);
         
         yield return new WaitForSecondsRealtime(1f);
         switch (choice)

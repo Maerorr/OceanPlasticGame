@@ -49,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
     
     private Coroutine updateDepth;
     
+    private Vector2 prevFramePosition;
+    
     // Start is called before the first frame update
     void Awake()
     {
@@ -78,8 +80,14 @@ public class PlayerMovement : MonoBehaviour
         Vector2 newVelocity = CalculateNewVelocity(inputClamped);
         lastMoveDirection = newVelocity.normalized; 
         rb.velocity = velocity;
-
+        
         RotatePlayer();
+
+        //var move = (rb.position - prevFramePosition) / Time.deltaTime;
+        //var main = trails.main;
+        //main.emitterVelocity = new Vector3(move.x, move.y, 0);
+        
+        prevFramePosition = rb.position;
         
         // Update velocity and movement state after handling collision
         velocity = newVelocity;

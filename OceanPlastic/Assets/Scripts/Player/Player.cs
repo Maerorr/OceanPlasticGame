@@ -16,7 +16,9 @@ public class Player : MonoBehaviour
     private float currentOxygen = 100f;
     [SerializeField, Range(1f, 500f)] 
     private float secondsOfOxygen;
+    [SerializeField]
     private float oxygenDecreaseRate = 5f;
+    [SerializeField]
     private float oxygenIncreaseRate = 20f;
     
     [SerializeField]

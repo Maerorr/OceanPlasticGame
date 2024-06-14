@@ -127,6 +127,5 @@ public class CaveWithEyes : MonoBehaviour
         RPSMinigame game = minigameInstance.GetComponent<RPSMinigame>();
         game.onWin.AddListener(MinigameWon);
         game.onLoseDraw.AddListener(MinigameLost);
-        
     }
 }

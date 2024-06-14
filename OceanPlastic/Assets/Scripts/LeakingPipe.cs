@@ -38,9 +38,11 @@ public class LeakingPipe : MonoBehaviour
 
     private LevelManager levelManager;
     private GameUIController gameUIController;
+    private FullScreenPostProcessController postprocess;
 
     private void Start()
     {
+        postprocess = FindObjectOfType<FullScreenPostProcessController>();
         spriteRenderer = crack.GetComponent<SpriteRenderer>();
         propertyBlock = new MaterialPropertyBlock();
         pipeCracks.gameObject.SetActive(false);
@@ -83,6 +85,7 @@ public class LeakingPipe : MonoBehaviour
     {
         if (!isPlayerInside) return;
         if (isRepaired || repairStarted) return;
+        postprocess.DisableRipples();
         repairStarted = true;
         gameUIController.MoveAside();
         repairMinigame = Instantiate(repairMinigamePrefab, Vector3.zero, Quaternion.identity);
@@ -90,8 +93,25 @@ public class LeakingPipe : MonoBehaviour
         repairMinigame.transform.localPosition = new Vector3(0f, -12f, 1f);
         repairMinigame.transform.DOLocalMove(Vector3.forward, 1f).SetEase(Ease.OutQuad).OnComplete(
             () => Time.timeScale = 0f);
-        repairMinigame.GetComponent<RepairMinigame>().onFinished.AddListener(MinigameCompleted);
-        
+        var repairMinigameComponent = repairMinigame.GetComponent<RepairMinigame>();
+        repairMinigameComponent.onFinished.AddListener(MinigameCompleted);
+        repairMinigameComponent.GetComponentInChildren<NonUIButton>().buttonClicked.AddListener(CloseRepairMinigame);
+    }
+    
+    public void CloseRepairMinigame()
+    {
+        if (repairMinigame != null)
+        {
+            Time.timeScale = 1f;
+            toolButtons.DisableExtraButton();
+            gameUIController.MoveToNormal();
+            postprocess.EnableRipples();
+            repairStarted = false;
+            repairMinigame.transform.DOLocalMove(new Vector3(0f, -12f, 1f), 1f)
+                .OnComplete( 
+                    () => Destroy(repairMinigame)
+                );
+        }
     }
     
     public void StopRepair()
@@ -137,6 +157,8 @@ public class LeakingPipe : MonoBehaviour
     {
         Time.timeScale = 1f;
         toolButtons.DisableExtraButton();
+        postprocess.EnableRipples();
+        repairStarted = false;
         isRepaired = true;
         levelManager.PipeRepaired();
         gameUIController.MoveToNormal();

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1899581490008730534}
   - component: {fileID: 1145404854423457294}
   - component: {fileID: 5291350188096075}
+  - component: {fileID: 1353092516760640898}
   m_Layer: 0
   m_Name: bubel
   m_TagString: Untagged
@@ -75,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 97628fb5008811f4ea1354a8215687c8, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.25490198}
+  m_Sprite: {fileID: -590587753, guid: 380de9ac9d9263f409e0820ad427ca21, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -120,7 +121,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.66
+  m_Radius: 1.02
 --- !u!114 &5291350188096075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,3 +134,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98eee6c1126f73544953e7531b831ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1353092516760640898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5127615593374847225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ca59d1bbda3a5f4ba4e109cd5f1485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -590587753, guid: 380de9ac9d9263f409e0820ad427ca21, type: 3}
+  - {fileID: 352684658, guid: 380de9ac9d9263f409e0820ad427ca21, type: 3}
+  - {fileID: 986430909, guid: 380de9ac9d9263f409e0820ad427ca21, type: 3}

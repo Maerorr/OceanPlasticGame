@@ -14,14 +14,17 @@ public class PuzzleBlock : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     
     BlocksPuzzleController blocksPuzzleController;
     private Vector3 dragPos;
+    private float initialGlobalZ;
     
     private void Start()
     {
         blocksPuzzleController = GetComponentInParent<BlocksPuzzleController>();
         foreach (Transform child in transform)
         {
+            if (child.name == "sprite") continue;
             childBlocks.Add(child);
         }
+        initialGlobalZ = transform.position.z;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -75,14 +78,17 @@ public class PuzzleBlock : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 }
             }
         }
+
+        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, -0.5f);
         blocksPuzzleController.Check();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (!eventData.dragging) transform.position = new Vector3(transform.position.x, transform.position.y, -0.5f);
         if (!isDragging) return;
         dragPos = Camera.main.ScreenToWorldPoint(eventData.position);//eventData.pointerCurrentRaycast.worldPosition;
-        dragPos.z = -1f;
+        dragPos.z = initialGlobalZ - 0.75f;
         transform.position = dragPos;
     }
 }
