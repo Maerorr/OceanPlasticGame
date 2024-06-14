@@ -20,6 +20,7 @@ public class PuzzleBlock : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         blocksPuzzleController = GetComponentInParent<BlocksPuzzleController>();
         foreach (Transform child in transform)
         {
+            if (child.name == "sprite") continue;
             childBlocks.Add(child);
         }
     }
@@ -75,11 +76,14 @@ public class PuzzleBlock : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 }
             }
         }
+
+        transform.position = new Vector3(transform.position.x, transform.position.y, -0.5f);
         blocksPuzzleController.Check();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (!eventData.dragging) transform.position = new Vector3(transform.position.x, transform.position.y, -0.5f);
         if (!isDragging) return;
         dragPos = Camera.main.ScreenToWorldPoint(eventData.position);//eventData.pointerCurrentRaycast.worldPosition;
         dragPos.z = -1f;
