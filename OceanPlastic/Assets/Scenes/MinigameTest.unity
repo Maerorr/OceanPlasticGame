@@ -4187,7 +4187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1357511024
 Transform:
   m_ObjectHideFlags: 0
@@ -5970,14 +5970,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: RockPaperScissorsMinigame
       objectReference: {fileID: 0}
-    - target: {fileID: 5946565336663066912, guid: bf51eaa11556f484695fb7d8cf0e4d60, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 83383095140488583, guid: bf51eaa11556f484695fb7d8cf0e4d60, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: bf51eaa11556f484695fb7d8cf0e4d60, type: 3}
 --- !u!1001 &8072262393199843173
 PrefabInstance:
