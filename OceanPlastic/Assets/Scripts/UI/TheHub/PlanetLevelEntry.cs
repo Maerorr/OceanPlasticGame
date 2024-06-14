@@ -1,12 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using DG.Tweening.Core;
-using DG.Tweening.Plugins.Options;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlanetLevelEntry : MonoBehaviour
@@ -15,7 +10,14 @@ public class PlanetLevelEntry : MonoBehaviour
     private Image highlight;
     [SerializeField]
     private RectTransform planetInfoPanel;
+    
+    [SerializeField]
+    private LevelDescription levelDescription;
 
+    public TextMeshProUGUI planetName;
+    public TextMeshProUGUI planetDescription;
+    public TextMeshProUGUI planetDifficulty;
+    
     private int id;
     
     [SerializeField]
@@ -44,6 +46,10 @@ public class PlanetLevelEntry : MonoBehaviour
         moveY = planetInfoPanel.anchoredPosition.y;
         planetEntryManager = FindObjectOfType<PlanetEntryManager>();
         sceneTransitionEffect = FindObjectOfType<SceneTransitionEffect>();
+        
+        planetName.text = levelDescription.name;
+        planetDescription.text = levelDescription.description;
+        planetDifficulty.text = levelDescription.difficulty;
     }
 
     public void SetID(int id)

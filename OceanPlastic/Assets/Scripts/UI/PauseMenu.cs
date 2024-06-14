@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
@@ -49,6 +46,7 @@ public class PauseMenu : MonoBehaviour
     public void OnAbandonConfirm()
     {
         SceneManager.LoadScene("TheHub");
+        Time.timeScale = 1;
     }
 
     public void OnAbandonCancel()

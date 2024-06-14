@@ -286,22 +286,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4747607517773750669, guid: 71794b95ba0c8da42819168896b28d65, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4747607517773750669, guid: 71794b95ba0c8da42819168896b28d65, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4747607517773750669, guid: 71794b95ba0c8da42819168896b28d65, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4747607517773750669, guid: 71794b95ba0c8da42819168896b28d65, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6149512508327404639, guid: 71794b95ba0c8da42819168896b28d65, type: 3}
       propertyPath: m_Name
       value: PlanetLevelEntry (1)
@@ -654,7 +638,7 @@ Transform:
   m_GameObject: {fileID: 414937820}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1643.8492, y: 454.83267, z: 0}
+  m_LocalPosition: {x: 1643.849, y: 454.8327, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1015,7 +999,6 @@ GameObject:
   - component: {fileID: 924549180}
   - component: {fileID: 924549182}
   - component: {fileID: 924549181}
-  - component: {fileID: 924549183}
   - component: {fileID: 924549184}
   m_Layer: 5
   m_Name: Noise
@@ -1081,18 +1064,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 924549179}
   m_CullTransparentMesh: 1
---- !u!114 &924549183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 924549179}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2228b5c3bcb290d4ca737e6373027312, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &924549184
 Animator:
   serializedVersion: 5
@@ -3664,6 +3635,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1691563216003896519, guid: 71794b95ba0c8da42819168896b28d65, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691563216003896519, guid: 71794b95ba0c8da42819168896b28d65, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691563216003896519, guid: 71794b95ba0c8da42819168896b28d65, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691563216003896519, guid: 71794b95ba0c8da42819168896b28d65, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3371446358898152234, guid: 71794b95ba0c8da42819168896b28d65, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3700,6 +3687,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlanetLevelEntry
       objectReference: {fileID: 0}
+    - target: {fileID: 7573656999343507017, guid: 71794b95ba0c8da42819168896b28d65, type: 3}
+      propertyPath: levelDescription
+      value: 
+      objectReference: {fileID: 11400000, guid: 710355385da467943a50712e4124ebc1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4157397824014129904, guid: 71794b95ba0c8da42819168896b28d65, type: 3}
