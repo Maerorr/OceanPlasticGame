@@ -21,6 +21,7 @@ public class FullScreenPostProcessController : MonoBehaviour
     
     private Camera cam;
     private float cameraHalfSize;
+    private float initialStrength;
     
     public float damageVignetteTime = 1f;
     public float damageVignetteMaxIntensity = 0.5f;
@@ -44,6 +45,28 @@ public class FullScreenPostProcessController : MonoBehaviour
         var waterLevel = 1f - (-camBottom / (2f * cameraHalfSize));
         waterRippleMaterial.SetFloat(waterLevelID, waterLevel);
         waterRippleMaterial.SetFloat(damageVignetteID, damageVignetteIntensity);
+    }
+
+    public void DisableRipples()
+    {
+        initialStrength = waterRippleMaterial.GetFloat(stregthID);
+        var currentStrength = initialStrength;
+        DOTween.To(() => currentStrength, x => currentStrength = x, 0f, 1f).OnUpdate(() =>
+        {
+            waterRippleMaterial.SetFloat(stregthID, currentStrength);
+        }).SetUpdate(true);
+    }
+
+    public void EnableRipples()
+    {
+        var currentStrength = 0f;
+        if (StaticGameData.instance.ripplePostProcess)
+        {
+            DOTween.To(() => currentStrength, x => currentStrength = x, initialStrength, 1f).OnUpdate(() =>
+            {
+                waterRippleMaterial.SetFloat(stregthID, currentStrength);
+            }).SetUpdate(true);
+        }
     }
 
     public void TriggerDamageVignette()

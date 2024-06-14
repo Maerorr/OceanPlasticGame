@@ -13,6 +13,8 @@ public class GameUIController : MonoBehaviour
     public Image key;
     public int keysAmount;
     public TextMeshProUGUI keysAmountText;
+
+    public GameObject moveJoystick;
     
     bool pauseMenuActive = false;
     
@@ -35,7 +37,12 @@ public class GameUIController : MonoBehaviour
         foreach (var child in children)
         {
             Vector2 direction = (child.position - transform.position).normalized;
-            child.DOAnchorPos(child.anchoredPosition + direction * 750, 1f).SetEase(Ease.OutQuad);
+            child.DOAnchorPos(child.anchoredPosition + direction * 800, 1f).SetEase(Ease.OutQuad).OnComplete(
+                () =>
+                    {
+                        moveJoystick.SetActive(false);
+                    }
+                );
         }
     }
 
@@ -44,7 +51,12 @@ public class GameUIController : MonoBehaviour
         // move all children back to their default positions
         for (int i = 0; i < children.Count; i++)
         {
-            children[i].DOAnchorPos(defaultPositions[i], 1f).SetEase(Ease.InQuad);
+            children[i].DOAnchorPos(defaultPositions[i], 1f).SetEase(Ease.InQuad).OnComplete(
+                () =>
+                {
+                    moveJoystick.SetActive(true  );
+                }
+            );
         }
     }
 
