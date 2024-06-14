@@ -4,14 +4,8 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CaveWithEyes : MonoBehaviour
+public class OctopusMInigame : MonoBehaviour
 {
-    [SerializeField]
-    private Sprite noEyesSprite;
-    [SerializeField]
-    private Sprite eyesSprite;
-    SpriteRenderer spriteRenderer;
-    
     private GameUIController gameUIController;
     private ToolButtons toolButtons;
     
@@ -28,28 +22,7 @@ public class CaveWithEyes : MonoBehaviour
     {
         toolButtons = FindObjectOfType<ToolButtons>();
         gameUIController = FindObjectOfType<GameUIController>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         key.gameObject.SetActive(false);
-        StartCoroutine(Blink());
-    }
-    
-    private IEnumerator Blink()
-    {
-        while (true)
-        {
-            if (Vector3.Distance(PlayerManager.Instance.Position(), transform.position) < 7f)
-            {
-                spriteRenderer.sprite = noEyesSprite;
-                yield return new WaitForSeconds(0.5f);
-            }
-            else
-            {
-                yield return new WaitForSeconds(Random.Range(1f, 3f));
-                spriteRenderer.sprite = noEyesSprite;
-                yield return new WaitForSeconds(0.1f);
-                spriteRenderer.sprite = eyesSprite; 
-            }
-        }
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -124,8 +97,7 @@ public class CaveWithEyes : MonoBehaviour
         minigameInstance.transform.localPosition = new Vector3(0f, -12f, 5f);
         minigameInstance.transform.DOLocalMove(new Vector3(0f, 0f, 5f), 1f).SetEase(Ease.OutQuad).OnComplete(
             () => Time.timeScale = 0f);
-        RPSMinigame game = minigameInstance.GetComponent<RPSMinigame>();
+        BlocksPuzzleController game = minigameInstance.GetComponent<BlocksPuzzleController>();
         game.onWin.AddListener(MinigameWon);
-        game.onLoseDraw.AddListener(MinigameLost);
     }
 }
