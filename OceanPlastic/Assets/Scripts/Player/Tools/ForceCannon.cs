@@ -9,8 +9,9 @@ public class ForceCannon : MonoBehaviour
 {
     private PlayerInput playerInput;
     private float previousFrameMagnitude = 0f;
-
-    private float shootThreshold = 0.9f;
+    
+    [SerializeField]
+    private float shootThreshold = 0.75f;
     [SerializeField]
     private float cooldown = 1f;
     private bool canShoot = true;
@@ -40,6 +41,8 @@ public class ForceCannon : MonoBehaviour
     private float waveTime = 0;
     
     private RaycastHit2D[] hits = new RaycastHit2D[32];
+
+    private int aimOverlayID = Shader.PropertyToID("_IsAiming");
     
     // Start is called before the first frame update
     void Start()
@@ -52,11 +55,29 @@ public class ForceCannon : MonoBehaviour
     void Update()
     {
         float inputMag = playerInput.actions["Aim"].ReadValue<Vector2>().magnitude;
-        if (inputMag < 0.1f && previousFrameMagnitude > shootThreshold)
+        if (inputMag < 0.1f)
         {
-            Shoot();
+            DisableAimOverlay();
+            if (previousFrameMagnitude > shootThreshold)
+            {
+                Shoot();
+            }
+        }
+        else
+        {
+            EnableAimOverlay();
         }
         previousFrameMagnitude = inputMag;
+    }
+
+    private void EnableAimOverlay()
+    {
+        shockwaveMaterial.SetInt(aimOverlayID, 1);
+    }
+    
+    private void DisableAimOverlay() 
+    {
+        shockwaveMaterial.SetInt(aimOverlayID, 0);
     }
     
     private void Shoot()

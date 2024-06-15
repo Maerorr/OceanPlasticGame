@@ -1,0 +1,501 @@
+fileFormatVersion: 2
+guid: 8de9089950456514fb51e634be53ca84
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BlueVegetation_0
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 0
+        width: 206
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd9d1fb6f0421ae4b8d67108e76ed4be
+      internalID: -759587121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueVegetation_2
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 11
+        width: 150
+        height: 997
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec2600d890792f345ab68446159b1736
+      internalID: 1968634639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueVegetation_3
+      rect:
+        serializedVersion: 2
+        x: 1351
+        y: 71
+        width: 173
+        height: 949
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecf3757f7701ae74db4234e8c6242c66
+      internalID: -1591222500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueVegetation_5
+      rect:
+        serializedVersion: 2
+        x: 1599
+        y: 13
+        width: 194
+        height: 996
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bebf4fe8688d26e41a13e0db24296e87
+      internalID: 1601086758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueVegetation_6
+      rect:
+        serializedVersion: 2
+        x: 1827
+        y: 28
+        width: 225
+        height: 992
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3c0dc58e4749764b82bffc6351e7e46
+      internalID: -1280701618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueVegetation_7
+      rect:
+        serializedVersion: 2
+        x: 2139
+        y: 35
+        width: 238
+        height: 950
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b66b754eba6d1d942958f5d858afb963
+      internalID: -1426223829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueVegetation_8
+      rect:
+        serializedVersion: 2
+        x: 2419
+        y: 23
+        width: 304
+        height: 962
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27177ff10f2bb5446a83c3f4a1946c26
+      internalID: 1790201694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueVegetation_9
+      rect:
+        serializedVersion: 2
+        x: 2748
+        y: 24
+        width: 295
+        height: 973
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3150ff6e514354e45a88db43b44adb2f
+      internalID: -494865384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueVegetation_10
+      rect:
+        serializedVersion: 2
+        x: 3087
+        y: 35
+        width: 262
+        height: 962
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5805500239f2994b89b3e0b73e02726
+      internalID: 882043294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueVegetation_12
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 15
+        width: 197
+        height: 946
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4d5973e6e1d97b4ab168f8ea1d62c38
+      internalID: 1471709068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueVegetation_15
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 23
+        width: 200
+        height: 926
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7eec2531c90c474dbd6807c7c939e2b
+      internalID: -270014811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueVegetation_18
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 12
+        width: 216
+        height: 901
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2b000a8cd63e7a4f9bb084819af81fb
+      internalID: 1177349817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueVegetation_44
+      rect:
+        serializedVersion: 2
+        x: 3467
+        y: 35
+        width: 250
+        height: 218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01736c8ff45c23446a46b2ff9a8ac1d9
+      internalID: 540605080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueVegetation_46
+      rect:
+        serializedVersion: 2
+        x: 3731
+        y: 47
+        width: 85
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0f96c7b86fe9f8478521a2813180af6
+      internalID: -710939335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueVegetation_47
+      rect:
+        serializedVersion: 2
+        x: 3833
+        y: 45
+        width: 115
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0a47f2b9a15608449e264b2371fb11d
+      internalID: 386528141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      BlueVegetation_0: -759587121
+      BlueVegetation_1: 95329544
+      BlueVegetation_10: 882043294
+      BlueVegetation_11: 1708209077
+      BlueVegetation_12: 1471709068
+      BlueVegetation_13: 1010025446
+      BlueVegetation_14: 905524824
+      BlueVegetation_15: -270014811
+      BlueVegetation_16: -1715793858
+      BlueVegetation_17: 168598083
+      BlueVegetation_18: 1177349817
+      BlueVegetation_19: -1509548557
+      BlueVegetation_2: 1968634639
+      BlueVegetation_20: -246024598
+      BlueVegetation_21: 1664519515
+      BlueVegetation_22: -2084336763
+      BlueVegetation_23: 1996727820
+      BlueVegetation_24: -2146724392
+      BlueVegetation_25: 1820897588
+      BlueVegetation_26: -696580461
+      BlueVegetation_27: 112987916
+      BlueVegetation_28: -346707157
+      BlueVegetation_29: 1598780859
+      BlueVegetation_3: -1591222500
+      BlueVegetation_30: 820067586
+      BlueVegetation_31: -1107659145
+      BlueVegetation_32: -1677617372
+      BlueVegetation_33: 1797889021
+      BlueVegetation_34: -555751050
+      BlueVegetation_35: -1657971377
+      BlueVegetation_36: 342611286
+      BlueVegetation_37: 1383449660
+      BlueVegetation_38: 621560602
+      BlueVegetation_39: -1965026411
+      BlueVegetation_4: -1697585672
+      BlueVegetation_40: 1775060809
+      BlueVegetation_41: 2043855943
+      BlueVegetation_42: 2124618283
+      BlueVegetation_43: 1329199756
+      BlueVegetation_44: 540605080
+      BlueVegetation_45: -14880382
+      BlueVegetation_46: -710939335
+      BlueVegetation_47: 386528141
+      BlueVegetation_48: -340272544
+      BlueVegetation_49: -1083589334
+      BlueVegetation_5: 1601086758
+      BlueVegetation_50: -1048186585
+      BlueVegetation_51: -1736566519
+      BlueVegetation_52: 1839039138
+      BlueVegetation_53: -1098202528
+      BlueVegetation_54: 1110653586
+      BlueVegetation_55: 678992759
+      BlueVegetation_56: -1848858786
+      BlueVegetation_57: -1584653639
+      BlueVegetation_58: 1239837190
+      BlueVegetation_6: -1280701618
+      BlueVegetation_7: -1426223829
+      BlueVegetation_8: 1790201694
+      BlueVegetation_9: -494865384
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

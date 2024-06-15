@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: VegetationShake 1
+  m_Name: ShakeBotVegetetion
   m_Shader: {fileID: -6465566751694194690, guid: a45d04f6a3274c7459a84a52f0527a20, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -50,10 +50,10 @@ Material:
     - _FlipX: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Scale: 2.17
-    - _ShakeTop: 1
-    - _Speed: 0.35
-    - _Strength: 4.2
+    - _Scale: 3.43
+    - _ShakeTop: 0
+    - _Speed: 0.32
+    - _Strength: 2.75
     - _flipX: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}

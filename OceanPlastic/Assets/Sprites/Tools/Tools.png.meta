@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d8c0ebe5c3b1b1c46b08c9e632dd1f9d
+guid: b9fab44696401f84897f2b5ad9e977a5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,85 +110,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PipesSheet_0
+      name: Tools_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1536
-        width: 1024
-        height: 512
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c365ff58101c0304ab97d69cb19c0ae3
-      internalID: 216686572
+      spriteID: 805a1fe64acb8aa4db3ff8609ae27186
+      internalID: 729567300
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PipesSheet_1
+      name: Tools_1
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 1024
-        width: 1024
-        height: 1024
+        x: 256
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26fdc11de992786428c2b51643e6bcbc
-      internalID: -1418735446
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PipesSheet_2
-      rect:
-        serializedVersion: 2
-        x: 342
-        y: 440
-        width: 331
-        height: 358
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f3e894fcadd1af24ea18c3f8502ed1f7
-      internalID: 2042822074
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PipesSheet_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1024
-        width: 1024
-        height: 512
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2b556989fd87d01418444c9601f7af9d
-      internalID: 129229440
+      spriteID: 5f6ee2ad745c3e748ac5a5dab4b55530
+      internalID: -1887505963
       vertices: []
       indices: 
       edges: []
@@ -204,10 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PipesSheet_0: 216686572
-      PipesSheet_1: -1418735446
-      PipesSheet_2: 2042822074
-      PipesSheet_3: 129229440
+      Tools_0: 729567300
+      Tools_1: -1887505963
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
