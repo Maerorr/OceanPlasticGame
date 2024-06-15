@@ -20,6 +20,7 @@ public class Vacuum : MonoBehaviour
     [SerializeField] private Vector2 boxCastSize;
 
     [SerializeField] private Transform castStart;
+    public GameObject vacuumEffect;
 
     private void Start()
     {
@@ -46,29 +47,20 @@ public class Vacuum : MonoBehaviour
                 Vector2 velocity = distance.normalized / distance.magnitude;
                 velocity = Vector2.ClampMagnitude(velocity, 10f);
                 hit.transform.GetComponent<FloatingTrash>().MoveTowardsVacuum(velocity * vacuumPower);
-                Debug.DrawLine(castStart.position, hit.transform.position, Color.green);
-            }
-            else
-            {
-                Debug.DrawLine(castStart.position, hit.transform.position, Color.red);
             }
         }
-        
-        // draw the cone
-        //Debug.DrawLine(circleCastStart.position, circleCastStart.position + transform.right * vacuumRange, Color.red);
-        Debug.DrawLine(castStart.position, castStart.position + castStart.right * vacuumRange, Color.blue);
-        Debug.DrawLine(castStart.position, castStart.position + Quaternion.Euler(0, 0, maxConeAngle) * transform.right * vacuumRange, Color.red);
-        Debug.DrawLine(castStart.position, castStart.position + Quaternion.Euler(0, 0, -maxConeAngle) * transform.right * vacuumRange, Color.red);
     }
 
     public void DisableVacuumPower()
     {
         isActive = false;
+        vacuumEffect.SetActive(false);
     }
 
     public void EnableVacuumPower()
     {
         isActive = true;
+        vacuumEffect.SetActive(true);
     }
 
 #if UNITY_EDITOR

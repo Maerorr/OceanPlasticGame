@@ -552,7 +552,7 @@ GameObject:
   - component: {fileID: 27341866}
   - component: {fileID: 27341868}
   - component: {fileID: 27341867}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bubbles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29070,7 +29070,7 @@ Transform:
   m_GameObject: {fileID: 1046273656}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.7, y: -32.4, z: -0.68}
+  m_LocalPosition: {x: -3.55, y: -10.65, z: -0.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -33156,6 +33156,7 @@ MonoBehaviour:
     m_Bits: 64
   boxCastSize: {x: 3, y: 5.75}
   castStart: {fileID: 2021308499}
+  vacuumEffect: {fileID: 519075497}
 --- !u!114 &1631632218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55887,7 +55888,7 @@ GameObject:
   - component: {fileID: 2144905391}
   - component: {fileID: 2144905390}
   - component: {fileID: 2144905389}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PufferFish
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -29,6 +29,10 @@ public class PufferFish : MonoBehaviour
     private bool recentlyPuffed = false;
     private float unpuffCooldown = 2f;
     private float unpuffTimer = 0f;
+
+    private List<int> tweens = new List<int>();
+    
+    Coroutine colorChangeCoroutine;
     
     public ParticleSystem bubbles;
     
@@ -157,11 +161,25 @@ public class PufferFish : MonoBehaviour
             {
                 if (puffed)
                 {
+                    if (colorChangeCoroutine != null)
+                    {
+                        StopCoroutine(colorChangeCoroutine);
+                    }
+                    colorChangeCoroutine = StartCoroutine(HitColoration());
+                    
                     PlayerManager.Instance.Player.TakeDamage(5f);
                 }
             }
         }
-    
+    }
+
+    IEnumerator HitColoration()
+    {
+        spriteRenderer.color = new Color(1f, 0.5f, 0.5f, 1f);
+
+        yield return new WaitForSeconds(0.2f);
+        
+        spriteRenderer.color = Color.white;
     }
 
 #if UNITY_EDITOR
