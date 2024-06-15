@@ -84,6 +84,17 @@ public class OctopusMInigame : MonoBehaviour
                 Destroy(minigameInstance);
             }).SetUpdate(true);
     }
+    
+    public void HideMinigame()
+    {
+        gameUIController.MoveToNormal();
+        minigameInstance.transform.DOLocalMove(new Vector3(0f, -12f, 5f), 1f).SetEase(Ease.OutQuad).OnComplete(
+            () =>
+            {
+                Time.timeScale = 1f;
+                Destroy(minigameInstance);
+            }).SetUpdate(true);
+    }
 
     public void StartMinigame()
     {
@@ -99,5 +110,6 @@ public class OctopusMInigame : MonoBehaviour
             () => Time.timeScale = 0f);
         BlocksPuzzleController game = minigameInstance.GetComponent<BlocksPuzzleController>();
         game.onWin.AddListener(MinigameWon);
+        game.onBack.AddListener(HideMinigame);
     }
 }

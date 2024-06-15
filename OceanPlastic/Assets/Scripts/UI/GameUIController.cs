@@ -49,14 +49,10 @@ public class GameUIController : MonoBehaviour
     public void MoveToNormal()
     {
         // move all children back to their default positions
+        moveJoystick.SetActive(true);
         for (int i = 0; i < children.Count; i++)
         {
-            children[i].DOAnchorPos(defaultPositions[i], 1f).SetEase(Ease.InQuad).OnComplete(
-                () =>
-                {
-                    moveJoystick.SetActive(true  );
-                }
-            );
+            children[i].DOAnchorPos(defaultPositions[i], 1f).SetEase(Ease.InQuad);
         }
     }
 

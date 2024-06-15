@@ -672,7 +672,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: c573dbac1c5d18f42914be3b2bf530fe, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -1399,6 +1399,9 @@ MonoBehaviour:
   - {fileID: 1608305695719690642}
   - {fileID: 659528512741463930}
   - {fileID: 2608434859677268448}
+  onBack:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5963778552840318043
 GameObject:
   m_ObjectHideFlags: 0

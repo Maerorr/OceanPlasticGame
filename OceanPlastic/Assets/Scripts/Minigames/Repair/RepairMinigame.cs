@@ -8,6 +8,7 @@ public class RepairMinigame : MonoBehaviour
     List<TouchDetectSquare> squares = new List<TouchDetectSquare>();
     public UnityEvent onFinished;
     public SpriteRenderer background;
+    public UnityEvent onBack;
     
     private void Start()
     {
@@ -17,6 +18,11 @@ public class RepairMinigame : MonoBehaviour
             squares.Add(square);
         }
         onFinished.AddListener(ChangeBackground);
+        
+        GetComponentInChildren<NonUIButton>().buttonClicked.AddListener(() =>
+        {
+            onBack.Invoke();
+        });
     }
     
     public void IsAllSquaresTouched()

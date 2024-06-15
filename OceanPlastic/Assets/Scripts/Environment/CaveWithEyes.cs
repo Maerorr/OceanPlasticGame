@@ -37,18 +37,10 @@ public class CaveWithEyes : MonoBehaviour
     {
         while (true)
         {
-            if (Vector3.Distance(PlayerManager.Instance.Position(), transform.position) < 7f)
-            {
-                spriteRenderer.sprite = noEyesSprite;
-                yield return new WaitForSeconds(0.5f);
-            }
-            else
-            {
-                yield return new WaitForSeconds(Random.Range(1f, 3f));
-                spriteRenderer.sprite = noEyesSprite;
-                yield return new WaitForSeconds(0.1f);
-                spriteRenderer.sprite = eyesSprite; 
-            }
+            yield return new WaitForSeconds(Random.Range(1f, 3f));
+            spriteRenderer.sprite = noEyesSprite;
+            yield return new WaitForSeconds(0.1f);
+            spriteRenderer.sprite = eyesSprite; 
         }
     }
     
@@ -101,6 +93,17 @@ public class CaveWithEyes : MonoBehaviour
         //PlayerManager.Instance.PlayerInventory.SetHasKey(true);
     }
 
+    public void HideMinigame()
+    {
+        gameUIController.MoveToNormal();
+        minigameInstance.transform.DOLocalMove(new Vector3(0f, -12f, 5f), 1f).SetEase(Ease.OutQuad).OnComplete(
+            () =>
+            {
+                Time.timeScale = 1f;
+                Destroy(minigameInstance);
+            }).SetUpdate(true);
+    }
+    
     private void MinigameLost()
     {
         gameUIController.MoveToNormal();
@@ -127,5 +130,6 @@ public class CaveWithEyes : MonoBehaviour
         RPSMinigame game = minigameInstance.GetComponent<RPSMinigame>();
         game.onWin.AddListener(MinigameWon);
         game.onLoseDraw.AddListener(MinigameLost);
+        game.onBack.AddListener(HideMinigame);
     }
 }

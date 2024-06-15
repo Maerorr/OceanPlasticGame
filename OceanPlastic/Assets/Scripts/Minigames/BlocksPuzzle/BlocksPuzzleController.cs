@@ -10,11 +10,16 @@ public class BlocksPuzzleController : MonoBehaviour
     List<GridCell> gridCells = new List<GridCell>();
 
     public UnityEvent onWin;
+    public UnityEvent onBack;
     
     // Start is called before the first frame update
     void Start()
     {
         gridCells = GetComponentsInChildren<GridCell>().ToList();
+        GetComponentInChildren<NonUIButton>().buttonClicked.AddListener(() =>
+        {
+            onBack.Invoke();
+        });
     }
 
     public void Check()

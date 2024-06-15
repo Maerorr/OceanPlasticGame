@@ -17,6 +17,7 @@ public class RPSMinigame : MonoBehaviour
     public Sprite bubbleSprite;
     
     public List<HandCard> handCards;
+    public UnityEvent onBack;
     
     private void Start()
     {
@@ -28,6 +29,11 @@ public class RPSMinigame : MonoBehaviour
         resultText.transform.localPosition = new Vector3(0, -7f, -1f);
         resultText.text = "";
         resultText.alpha = 0;
+        
+        GetComponentInChildren<NonUIButton>().buttonClicked.AddListener(() =>
+        {
+            onBack.Invoke();
+        });
     }
     
     public void CardSelected(RPSChoice choice)
