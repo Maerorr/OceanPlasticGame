@@ -7,7 +7,7 @@ public class OxygenBubble : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
     
-private void Start()
+    private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }

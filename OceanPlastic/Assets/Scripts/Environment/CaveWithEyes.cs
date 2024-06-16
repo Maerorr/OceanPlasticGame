@@ -24,7 +24,7 @@ public class CaveWithEyes : MinigameTrigger
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(1f, 3f));
+            yield return new WaitForSeconds(Random.Range(0.5f, 1.5f));
             spriteRenderer.sprite = noEyesSprite;
             yield return new WaitForSeconds(0.1f);
             spriteRenderer.sprite = eyesSprite; 

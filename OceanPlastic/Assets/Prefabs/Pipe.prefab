@@ -452,7 +452,7 @@ MonoBehaviour:
       m_Calls: []
   isPlayerInside: 0
   hasPlayerWon: 0
-  crack: {fileID: 0}
+  crack: {fileID: 32938386753551620}
   timeToRepair: 2
   value: 10
   particles: {fileID: 4217982684267268023}

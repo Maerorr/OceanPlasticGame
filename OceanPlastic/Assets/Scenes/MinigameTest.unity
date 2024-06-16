@@ -21052,6 +21052,9 @@ MonoBehaviour:
   onWin:
     m_PersistentCalls:
       m_Calls: []
+  onBack:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &973051941
 GameObject:
   m_ObjectHideFlags: 0
@@ -26447,13 +26450,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 944690dec3b007c4fbe4f4a2752e31df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSwapCount: 5
   onWin:
     m_PersistentCalls:
       m_Calls: []
-  onLose:
+  onBack:
     m_PersistentCalls:
       m_Calls: []
+  maxSwapCount: 5
 --- !u!1 &1371621879
 GameObject:
   m_ObjectHideFlags: 0
@@ -27020,7 +27023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4135337349429424730, guid: 337f20c1d91ce2d4887caa5dd8ee38aa, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

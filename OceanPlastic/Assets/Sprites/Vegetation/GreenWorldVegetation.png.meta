@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8de9089950456514fb51e634be53ca84
+guid: 579a762e227e8154d87625d98e6b1f5f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BlueVegetation_0
+      name: GreenWorldVegetation_0
       rect:
         serializedVersion: 2
-        x: 803
-        y: 0
-        width: 206
-        height: 1024
+        x: 1
+        y: 789
+        width: 227
+        height: 1259
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd9d1fb6f0421ae4b8d67108e76ed4be
-      internalID: -759587121
+      spriteID: 552b1e27ddaa77d448a847e1fac100e4
+      internalID: 1224809623
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueVegetation_2
+      name: GreenWorldVegetation_2
       rect:
         serializedVersion: 2
-        x: 1093
-        y: 11
-        width: 150
-        height: 997
+        x: 263
+        y: 789
+        width: 248
+        height: 1259
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec2600d890792f345ab68446159b1736
-      internalID: 1968634639
+      spriteID: 7d4592a7b6efbea4594d84b736a47caa
+      internalID: -192300942
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueVegetation_3
+      name: GreenWorldVegetation_3
       rect:
         serializedVersion: 2
-        x: 1351
-        y: 71
-        width: 173
-        height: 949
+        x: 735
+        y: 779
+        width: 254
+        height: 1269
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ecf3757f7701ae74db4234e8c6242c66
-      internalID: -1591222500
+      spriteID: 6ea5550162448f448bcedaea884ad098
+      internalID: 1741637784
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueVegetation_5
+      name: GreenWorldVegetation_4
       rect:
         serializedVersion: 2
-        x: 1599
-        y: 13
-        width: 194
-        height: 996
+        x: 1007
+        y: 23
+        width: 511
+        height: 2025
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bebf4fe8688d26e41a13e0db24296e87
-      internalID: 1601086758
+      spriteID: a868e021a8353f846bd5cb69c6f1ce90
+      internalID: -1756426582
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueVegetation_6
+      name: GreenWorldVegetation_13
       rect:
         serializedVersion: 2
-        x: 1827
-        y: 28
-        width: 225
-        height: 992
+        x: 527
+        y: 787
+        width: 210
+        height: 894
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3c0dc58e4749764b82bffc6351e7e46
-      internalID: -1280701618
+      spriteID: bec949aefa4074a49ace7094bd1a406e
+      internalID: 804627982
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueVegetation_7
+      name: GreenWorldVegetation_16
       rect:
         serializedVersion: 2
-        x: 2139
-        y: 35
+        x: 1547
+        y: 935
         width: 238
-        height: 950
+        height: 254
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b66b754eba6d1d942958f5d858afb963
-      internalID: -1426223829
+      spriteID: 97fdfe966cca02847b089b95e8a45ccb
+      internalID: 2012728318
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueVegetation_8
+      name: GreenWorldVegetation_19
       rect:
         serializedVersion: 2
-        x: 2419
-        y: 23
-        width: 304
-        height: 962
+        x: 1821
+        y: 936
+        width: 222
+        height: 248
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27177ff10f2bb5446a83c3f4a1946c26
-      internalID: 1790201694
+      spriteID: 10ddad4e9db5c414f91c217a8bb30f21
+      internalID: 631640615
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueVegetation_9
+      name: GreenWorldVegetation_21
       rect:
         serializedVersion: 2
-        x: 2748
-        y: 24
-        width: 295
-        height: 973
+        x: 2063
+        y: 945
+        width: 217
+        height: 232
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,20 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3150ff6e514354e45a88db43b44adb2f
-      internalID: -494865384
+      spriteID: a17f5af0533bca64ebc8188ee11726fd
+      internalID: -260075553
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueVegetation_10
+      name: GreenWorldVegetation_22
       rect:
         serializedVersion: 2
-        x: 3087
-        y: 35
-        width: 262
-        height: 962
+        x: 2304
+        y: 945
+        width: 96
+        height: 232
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,20 +292,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5805500239f2994b89b3e0b73e02726
-      internalID: 882043294
+      spriteID: 5ab3072a7a4f44c4ebd3c3dae7162246
+      internalID: 1610178574
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueVegetation_12
+      name: GreenWorldVegetation_23
       rect:
         serializedVersion: 2
-        x: 31
-        y: 15
-        width: 197
-        height: 946
+        x: 2443
+        y: 945
+        width: 114
+        height: 208
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,20 +313,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4d5973e6e1d97b4ab168f8ea1d62c38
-      internalID: 1471709068
+      spriteID: e8b6e903da7127b4ba3ebe1b4fc42809
+      internalID: -795500144
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueVegetation_15
+      name: GreenWorldVegetation_27
       rect:
         serializedVersion: 2
-        x: 305
-        y: 23
-        width: 200
-        height: 926
+        x: 287
+        y: 273
+        width: 230
+        height: 482
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,20 +334,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7eec2531c90c474dbd6807c7c939e2b
-      internalID: -270014811
+      spriteID: 48b710023136396448006173054b607e
+      internalID: -670715229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueVegetation_18
+      name: GreenWorldVegetation_32
       rect:
         serializedVersion: 2
-        x: 553
-        y: 12
-        width: 216
-        height: 901
+        x: 537
+        y: 0
+        width: 442
+        height: 683
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,20 +355,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2b000a8cd63e7a4f9bb084819af81fb
-      internalID: 1177349817
+      spriteID: 76c0286b331155046aecbfd61d47c000
+      internalID: -1290265049
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueVegetation_44
+      name: GreenWorldVegetation_36
       rect:
         serializedVersion: 2
-        x: 3478
-        y: 435
-        width: 250
-        height: 218
+        x: 0
+        y: 239
+        width: 257
+        height: 229
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -376,20 +376,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01736c8ff45c23446a46b2ff9a8ac1d9
-      internalID: 540605080
+      spriteID: 18e4419dc3940c84eb022b2b77da86c5
+      internalID: -843986800
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueVegetation_46
+      name: GreenWorldVegetation_38
       rect:
         serializedVersion: 2
-        x: 3746
-        y: 438
-        width: 85
-        height: 214
+        x: 1570
+        y: 0
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,20 +397,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0f96c7b86fe9f8478521a2813180af6
-      internalID: -710939335
+      spriteID: 6c064b4654b0c804f9ce274ea0490ba0
+      internalID: 1173427866
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueVegetation_47
+      name: GreenWorldVegetation_39
       rect:
         serializedVersion: 2
-        x: 3844
-        y: 435
-        width: 115
-        height: 216
+        x: 2338
+        y: 0
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -418,8 +418,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0a47f2b9a15608449e264b2371fb11d
-      internalID: 386528141
+      spriteID: dd906449f5f8d50428a96c213c81ab12
+      internalID: -1614674177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GreenWorldVegetation_45
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 0
+        width: 190
+        height: 235
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48b45a1e75598a84fb9723f5f222fc83
+      internalID: 603972215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GreenWorldVegetation_47
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 229
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2adb22b9995fe6040ab1a655194636a5
+      internalID: -1107325654
       vertices: []
       indices: 
       edges: []
@@ -435,65 +477,56 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BlueVegetation_0: -759587121
-      BlueVegetation_1: 95329544
-      BlueVegetation_10: 882043294
-      BlueVegetation_11: 1708209077
-      BlueVegetation_12: 1471709068
-      BlueVegetation_13: 1010025446
-      BlueVegetation_14: 905524824
-      BlueVegetation_15: -270014811
-      BlueVegetation_16: -1715793858
-      BlueVegetation_17: 168598083
-      BlueVegetation_18: 1177349817
-      BlueVegetation_19: -1509548557
-      BlueVegetation_2: 1968634639
-      BlueVegetation_20: -246024598
-      BlueVegetation_21: 1664519515
-      BlueVegetation_22: -2084336763
-      BlueVegetation_23: 1996727820
-      BlueVegetation_24: -2146724392
-      BlueVegetation_25: 1820897588
-      BlueVegetation_26: -696580461
-      BlueVegetation_27: 112987916
-      BlueVegetation_28: -346707157
-      BlueVegetation_29: 1598780859
-      BlueVegetation_3: -1591222500
-      BlueVegetation_30: 820067586
-      BlueVegetation_31: -1107659145
-      BlueVegetation_32: -1677617372
-      BlueVegetation_33: 1797889021
-      BlueVegetation_34: -555751050
-      BlueVegetation_35: -1657971377
-      BlueVegetation_36: 342611286
-      BlueVegetation_37: 1383449660
-      BlueVegetation_38: 621560602
-      BlueVegetation_39: -1965026411
-      BlueVegetation_4: -1697585672
-      BlueVegetation_40: 1775060809
-      BlueVegetation_41: 2043855943
-      BlueVegetation_42: 2124618283
-      BlueVegetation_43: 1329199756
-      BlueVegetation_44: 540605080
-      BlueVegetation_45: -14880382
-      BlueVegetation_46: -710939335
-      BlueVegetation_47: 386528141
-      BlueVegetation_48: -340272544
-      BlueVegetation_49: -1083589334
-      BlueVegetation_5: 1601086758
-      BlueVegetation_50: -1048186585
-      BlueVegetation_51: -1736566519
-      BlueVegetation_52: 1839039138
-      BlueVegetation_53: -1098202528
-      BlueVegetation_54: 1110653586
-      BlueVegetation_55: 678992759
-      BlueVegetation_56: -1848858786
-      BlueVegetation_57: -1584653639
-      BlueVegetation_58: 1239837190
-      BlueVegetation_6: -1280701618
-      BlueVegetation_7: -1426223829
-      BlueVegetation_8: 1790201694
-      BlueVegetation_9: -494865384
+      GreenWorldVegetation_0: 1224809623
+      GreenWorldVegetation_1: -1375679797
+      GreenWorldVegetation_10: 704659088
+      GreenWorldVegetation_11: 1724411066
+      GreenWorldVegetation_12: 2099117713
+      GreenWorldVegetation_13: 804627982
+      GreenWorldVegetation_14: 163185759
+      GreenWorldVegetation_15: 1032908049
+      GreenWorldVegetation_16: 2012728318
+      GreenWorldVegetation_17: -1384973415
+      GreenWorldVegetation_18: 564534402
+      GreenWorldVegetation_19: 631640615
+      GreenWorldVegetation_2: -192300942
+      GreenWorldVegetation_20: 1171585004
+      GreenWorldVegetation_21: -260075553
+      GreenWorldVegetation_22: 1610178574
+      GreenWorldVegetation_23: -795500144
+      GreenWorldVegetation_24: 66088087
+      GreenWorldVegetation_25: 1320280412
+      GreenWorldVegetation_26: -1762957176
+      GreenWorldVegetation_27: -670715229
+      GreenWorldVegetation_28: 1922559657
+      GreenWorldVegetation_29: 1588189090
+      GreenWorldVegetation_3: 1741637784
+      GreenWorldVegetation_30: -1698424131
+      GreenWorldVegetation_31: -66767487
+      GreenWorldVegetation_32: -1290265049
+      GreenWorldVegetation_33: 1228260724
+      GreenWorldVegetation_34: 1694084661
+      GreenWorldVegetation_35: -1246581244
+      GreenWorldVegetation_36: -843986800
+      GreenWorldVegetation_37: 336433834
+      GreenWorldVegetation_38: 1173427866
+      GreenWorldVegetation_39: -1614674177
+      GreenWorldVegetation_4: -1756426582
+      GreenWorldVegetation_40: 509479036
+      GreenWorldVegetation_41: 1158729785
+      GreenWorldVegetation_42: 1591481478
+      GreenWorldVegetation_43: -71675184
+      GreenWorldVegetation_44: 897417677
+      GreenWorldVegetation_45: 603972215
+      GreenWorldVegetation_46: -1935927180
+      GreenWorldVegetation_47: -1107325654
+      GreenWorldVegetation_48: 1948734989
+      GreenWorldVegetation_49: -510624034
+      GreenWorldVegetation_5: 1603368687
+      GreenWorldVegetation_6: -951358648
+      GreenWorldVegetation_7: -239472539
+      GreenWorldVegetation_8: -1625859361
+      GreenWorldVegetation_9: 564705030
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
