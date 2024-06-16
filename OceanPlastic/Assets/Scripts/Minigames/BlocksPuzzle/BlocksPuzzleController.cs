@@ -4,22 +4,15 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class BlocksPuzzleController : MonoBehaviour
+public class BlocksPuzzleController : Minigame
 {
-    
     List<GridCell> gridCells = new List<GridCell>();
-
-    public UnityEvent onWin;
-    public UnityEvent onBack;
     
     // Start is called before the first frame update
     void Start()
     {
         gridCells = GetComponentsInChildren<GridCell>().ToList();
-        GetComponentInChildren<NonUIButton>().buttonClicked.AddListener(() =>
-        {
-            onBack.Invoke();
-        });
+        MinigameInit();
     }
 
     public void Check()
@@ -32,6 +25,5 @@ public class BlocksPuzzleController : MonoBehaviour
             }
         }
         onWin.Invoke();
-        Debug.Log("FINISHED");
     }
 }

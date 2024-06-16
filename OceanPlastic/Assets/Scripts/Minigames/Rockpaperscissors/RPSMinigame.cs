@@ -5,11 +5,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class RPSMinigame : MonoBehaviour
+public class RPSMinigame : Minigame
 {
     public TextMeshPro resultText;
-    public UnityEvent onWin;
-    public UnityEvent onLoseDraw;
     public Transform enemyCard;
     public Transform enemyCardEndPos;
     public List<HandCard> enemyHandCards;
@@ -17,7 +15,6 @@ public class RPSMinigame : MonoBehaviour
     public Sprite bubbleSprite;
     
     public List<HandCard> handCards;
-    public UnityEvent onBack;
     
     private void Start()
     {
@@ -30,10 +27,7 @@ public class RPSMinigame : MonoBehaviour
         resultText.text = "";
         resultText.alpha = 0;
         
-        GetComponentInChildren<NonUIButton>().buttonClicked.AddListener(() =>
-        {
-            onBack.Invoke();
-        });
+        MinigameInit();
     }
     
     public void CardSelected(RPSChoice choice)
@@ -87,7 +81,7 @@ public class RPSMinigame : MonoBehaviour
                     }
                     else
                     {
-                        onLoseDraw.Invoke();
+                        onBack.Invoke();
                     }
                 });
             }).SetUpdate(true);

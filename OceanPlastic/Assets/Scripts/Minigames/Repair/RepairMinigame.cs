@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class RepairMinigame : MonoBehaviour
+public class RepairMinigame : Minigame
 {
     List<TouchDetectSquare> squares = new List<TouchDetectSquare>();
-    public UnityEvent onFinished;
     public SpriteRenderer background;
-    public UnityEvent onBack;
     
     private void Start()
     {
@@ -17,12 +15,9 @@ public class RepairMinigame : MonoBehaviour
             square.onTouched.AddListener(IsAllSquaresTouched);
             squares.Add(square);
         }
-        onFinished.AddListener(ChangeBackground);
+        onWin.AddListener(ChangeBackground);
         
-        GetComponentInChildren<NonUIButton>().buttonClicked.AddListener(() =>
-        {
-            onBack.Invoke();
-        });
+        MinigameInit();
     }
     
     public void IsAllSquaresTouched()
@@ -34,7 +29,7 @@ public class RepairMinigame : MonoBehaviour
                 return;
             }
         }
-        onFinished.Invoke();
+        onWin.Invoke();
     }
     
     public void ChangeBackground()

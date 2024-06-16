@@ -5,13 +5,10 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ThreeCupsController : MonoBehaviour
+public class ThreeCupsController : Minigame
 {
     List<Cup> cups = new List<Cup>();
     public int maxSwapCount = 5;
-
-    public UnityEvent onWin;
-    public UnityEvent onLose;
     
     private void Start()
     {
@@ -21,7 +18,7 @@ public class ThreeCupsController : MonoBehaviour
         {
             cup.clickable = false;
         }
-        
+        MinigameInit();
         StartCoroutine(StartGame());
     }
 
@@ -75,7 +72,7 @@ public class ThreeCupsController : MonoBehaviour
         }
         else
         {
-            onLose.Invoke();
+            onBack.Invoke();
         }
     }
 }

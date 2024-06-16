@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class BarnaclePopper : MonoBehaviour
+public class BarnaclePopper : Minigame
 {
     private List<Barnacle> barnacles = new List<Barnacle>();
-
-    public UnityEvent onWin;
     
     private void Start()
     {
+        MinigameInit();
         foreach (Barnacle barnacle in GetComponentsInChildren<Barnacle>())
         {
             barnacle.barnaclePopper = this;
