@@ -23,8 +23,11 @@ public class LeakingPipe : MinigameTrigger
 
     public GameObject particles;
     
+    LevelManager levelManager;
+    
     private void Start()
     {
+        levelManager = FindAnyObjectByType<LevelManager>();
         MinigameTriggerInit();
         onWin.AddListener(OnRepairFinished);
     }
@@ -33,6 +36,7 @@ public class LeakingPipe : MinigameTrigger
     {
         particles.SetActive(false);
         crack.SetActive(false);
+        levelManager.PipeRepaired();
     }
 
     public int GetValue()

@@ -11,7 +11,8 @@ public class ObjectiveEntry : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI progressText;
     public Image spriteImage;
-    public FloatingTrashSO trash;
+    //public FloatingTrashSO trash;
+    public MaterialType materialType;
     public ObjectiveEntryType type;
     
     public string trashName;

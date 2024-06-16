@@ -11,6 +11,9 @@ public class Settings : MonoBehaviour
     public ScriptableRendererFeature feature;
     [SerializeField] 
     private TextMeshProUGUI postprocessCheck;
+    [SerializeField] 
+    private TextMeshProUGUI oxygenUsageCheck;
+    private bool oxygenUsageActive = true;
 
     private void Start()
     {
@@ -24,6 +27,7 @@ public class Settings : MonoBehaviour
             feature.SetActive(false);
             postprocessCheck.text = "X";
         }
+        oxygenUsageCheck.text = StaticGameData.instance.oxygenUsage ? "" : "X";
     }
 
     public void TogglePostProcess()
@@ -42,5 +46,26 @@ public class Settings : MonoBehaviour
             active = true;
             StaticGameData.instance.ripplePostProcess = true;
         }
+    }
+
+    public void ToggleOxygenUsage()
+    {
+        if (oxygenUsageActive)
+        {
+            oxygenUsageCheck.text = "X";
+            oxygenUsageActive = false;
+            StaticGameData.instance.oxygenUsage = false;
+        }
+        else
+        {
+            oxygenUsageCheck.text = "";
+            oxygenUsageActive = true;
+            StaticGameData.instance.oxygenUsage = true;
+        }
+    }
+
+    public void DemoAddMoney()
+    {
+        StaticGameData.instance.money += 1000;
     }
 }

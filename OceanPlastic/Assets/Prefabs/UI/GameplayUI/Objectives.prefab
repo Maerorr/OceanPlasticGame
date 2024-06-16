@@ -327,4 +327,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectiveEntryPrefab: {fileID: 7503581892651377639, guid: 4b0b317e6cca0e44baf6a809fd9f7e93, type: 3}
+  pipeSprite: {fileID: 0}
   layoutRoot: {fileID: 2703019010259000385}
+  objectiveEntries: []

@@ -106,6 +106,8 @@ public class Player : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(oxygeneUpdateRate);
+            // disable oxygen usage
+            if (!StaticGameData.instance.oxygenUsage) canBreathe = true;
             if (!canBreathe)
             {
                 UpdateOxygenSlider(-(oxygenDecreaseRate * oxygenDecreaseModifier) / oxygenDivisor);

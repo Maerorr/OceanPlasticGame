@@ -18,7 +18,8 @@ public class StaticGameData : MonoBehaviour
     #region SETTINGS
     
     public bool ripplePostProcess = true;
-    #endregion"
+    public bool oxygenUsage = true;
+    #endregion
     
     private void Awake()
     {

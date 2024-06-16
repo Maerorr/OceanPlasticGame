@@ -11,7 +11,7 @@ public class BoatSellZone : MonoBehaviour
     private UnityEvent onCloseSellItemsPanel;
     
     public UnityEvent<FloatingTrashSO> onSellTrash;
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         PlayerInventory pi = other.GetComponentInParent<PlayerInventory>();

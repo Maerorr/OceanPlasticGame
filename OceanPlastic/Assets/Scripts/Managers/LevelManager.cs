@@ -7,7 +7,7 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField]
     // (trash type, amount, isCompleted)
-    public List<(FloatingTrashSO, int, bool)> collectionObjective;
+    public List<(MaterialType, int, bool)> collectionObjective;
     private int allRepairObjectives;
     private int currentRepairObjectives;
     int allTrashCount;
@@ -24,7 +24,35 @@ public class LevelManager : MonoBehaviour
         objectives = FindObjectOfType<Objectives>();
         var allTrash = FindObjectsOfType<FloatingTrash>();
         allTrashCount = allTrash.Length;
+
+        var trashTypes = new HashSet<MaterialType>();
+        foreach (var trash in allTrash)
+        {
+            trashTypes.Add(trash.GetData().materialType);
+        }
+        
+        collectionObjective = new List<(MaterialType, int, bool)>();
+        foreach (var trashType in trashTypes)
+        {
+            int allTrashOfType = allTrash.Sum(trash => trash.GetData().materialType == trashType ? 1 : 0);
+            collectionObjective.Add(
+                (trashType, Random.Range(
+                    allTrashOfType / 2,
+                    Mathf.FloorToInt(allTrashOfType * 0.9f)),
+                    false
+                )
+            );
+        }
+        
+        foreach (var obj in collectionObjective)
+        {
+            var firstTrashOfType = allTrash.First(trash => trash.GetData().materialType == obj.Item1);
+            objectives.AddTrashObjective(firstTrashOfType.GetData(), obj.Item2);
+        }
+        
+        
         // get all unique trash types
+        /*
         var trashTypes = new HashSet<FloatingTrashSO>();
         foreach (var trash in allTrash)
         {
@@ -47,6 +75,7 @@ public class LevelManager : MonoBehaviour
         {
             objectives.AddTrashObjective(obj.Item1, obj.Item2);
         }
+        */
 
         var allPipes = FindObjectsOfType<LeakingPipe>();
         allRepairObjectives = allPipes.Length;
@@ -59,7 +88,9 @@ public class LevelManager : MonoBehaviour
         bool isCompleted = objectives.UpdateTrashObjectives(trash);
         if (isCompleted)
         {
-            collectionObjective[collectionObjective.FindIndex(entry => entry.Item1.name == trash.name)] = (trash, 0, true);
+            collectionObjective
+            [collectionObjective.FindIndex(
+                entry => entry.Item1 == trash.materialType)] = (trash.materialType, 0, true);
         }
         
         if (CheckIfAllObjectivesCompleted())

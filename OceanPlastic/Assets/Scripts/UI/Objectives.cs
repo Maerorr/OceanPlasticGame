@@ -21,11 +21,10 @@ public class Objectives : MonoBehaviour
     {
         var newObjective = Instantiate(objectiveEntryPrefab, layoutRoot.transform).GetComponent<ObjectiveEntry>();
         newObjective.SetSprite(trash.spriteVariants[0]);
-        newObjective.SetObjectiveText($"{trash.name} Collected");
+        newObjective.SetObjectiveText($"{trash.materialType} Trash Collected");
         newObjective.SetEntryType(ObjectiveEntryType.Trash);
         newObjective.SetMaxValue(amount);
         newObjective.SetTrashName(trash.name);
-        newObjective.trash = trash;
         objectiveEntries.Add(newObjective);
     }
     

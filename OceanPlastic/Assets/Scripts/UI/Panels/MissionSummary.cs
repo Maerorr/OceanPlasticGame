@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
@@ -23,8 +24,11 @@ public class MissionSummary : MonoBehaviour
 
     private int totalMoneyGained = 0;
     
+    private List<(FloatingTrashSO, int)> allTrashCollected = new List<(FloatingTrashSO, int)>();
+    
     private void Awake()
     {
+        FindAnyObjectByType<BoatSellZone>().onSellTrash.AddListener(AddCollectedTrash);
         rect = GetComponent<RectTransform>();
         root = transform.gameObject;
         rect.DOAnchorPos(closedPosition, 0.75f).SetEase(Ease.OutQuad).OnComplete(
@@ -38,6 +42,20 @@ public class MissionSummary : MonoBehaviour
         rect.DOAnchorPos(openPosition, 0.75f).SetEase(Ease.OutQuad);
         PopulateMissionSummary();
     }
+
+    public void AddCollectedTrash(FloatingTrashSO trash)
+    {
+        var found = allTrashCollected.Find(item => item.Item1.name == trash.name);
+        if (found != default)
+        {
+            allTrashCollected.Remove(found);
+            allTrashCollected.Add((trash, found.Item2 + 1));
+        }
+        else
+        {
+            allTrashCollected.Add((trash, 1));
+        }
+    }
     
     private void PopulateMissionSummary()
     {
@@ -50,26 +68,29 @@ public class MissionSummary : MonoBehaviour
         var colletionObjectives = objectives.objectiveEntries;
 
         int pipeValue = FindAnyObjectByType<LeakingPipe>().GetValue();
-        
-        foreach (var item in colletionObjectives)
+
+        foreach (var trashCollected in allTrashCollected)
         {
             var entry = Instantiate(sellItemEntryPrefab, entriesParent.transform);
             entry.transform.SetParent(entriesParent.transform);
-            if (item.type == ObjectiveEntryType.Trash)
-            {
-                int total = item.currentValue * item.trash.value;
-                totalMoneyGained += total;
-                entry.GetComponent<SellItemEntry>().SetItemEntryValues(
-                    item.spriteImage.sprite,
-                    item.trashName,
-                    item.currentValue,
-                    item.trash.value,
-                    total
-                );
-            }
-
+            entry.GetComponent<SellItemEntry>().SetItemEntryValues(
+                trashCollected.Item1.spriteVariants[0], 
+                trashCollected.Item1.name, 
+                trashCollected.Item2, 
+                trashCollected.Item1.value, 
+                trashCollected.Item2 * trashCollected.Item1.value
+            );
+            
+            totalMoneyGained += trashCollected.Item2 * trashCollected.Item1.value;
+            
+        }
+        
+        foreach (var item in colletionObjectives)
+        {
             if (item.type == ObjectiveEntryType.Pipe)
             {
+                var entry = Instantiate(sellItemEntryPrefab, entriesParent.transform);
+                entry.transform.SetParent(entriesParent.transform);
                 int total = item.currentValue * pipeValue;
                 totalMoneyGained += total;
                 entry.GetComponent<SellItemEntry>().SetItemEntryValues(
