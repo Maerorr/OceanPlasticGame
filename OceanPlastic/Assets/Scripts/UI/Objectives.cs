@@ -25,6 +25,7 @@ public class Objectives : MonoBehaviour
         newObjective.SetEntryType(ObjectiveEntryType.Trash);
         newObjective.SetMaxValue(amount);
         newObjective.SetTrashName(trash.name);
+        newObjective.materialType = trash.materialType;
         objectiveEntries.Add(newObjective);
     }
     
@@ -40,7 +41,8 @@ public class Objectives : MonoBehaviour
 
     public bool UpdateTrashObjectives(FloatingTrashSO collectedTrash)
     {
-        var entry = objectiveEntries.Find(entry => entry.GetTrashName() == collectedTrash.name);
+        Debug.Log(objectiveEntries.Count);
+        var entry = objectiveEntries.Find(entry => entry.materialType == collectedTrash.materialType);
         entry.AddProgress(1);
    
         return entry.currentValue >= entry.maxValue;
