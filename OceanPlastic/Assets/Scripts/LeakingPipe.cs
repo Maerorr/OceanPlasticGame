@@ -20,15 +20,12 @@ public class LeakingPipe : MinigameTrigger
     private MaterialPropertyBlock propertyBlock;
     
     private Coroutine repairCoroutine;
-    private float timeStep;
 
     public GameObject particles;
     
     private void Start()
     {
         MinigameTriggerInit();
-        
-        timeStep = (1f / timeToRepair) / 100f;
         onWin.AddListener(OnRepairFinished);
     }
 
