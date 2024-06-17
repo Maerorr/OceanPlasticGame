@@ -43,7 +43,7 @@ public class Chest : MonoBehaviour
             toolButtons.ClearTooltip();
             hiddenImage.transform.DOLocalMoveY(3f, 3f).SetEase(Ease.OutQuart);
             hiddenImage.transform.DOScale(0.6f, 3f).SetEase(Ease.OutQuart);
-            hiddenImage.DOFade(0f, 6f).SetEase(Ease.InQuint).OnComplete(() => hiddenImage.gameObject.SetActive(false));
+            //hiddenImage.DOFade(0f, 6f).SetEase(Ease.InQuint).OnComplete(() => hiddenImage.gameObject.SetActive(false));
             gameUIController.UpdateKey(false);
         }
     }

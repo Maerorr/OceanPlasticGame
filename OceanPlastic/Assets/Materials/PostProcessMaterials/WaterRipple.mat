@@ -103,7 +103,7 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _DamageIntensity: 0.4697417
+    - _DamageIntensity: 0
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -117,16 +117,16 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Scale: 40
+    - _Scale: 29
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _Speed: 0.049
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
-    - _Strength: 0
+    - _Strength: 0.017
     - _Surface: 0
-    - _WaterLevel: -1.9390047
+    - _WaterLevel: -1.4562349
     - _WorkflowMode: 1
     - _ZWrite: 1
     - _Zoom: 0.003
