@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "OpenMinigame",
+                    "type": "Button",
+                    "id": "14961a47-204c-4b96-a64e-8debaa676571",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -174,6 +183,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Back",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "be0a8c9a-a5bf-4255-8dc0-3f579168946b",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenMinigame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

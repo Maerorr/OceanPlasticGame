@@ -43,6 +43,7 @@ public class ForceCannon : MonoBehaviour
     private RaycastHit2D[] hits = new RaycastHit2D[32];
 
     private int aimOverlayID = Shader.PropertyToID("_IsAiming");
+    private int shootTweenID;
     
     // Start is called before the first frame update
     void Start()
@@ -84,13 +85,14 @@ public class ForceCannon : MonoBehaviour
     {
         if (canShoot)
         {
-            DOTween.To(() => waveTime, x => waveTime = x, 1f, 0.5f).OnUpdate(() =>
+            DOTween.Kill(shootTweenID);
+            shootTweenID = DOTween.To(() => waveTime, x => waveTime = x, 1f, 0.5f).OnUpdate(() =>
             {
                 shockwaveMaterial.SetFloat("_ShootTime", waveTime);
             }).OnComplete(() =>
             {
                 waveTime = 0f;
-            });
+            }).intId;
             Array.Clear(hits, 0, hits.Length);
             Rigidbody2D rb;
             int hitCount = Physics2D.BoxCastNonAlloc(castStart.position, boxCastSize, 0f, castStart.right, hits, cannonRange - boxCastSize.x / 2f, layerMask);
@@ -112,11 +114,6 @@ public class ForceCannon : MonoBehaviour
                         Vector2 direction = hit.transform.position - castStart.position;
                         rb.AddForce(direction.normalized * cannonPower, ForceMode2D.Impulse);
                     }
-                    Debug.DrawLine(castStart.position, hit.transform.position, Color.green);
-                }
-                else
-                {
-                    Debug.DrawLine(castStart.position, hit.transform.position, Color.red);
                 }
             }
             

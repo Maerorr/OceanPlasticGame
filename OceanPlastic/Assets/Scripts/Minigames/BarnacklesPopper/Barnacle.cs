@@ -14,6 +14,7 @@ public class Barnacle : MonoBehaviour, IPointerDownHandler
     
     SpriteRenderer spriteRenderer;
     ParticleSystem particleSystem;
+    private Color initialColor;
 
     public bool isPopped;
     public BarnaclePopper barnaclePopper;
@@ -22,6 +23,7 @@ public class Barnacle : MonoBehaviour, IPointerDownHandler
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         particleSystem = GetComponentInChildren<ParticleSystem>();
+        initialColor = spriteRenderer.color;
     }
 
     private void Update()
@@ -32,7 +34,9 @@ public class Barnacle : MonoBehaviour, IPointerDownHandler
             {
                 currentTaps++;
                 particleSystem.Emit(3);
-                spriteRenderer.color = new Color(1, 1, 1, 1 - (float)currentTaps / tapsRequired);
+                Color col = initialColor;
+                col.a = 1 - (float)currentTaps / tapsRequired;
+                spriteRenderer.color = col;
                 if (currentTaps >= tapsRequired)
                 {
                     spriteRenderer.enabled = false;

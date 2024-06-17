@@ -83,7 +83,7 @@ public abstract class MinigameTrigger : MonoBehaviour
             }).SetUpdate(true);
     }
 
-    private void ShowMinigame()
+    public void ShowMinigame()
     {
         if (!isPlayerInside) return;
         if (hasPlayerWon) return;

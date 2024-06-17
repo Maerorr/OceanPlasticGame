@@ -33,6 +33,7 @@ public class FullScreenPostProcessController : MonoBehaviour
         cam = Camera.main;
         cameraHalfSize = cam.orthographicSize;
         waterRipple.SetActive(StaticGameData.instance.ripplePostProcess);
+        initialStrength = strength;
     }
 
     private void Update()
@@ -49,7 +50,6 @@ public class FullScreenPostProcessController : MonoBehaviour
 
     public void DisableRipples()
     {
-        initialStrength = waterRippleMaterial.GetFloat(stregthID);
         var currentStrength = initialStrength;
         DOTween.To(() => currentStrength, x => currentStrength = x, 0f, 1f).OnUpdate(() =>
         {
