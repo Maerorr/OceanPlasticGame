@@ -16,6 +16,6 @@ public class DepthMeter : MonoBehaviour
 
     public void SetDepth(int depth)
     {
-        text.text = $"{depth}m/-{maxDepth}m";
+        text.text = $"{depth}m";
     }
 }

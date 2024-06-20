@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 prevFramePosition;
     
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         updateDepth = StartCoroutine(UpdateDepth());
         player = GetComponent<Player>();

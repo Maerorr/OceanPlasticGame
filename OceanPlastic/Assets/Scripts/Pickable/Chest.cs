@@ -31,7 +31,6 @@ public class Chest : MonoBehaviour
 
     public void OpenChest()
     {
-        Debug.Log("Chest open triggered");
         if (!isOpen && isPlayerNear)
         {
             if (!PlayerManager.Instance.PlayerInventory.HasKey())
