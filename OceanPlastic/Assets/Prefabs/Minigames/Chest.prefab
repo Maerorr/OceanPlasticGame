@@ -135,7 +135,8 @@ MonoBehaviour:
   openChest: {fileID: -2103632389, guid: d196b8d670b388643b7bc8cbff146e5b, type: 3}
   spriteRenderer: {fileID: 3855370474330150323}
   isOpen: 0
-  hiddenImage: {fileID: 3380956647736181265}
+  treasure: {fileID: 1885610495208161786}
+  msg: {fileID: 0}
 --- !u!61 &5351553854884689500
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -191,6 +192,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1885610495208161786}
   - component: {fileID: 3380956647736181265}
+  - component: {fileID: 8401007454942123555}
+  - component: {fileID: 2701079945391877784}
+  - component: {fileID: 8731836234267819266}
   m_Layer: 0
   m_Name: znajdzka
   m_TagString: Untagged
@@ -207,7 +211,7 @@ Transform:
   m_GameObject: {fileID: 8602939745039784462}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.02, y: -0.21, z: 0.4}
+  m_LocalPosition: {x: -0.02, y: -0.1, z: 0.4}
   m_LocalScale: {x: 0.027728, y: 0.027728, z: 0.027728}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -254,7 +258,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 569e8d6c951eb3c4789877ee82078ced, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 89aea2f4c876da6468d42829d3cb9b35, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -265,3 +269,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8401007454942123555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8602939745039784462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b8e596e912fc094aaa9cd6ba54bb80d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &2701079945391877784
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8602939745039784462}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.54
+--- !u!114 &8731836234267819266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8602939745039784462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca2c72d5e1c066a47b2cc5ceb986d552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tags: 07000000

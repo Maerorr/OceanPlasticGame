@@ -13,7 +13,7 @@ public class Chest : MonoBehaviour
     public bool isOpen = false;
     private bool isPlayerNear = false;
     ToolButtons toolButtons;
-    public SpriteRenderer hiddenImage;
+    public Transform treasure;
     private GameUIController gameUIController;
 
     public Messenger msg;
@@ -26,6 +26,7 @@ public class Chest : MonoBehaviour
         spriteRenderer.sprite = closedChest;
         toolButtons = FindAnyObjectByType<ToolButtons>();
         toolButtons.extraButton.onClick.AddListener(OpenChest);
+        treasure.gameObject.SetActive(false);
     }
 
     public void OpenChest()
@@ -42,8 +43,9 @@ public class Chest : MonoBehaviour
             spriteRenderer.sprite = openChest;
             toolButtons.DisableExtraButton();
             toolButtons.ClearTooltip();
-            hiddenImage.transform.DOLocalMoveY(3f, 3f).SetEase(Ease.OutQuart);
-            hiddenImage.transform.DOScale(0.6f, 3f).SetEase(Ease.OutQuart);
+            treasure.gameObject.SetActive(true);
+            treasure.DOLocalMoveY(3f, 3f).SetEase(Ease.OutQuart);
+            treasure.DOScale(0.6f, 3f).SetEase(Ease.OutQuart);
             //hiddenImage.DOFade(0f, 6f).SetEase(Ease.InQuint).OnComplete(() => hiddenImage.gameObject.SetActive(false));
             gameUIController.UpdateKey(false);
         }
