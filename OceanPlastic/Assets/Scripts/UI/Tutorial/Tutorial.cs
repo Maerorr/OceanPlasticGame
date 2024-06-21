@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,14 +9,14 @@ using UnityEngine.UI;
 public class Tutorial : MonoBehaviour, IPointerDownHandler
 {
     public List<GameObject> tutorialSteps = new List<GameObject>();
+    public TextMeshProUGUI tapAnywhereText;
     int currentStep = 0;
     Image thisPanel;
     
     void Start()
     {
         thisPanel = GetComponent<Image>();
-        thisPanel.color = Color.clear;
-        thisPanel.raycastTarget = false;
+        SetPanelActive(false);
         foreach (var tutorialStep in tutorialSteps)
         {
             tutorialStep.SetActive(false);
@@ -31,22 +32,43 @@ public class Tutorial : MonoBehaviour, IPointerDownHandler
     
     public void OnPointerDown(PointerEventData eventData)
     {
+        SetPanelActive(false);
         foreach (var tutorialStep in tutorialSteps)
         {
             tutorialStep.SetActive(false);
-            thisPanel.color = Color.clear;
-            thisPanel.raycastTarget = false;
         }
+        StartCoroutine(DelayShowNextTip());
+    }
+
+    IEnumerator DelayShowNextTip()
+    {
+        yield return new WaitForSeconds(1f);
+        EnableNextStep();
     }
 
     public void EnableNextStep()
     {
-        thisPanel.color = new Color(0.2f, 0.2f, 0.2f, 0.6f);
-        thisPanel.raycastTarget = true;
+        SetPanelActive(true);
         if (currentStep < tutorialSteps.Count)
         {
             tutorialSteps[currentStep].SetActive(true);
             currentStep++;
+        }
+    }
+
+    private void SetPanelActive(bool active)
+    {
+        if (active)
+        {
+            thisPanel.color = new Color(0.2f, 0.2f, 0.2f, 0.6f);
+            thisPanel.raycastTarget = true;
+            tapAnywhereText.color = Color.white;
+        }
+        else
+        {
+            thisPanel.color = Color.clear;
+            thisPanel.raycastTarget = false;
+            tapAnywhereText.color = Color.clear;
         }
     }
 }
