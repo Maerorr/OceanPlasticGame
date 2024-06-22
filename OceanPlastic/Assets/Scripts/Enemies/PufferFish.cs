@@ -88,7 +88,7 @@ public class PufferFish : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = speed * direction;
+        rb.AddForce(speed * direction, ForceMode2D.Force);//= speed * direction;
         rb.MoveRotation(Quaternion.Euler(0f, 0f, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg));
     }
 

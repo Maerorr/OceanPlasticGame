@@ -43,6 +43,12 @@ public class MissionSummary : MonoBehaviour
         PopulateMissionSummary();
     }
 
+    public void HideMissionSummary()
+    {
+        rect.DOAnchorPos(closedPosition, 0.75f).SetEase(Ease.InQuad).OnComplete(
+            () => root.SetActive(true));
+    }
+
     public void AddCollectedTrash(FloatingTrashSO trash)
     {
         var found = allTrashCollected.Find(item => item.Item1.name == trash.name);
