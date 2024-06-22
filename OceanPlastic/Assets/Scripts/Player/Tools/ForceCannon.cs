@@ -93,7 +93,9 @@ public class ForceCannon : MonoBehaviour
             {
                 waveTime = 0f;
             }).intId;
+            
             Array.Clear(hits, 0, hits.Length);
+            
             Rigidbody2D rb;
             int hitCount = Physics2D.BoxCastNonAlloc(castStart.position, boxCastSize, 0f, castStart.right, hits, cannonRange - boxCastSize.x / 2f, layerMask);
             for (int i = 0; i < hitCount; i++)
