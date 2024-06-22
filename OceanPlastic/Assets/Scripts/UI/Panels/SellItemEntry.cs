@@ -16,13 +16,17 @@ public class SellItemEntry : MonoBehaviour
     TextMeshProUGUI valueText;
     [SerializeField]
     TextMeshProUGUI totalText;
+
+    public Image materialColor;
     
-    public void SetItemEntryValues(Sprite icon, string itemName, int amount, int value, int total)
+    public void SetItemEntryValues(Sprite icon, Color materialColor, string itemName, int amount, int value, int total)
     {
         if (itemIcon != null)
         {
             itemIcon.sprite = icon;
         }
+        
+        this.materialColor.color = materialColor;
         if (itemNameText != null)
         {
             itemNameText.text = itemName;

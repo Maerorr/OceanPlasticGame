@@ -23,6 +23,7 @@ public class Objectives : MonoBehaviour
         newObjective.SetSprite(trash.spriteVariants[0]);
         newObjective.SetObjectiveText($"{trash.materialType} Trash Collected");
         newObjective.SetEntryType(ObjectiveEntryType.Trash);
+        newObjective.SetTrashColor(TrashColor.MaterialToColor(trash.materialType));
         newObjective.SetMaxValue(amount);
         newObjective.SetTrashName(trash.name);
         newObjective.materialType = trash.materialType;
@@ -33,6 +34,7 @@ public class Objectives : MonoBehaviour
     {
         var newObjective = Instantiate(objectiveEntryPrefab, layoutRoot.transform).GetComponent<ObjectiveEntry>();
         newObjective.SetSprite(pipeSprite);
+        newObjective.SetTrashColor(Color.black);
         newObjective.SetEntryType(ObjectiveEntryType.Pipe);
         newObjective.SetObjectiveText("Pipes Repaired");
         newObjective.SetMaxValue(amountOfPipes);

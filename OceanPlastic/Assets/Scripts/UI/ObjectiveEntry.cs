@@ -19,6 +19,8 @@ public class ObjectiveEntry : MonoBehaviour
 
     public int maxValue;
     public int currentValue;
+
+    public Image trashMaterialColor;
     
     public void SetSprite(Sprite sprite)
     {
@@ -29,6 +31,11 @@ public class ObjectiveEntry : MonoBehaviour
     public void SetEntryType(ObjectiveEntryType type)
     {
         this.type = type;
+    }
+
+    public void SetTrashColor(Color col)
+    {
+        trashMaterialColor.color = col;
     }
 
     public void SetObjectiveText(string text)

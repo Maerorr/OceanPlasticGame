@@ -75,6 +75,7 @@ public class MissionSummary : MonoBehaviour
             entry.transform.SetParent(entriesParent.transform);
             entry.GetComponent<SellItemEntry>().SetItemEntryValues(
                 trashCollected.Item1.spriteVariants[0], 
+                TrashColor.MaterialToColor(trashCollected.Item1.materialType),
                 trashCollected.Item1.name, 
                 trashCollected.Item2, 
                 trashCollected.Item1.value, 
@@ -95,6 +96,7 @@ public class MissionSummary : MonoBehaviour
                 totalMoneyGained += total;
                 entry.GetComponent<SellItemEntry>().SetItemEntryValues(
                     item.spriteImage.sprite, 
+                    Color.black,
                     "Pipe Repaired", 
                     item.currentValue, 
                     pipeValue, 

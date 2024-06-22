@@ -64,6 +64,7 @@ public class SellItemsList : MonoBehaviour
             entry.transform.SetParent(entriesParent.transform);
             entry.GetComponent<SellItemEntry>().SetItemEntryValues(
                 item.Item1.spriteVariants[0], 
+                TrashColor.MaterialToColor(item.Item1.materialType),
                 item.Item1.name, 
                 item.Item2, 
                 item.Item1.value, 
