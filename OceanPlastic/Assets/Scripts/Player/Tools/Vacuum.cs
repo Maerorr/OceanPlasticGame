@@ -46,7 +46,15 @@ public class Vacuum : MonoBehaviour
                 Vector2 distance = castStart.position - hit.transform.position;
                 Vector2 velocity = distance.normalized / distance.magnitude;
                 velocity = Vector2.ClampMagnitude(velocity, 10f);
-                hit.transform.GetComponent<FloatingTrash>().MoveTowardsVacuum(velocity * vacuumPower);
+                // zzz
+                if (!StaticGameData.instance.inTutorial)
+                {
+                    hit.transform.GetComponent<FloatingTrash>().MoveTowardsVacuum(velocity * vacuumPower);
+                }
+                else
+                {
+                    hit.transform.GetComponent<TutorialFloatingTrash>().MoveTowardsVacuum(velocity * vacuumPower);
+                }
             }
         }
     }

@@ -13,7 +13,6 @@ public class FinishLevel : MonoBehaviour
         if (pi != null)
         {
             onFinishLevel.Invoke();
-            Debug.Log("Level finished!");
         }
     }
 }

@@ -76,15 +76,23 @@ public class LevelManager : MonoBehaviour
             objectives.AddTrashObjective(obj.Item1, obj.Item2);
         }
         */
-
+        if (StaticGameData.instance.inTutorial) return;
         var allPipes = FindObjectsOfType<LeakingPipe>();
         allRepairObjectives = allPipes.Length;
         objectives.AddRepairObjectives(allRepairObjectives);
         currentRepairObjectives = 0;
     }
 
+    public void AddCollectionObjective(FloatingTrashSO trash)
+    {
+        collectionObjective.Add(
+            (trash.materialType, 1, false)
+        );
+    }
+    
     public void TrashCollected(FloatingTrashSO trash)
     {
+        objectives ??= FindAnyObjectByType<Objectives>();
         bool isCompleted = objectives.UpdateTrashObjectives(trash);
         if (isCompleted)
         {

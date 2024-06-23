@@ -12,9 +12,15 @@ public class MainMenu : MonoBehaviour
     
     private Coroutine switchPanelCoroutine;
 
+    public GameObject firstTimeTutorial;
+
     private void Start()
     {
         Application.targetFrameRate = 60;
+        if (!StaticGameData.instance.firstTimeInHub)
+        {
+            firstTimeTutorial.SetActive(false);
+        }
         noise.SetActive(false);
         foreach (var entry in menuEntries)
         {

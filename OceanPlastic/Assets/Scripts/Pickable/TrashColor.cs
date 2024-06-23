@@ -17,5 +17,6 @@ public static class TrashColor
             default:
                 return Color.white;
         }
+        return Color.white;
     }
 }

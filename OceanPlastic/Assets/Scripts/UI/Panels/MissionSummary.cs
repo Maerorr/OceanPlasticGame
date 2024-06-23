@@ -73,8 +73,13 @@ public class MissionSummary : MonoBehaviour
         Objectives objectives = FindAnyObjectByType<Objectives>();
         var colletionObjectives = objectives.objectiveEntries;
 
-        int pipeValue = FindAnyObjectByType<LeakingPipe>().GetValue();
-
+        var pipe = FindAnyObjectByType<LeakingPipe>();
+        int pipeValue = 1;
+        if (pipe is not null)
+        {
+            pipeValue = pipe.GetValue();
+        }
+        
         foreach (var trashCollected in allTrashCollected)
         {
             var entry = Instantiate(sellItemEntryPrefab, entriesParent.transform);
@@ -89,7 +94,6 @@ public class MissionSummary : MonoBehaviour
             );
             
             totalMoneyGained += trashCollected.Item2 * trashCollected.Item1.value;
-            
         }
         
         foreach (var item in colletionObjectives)

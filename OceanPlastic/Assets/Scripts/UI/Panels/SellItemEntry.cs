@@ -25,7 +25,6 @@ public class SellItemEntry : MonoBehaviour
         {
             itemIcon.sprite = icon;
         }
-        
         this.materialColor.color = materialColor;
         if (itemNameText != null)
         {

@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/FPSUnlock.unity
     guid: 941502a9b8286f24289f70f7a844bd9d
   - enabled: 1
+    path: Assets/Scenes/Levels/Tutorial.unity
+    guid: 2a41e56bbc5d7284195c967a9dd12ac0
+  - enabled: 1
     path: Assets/Scenes/TheHub.unity
     guid: 540a5545fe1ec004586193809c273fc2
   - enabled: 0

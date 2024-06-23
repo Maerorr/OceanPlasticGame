@@ -14,12 +14,14 @@ public class StaticGameData : MonoBehaviour
     [HideInInspector] public int money;
     [HideInInspector] public UnityEvent onMoneyChange;
     #endregion
-    
     #region SETTINGS
     
     public bool ripplePostProcess = true;
     public bool oxygenUsage = true;
     #endregion
+
+    public bool inTutorial = false;
+    public bool firstTimeInHub = true;
     
     private void Awake()
     {
