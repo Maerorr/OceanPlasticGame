@@ -65,7 +65,7 @@ public class PlayerManager : MonoBehaviour
         int trashInInv = playerInventory.GetTrashCount();
         int amountToSpawn = Mathf.FloorToInt(trashInInv * 0.66f);
         Debug.Log("Amount To Spawn = " + amountToSpawn);
-        playerInventory.RemovePercentageOfTrash(0.5f);
+        int removed = playerInventory.RemovePercentageOfTrash(0.5f);
         int currentTrash = 0;
         int maxTrash = 0;
         int spawned = 0;
@@ -85,6 +85,7 @@ public class PlayerManager : MonoBehaviour
             }
             amountToSpawn -= spawned;
         }
+        FindAnyObjectByType<Messenger>().ShowMessage($"{removed} Trash lost!", Position(), Color.red, 3f);
         player.Heal(1000000f); // this will be clamped to 100 anyway
         player.AddOxygen(1000f); // same
     }

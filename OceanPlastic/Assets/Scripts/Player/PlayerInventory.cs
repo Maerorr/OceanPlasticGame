@@ -93,7 +93,7 @@ public class PlayerInventory : MonoBehaviour
         UpdateTrashMeter();
     }
 
-    public void RemovePercentageOfTrash(float percentage)
+    public int RemovePercentageOfTrash(float percentage)
     {
         int trashToRemove = Mathf.CeilToInt(collectedTrash.Sum(tuple => tuple.Item2) * percentage);
         Debug.Log("removing " + trashToRemove + " trash items");
@@ -103,6 +103,7 @@ public class PlayerInventory : MonoBehaviour
             RemoveTrash(trashArray[Random.Range(0, trashArray.Length)].Item1);
         }
         UpdateTrashMeter();
+        return trashToRemove;
     }
     
     /*public void AddMoney(int amount)
