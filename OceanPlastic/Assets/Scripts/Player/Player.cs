@@ -60,6 +60,8 @@ public class Player : MonoBehaviour
     private int maxSafeDepth = 75;
 
     private int currentDepth = 0;
+
+    private Messenger msg;
     
     [Header("Events")]
     public UnityEvent onDeath;
@@ -79,6 +81,7 @@ public class Player : MonoBehaviour
     {
         Application.SetStackTraceLogType(LogType.Log, StackTraceLogType.ScriptOnly);
 
+        msg ??= FindAnyObjectByType<Messenger>();
         oxygenDecreaseRate = baseMaxOxygen / secondsOfOxygen;
         
         currentHealth = maxHealth;
@@ -150,6 +153,7 @@ public class Player : MonoBehaviour
         if (currentHealth <= 0f)
         {
             onDeath.Invoke();
+            StartCoroutine(DeathMessage());
         }
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         if (disableHealingCoroutine != null)
@@ -158,6 +162,12 @@ public class Player : MonoBehaviour
         }
         disableHealingCoroutine = StartCoroutine(DisableHealing());
         onDamageTaken.Invoke();
+    }
+
+    IEnumerator DeathMessage()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+        msg.ShowMessage($"{PlayerManager.Instance.trashLostOnPreviousDeath} Trash lost!", transform.position, Color.red, 3f);
     }
     
     public void Heal(float heal)

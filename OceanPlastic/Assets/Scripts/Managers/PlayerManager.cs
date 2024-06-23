@@ -12,6 +12,11 @@ public class PlayerManager : MonoBehaviour
     
     public static PlayerManager Instance { get; private set; }
     private Vector3 startingPlayerPosition;
+
+    public GameObject messagePrefab;
+    
+    private Messenger msg;
+    public int trashLostOnPreviousDeath;
     
     private void Awake()
     {
@@ -64,8 +69,7 @@ public class PlayerManager : MonoBehaviour
         playerMovement.transform.position = startingPlayerPosition;
         int trashInInv = playerInventory.GetTrashCount();
         int amountToSpawn = Mathf.FloorToInt(trashInInv * 0.66f);
-        Debug.Log("Amount To Spawn = " + amountToSpawn);
-        int removed = playerInventory.RemovePercentageOfTrash(0.5f);
+        trashLostOnPreviousDeath = playerInventory.RemovePercentageOfTrash(0.5f);
         int currentTrash = 0;
         int maxTrash = 0;
         int spawned = 0;
@@ -85,8 +89,8 @@ public class PlayerManager : MonoBehaviour
             }
             amountToSpawn -= spawned;
         }
-        FindAnyObjectByType<Messenger>().ShowMessage($"{removed} Trash lost!", Position(), Color.red, 3f);
         player.Heal(1000000f); // this will be clamped to 100 anyway
         player.AddOxygen(1000f); // same
+        Camera.main.transform.position = Position();
     }
 }

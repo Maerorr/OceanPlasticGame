@@ -73,6 +73,6 @@ public class FullScreenPostProcessController : MonoBehaviour
     {
         DOTween.Kill(damageTween);
         damageVignetteIntensity = damageVignetteMaxIntensity;
-        damageTween = DOTween.To(() => damageVignetteIntensity, x => damageVignetteIntensity = x, 0f, damageVignetteTime).intId;
+        damageTween = DOTween.To(() => damageVignetteIntensity, x => damageVignetteIntensity = x, 0f, damageVignetteTime).SetId(7836945).intId;
     }
 }
