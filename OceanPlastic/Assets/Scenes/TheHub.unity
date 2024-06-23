@@ -3286,6 +3286,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5763989142295106935, guid: 62a76283aa19aff48bf39e2cde0432e5, type: 3}
+      propertyPath: m_text
+      value: 'Expanded Fins
+
+        (1.4x speed)
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763989142295106935, guid: 62a76283aa19aff48bf39e2cde0432e5, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 2b4807cee0161504b8fbf81cc788c0b6, type: 2}
@@ -3332,6 +3340,12 @@ PrefabInstance:
     - target: {fileID: 6128650491480156979, guid: 62a76283aa19aff48bf39e2cde0432e5, type: 3}
       propertyPath: m_Color.a
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6335665589762733107, guid: 62a76283aa19aff48bf39e2cde0432e5, type: 3}
+      propertyPath: m_text
+      value: 'Micro Jet Fins
+
+        (1.6x speed)'
       objectReference: {fileID: 0}
     - target: {fileID: 6335665589762733107, guid: 62a76283aa19aff48bf39e2cde0432e5, type: 3}
       propertyPath: m_fontAsset
@@ -3548,6 +3562,12 @@ PrefabInstance:
     - target: {fileID: 8628167010445316717, guid: 62a76283aa19aff48bf39e2cde0432e5, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645043258018204133, guid: 62a76283aa19aff48bf39e2cde0432e5, type: 3}
+      propertyPath: m_text
+      value: 'Smoother Fins
+
+        (1.2x speed)'
       objectReference: {fileID: 0}
     - target: {fileID: 8645043258018204133, guid: 62a76283aa19aff48bf39e2cde0432e5, type: 3}
       propertyPath: m_fontAsset

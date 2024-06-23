@@ -129,13 +129,13 @@ public class UpgradesPanel : MonoBehaviour
         
         switch (finUpgrade)
         {
-            case FinUpgrades.Upgrade133:
+            case FinUpgrades.Upgrade120:
                 finUpgrades.Take(1).ToList().ForEach(x => x.SetSold());
                 break;
-            case FinUpgrades.Upgrade166:
+            case FinUpgrades.Upgrade140:
                 finUpgrades.Take(2).ToList().ForEach(x => x.SetSold());
                 break;
-            case FinUpgrades.Upgrade200:
+            case FinUpgrades.Upgrade160:
                 finUpgrades.Take(3).ToList().ForEach(x => x.SetSold());
                 break;
         }

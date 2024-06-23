@@ -111,9 +111,9 @@ public enum OxygenUpgrades
     public enum FinUpgrades
     {
         Basic10 = 100,
-        Upgrade133 = 133,
-        Upgrade166 = 166,
-        Upgrade200 = 200
+        Upgrade120 = 120,
+        Upgrade140 = 140,
+        Upgrade160 = 160
     }
 
 public class UpgradeConversions
@@ -176,11 +176,11 @@ public class UpgradeConversions
             case 0:
                 return FinUpgrades.Basic10;
             case 1:
-                return FinUpgrades.Upgrade133;
+                return FinUpgrades.Upgrade120;
             case 2:
-                return FinUpgrades.Upgrade166;
+                return FinUpgrades.Upgrade140;
             case 3:
-                return FinUpgrades.Upgrade200;
+                return FinUpgrades.Upgrade160;
         }
 
         return FinUpgrades.Basic10;

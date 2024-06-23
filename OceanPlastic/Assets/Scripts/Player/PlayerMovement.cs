@@ -113,6 +113,11 @@ public class PlayerMovement : MonoBehaviour
         return Vector2.Lerp(velocity, newVelocity, currentLerpSpeed);
     }
 
+    public float GetSpeedModifier()
+    {
+        return speedModifier;
+    }
+
     private void RotatePlayer()
     {
         // old rotation

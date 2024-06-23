@@ -66,6 +66,6 @@ public class Settings : MonoBehaviour
 
     public void DemoAddMoney()
     {
-        StaticGameData.instance.money += 1000;
+        StaticGameData.instance.AddMoney(1000);
     }
 }

@@ -32,6 +32,12 @@ public class StaticGameData : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
     }
+
+    public void AddMoney(int amount)
+    {
+        money += amount;
+        onMoneyChange.Invoke();
+    }
     
     public bool RemoveMoney(int amount)
     {

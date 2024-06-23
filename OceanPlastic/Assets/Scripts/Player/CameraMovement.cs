@@ -45,7 +45,8 @@ public class CameraMovement : MonoBehaviour
                 break;
             }
         }
-        Vector2 newPos = Vector2.SmoothDamp(selfPos, targetPos, ref velocity, smoothTime);
+        Vector2 newPos = Vector2.SmoothDamp(selfPos, targetPos, ref velocity, smoothTime /
+                                                                              (1.3f * playerMoveScript.GetSpeedModifier()));
         transform.position = new Vector3(newPos.x, newPos.y, camZ);
     }
 }
