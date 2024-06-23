@@ -20,6 +20,7 @@ public class StaticGameData : MonoBehaviour
     public bool oxygenUsage = true;
     #endregion
 
+    public bool finishedFirstLevel = false;
     public bool inTutorial = false;
     public bool firstTimeInHub = true;
     

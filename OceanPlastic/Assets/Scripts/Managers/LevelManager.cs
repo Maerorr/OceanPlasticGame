@@ -89,6 +89,11 @@ public class LevelManager : MonoBehaviour
             (trash.materialType, 1, false)
         );
     }
+
+    public void FirstLevelFinished()
+    {
+        StaticGameData.instance.finishedFirstLevel = true;
+    }
     
     public void TrashCollected(FloatingTrashSO trash)
     {

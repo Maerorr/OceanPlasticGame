@@ -65,6 +65,7 @@ public class MissionSummary : MonoBehaviour
     
     private void PopulateMissionSummary()
     {
+        totalMoneyGained = 0;
         foreach (Transform child in entriesParent.transform)
         {
             Destroy(child.gameObject);
