@@ -117,7 +117,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                UpdateOxygenSlider((oxygenIncreaseRate * oxygenIncreaseModifier) / oxygenDivisor);
+                UpdateOxygenSlider(20f);
             }
         }
     }
@@ -126,7 +126,7 @@ public class Player : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             UpdateOxygenTimer();
         }
     }
