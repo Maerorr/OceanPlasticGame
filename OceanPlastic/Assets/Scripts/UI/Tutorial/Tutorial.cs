@@ -125,6 +125,7 @@ public class Tutorial : MonoBehaviour, IPointerDownHandler
     {
         if (alreadyGotMoney) return;
         StaticGameData.instance.AddMoney(50);
+        StaticGameData.instance.inTutorial = false;
         alreadyGotMoney = true;
     }
 }

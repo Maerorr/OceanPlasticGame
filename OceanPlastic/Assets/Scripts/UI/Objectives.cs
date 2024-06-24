@@ -43,7 +43,6 @@ public class Objectives : MonoBehaviour
 
     public bool UpdateTrashObjectives(FloatingTrashSO collectedTrash)
     {
-        Debug.Log(objectiveEntries.Count);
         var entry = objectiveEntries.Find(entry => entry.materialType == collectedTrash.materialType);
         entry.AddProgress(1);
    

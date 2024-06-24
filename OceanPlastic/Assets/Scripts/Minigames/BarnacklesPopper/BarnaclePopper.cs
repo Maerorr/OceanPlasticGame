@@ -31,7 +31,6 @@ public class BarnaclePopper : Minigame
                 return;
             }
         }
-        Debug.Log("All barnacles popped!");
         onWin.Invoke();
     }
 }

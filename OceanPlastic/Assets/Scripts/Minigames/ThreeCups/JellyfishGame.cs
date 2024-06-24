@@ -18,7 +18,8 @@ public class JellyfishGame : MinigameTrigger
     {
         if (!hasPlayerWon) return;
         key.gameObject.SetActive(true);
-        key.DOLocalMoveX(-2f, 1.5f).SetEase(Ease.OutQuad).SetUpdate(true).OnComplete(
+        key.DOLocalMoveY(2f, 1.5f).SetEase(Ease.OutQuad).SetUpdate(true);
+        key.DOLocalMoveX(-2.5f, 1.5f).SetEase(Ease.OutQuad).SetUpdate(true).OnComplete(
             () =>
             {
                 key.GetComponent<Key>().StartFloating();

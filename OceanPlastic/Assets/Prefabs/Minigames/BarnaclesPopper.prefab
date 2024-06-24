@@ -10049,7 +10049,7 @@ Transform:
   m_GameObject: {fileID: 2192688741204239794}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.39}
+  m_LocalPosition: {x: 0, y: 0, z: -1.5}
   m_LocalScale: {x: 26.699999, y: 27.79106, z: 1.0293}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -15138,7 +15138,7 @@ Transform:
   m_GameObject: {fileID: 3526002732174018128}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.32, y: 2.64, z: -1.6012499}
+  m_LocalPosition: {x: -5.32, y: 2.64, z: -1.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15280,7 +15280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2552467e77a77c342be678bf0c84a553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tapsRequired: 10
+  tapsRequired: 7
   requiredTimeBetweenTaps: 0.25
   isPopped: 0
   barnaclePopper: {fileID: 0}
@@ -15478,7 +15478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2552467e77a77c342be678bf0c84a553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tapsRequired: 10
+  tapsRequired: 7
   requiredTimeBetweenTaps: 0.25
   isPopped: 0
   barnaclePopper: {fileID: 0}
@@ -25294,7 +25294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2552467e77a77c342be678bf0c84a553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tapsRequired: 10
+  tapsRequired: 7
   requiredTimeBetweenTaps: 0.25
   isPopped: 0
   barnaclePopper: {fileID: 0}
@@ -25432,7 +25432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2552467e77a77c342be678bf0c84a553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tapsRequired: 10
+  tapsRequired: 7
   requiredTimeBetweenTaps: 0.25
   isPopped: 0
   barnaclePopper: {fileID: 0}
@@ -25885,7 +25885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2552467e77a77c342be678bf0c84a553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tapsRequired: 10
+  tapsRequired: 7
   requiredTimeBetweenTaps: 0.25
   isPopped: 0
   barnaclePopper: {fileID: 0}

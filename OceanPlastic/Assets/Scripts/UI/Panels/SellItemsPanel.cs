@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
@@ -60,10 +61,12 @@ public class SellItemsList : MonoBehaviour
         root.SetActive(true);
         rect.DOAnchorPos(openPosition, 0.75f).SetUpdate(true).SetEase(Ease.OutQuad);
         PopulateSellItemsList();
+        PlayerManager.Instance.Player.SetCanBreathe(true);
     }
     
     public void HideSellItemsList()
     {
+        PlayerManager.Instance.Player.SetCanBreathe(false);
         rect.DOAnchorPos(closedPosition, 0.75f).SetUpdate(true).SetEase(Ease.OutQuad).OnComplete(
             () => root.SetActive(false)
         );
@@ -78,7 +81,7 @@ public class SellItemsList : MonoBehaviour
 
     IEnumerator SpawnTrash()
     {
-        int trashToSpawn = PlayerManager.Instance.PlayerInventory.GetInventory().Count;
+        int trashToSpawn = PlayerManager.Instance.PlayerInventory.GetInventory().Sum(tuple => tuple.Item2);
         int random = Random.Range(5, 9);
         for (int i = 0; i < trashToSpawn; i++)
         {
@@ -96,8 +99,8 @@ public class SellItemsList : MonoBehaviour
             spawnedTrash.Add(trash);
             yield return new WaitForSecondsRealtime(0.05f);
         }
-        yield return new WaitForSecondsRealtime(0.6f);
-        for (int i = 0; i < 50; i++)
+        yield return new WaitForSecondsRealtime(0.7f);
+        for (int i = 0; i < (int)(20 + trashToSpawn * 1.4f); i++)
         {
             machineRect.DOAnchorPosX(Random.Range(-15f, 15f), 0.03f).SetUpdate(true);
             yield return new WaitForSecondsRealtime(0.03f);
