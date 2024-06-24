@@ -6354,7 +6354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1448458934507199022, guid: 71794b95ba0c8da42819168896b28d65, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -218.9
+      value: -203
       objectReference: {fileID: 0}
     - target: {fileID: 1448458934507199022, guid: 71794b95ba0c8da42819168896b28d65, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6674,6 +6674,18 @@ PrefabInstance:
     - target: {fileID: 5533531135630562125, guid: f73559fbcfc89a34287fd8265324992a, type: 3}
       propertyPath: m_Name
       value: Settings
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050484157626880808, guid: f73559fbcfc89a34287fd8265324992a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleOutline
+      objectReference: {fileID: 0}
+    - target: {fileID: 7060240377333580167, guid: f73559fbcfc89a34287fd8265324992a, type: 3}
+      propertyPath: m_Name
+      value: outline
+      objectReference: {fileID: 0}
+    - target: {fileID: 8359020409700038673, guid: f73559fbcfc89a34287fd8265324992a, type: 3}
+      propertyPath: m_Name
+      value: outline
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
