@@ -1,8 +1,12 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class SellItemsList : MonoBehaviour
 {
@@ -21,6 +25,16 @@ public class SellItemsList : MonoBehaviour
     
     [SerializeField] 
     private UnityEvent onSell;
+
+    public RectTransform leftShredder;
+    public RectTransform rightShredder;
+    public float shredderSpeed = 1f;
+    public RectTransform trashSpawnPoint;
+    public RectTransform machineRect;
+    
+    public List<Sprite> trashSprites;
+    
+    private List<GameObject> spawnedTrash = new List<GameObject>();
     
     private void Awake()
     {
@@ -30,7 +44,17 @@ public class SellItemsList : MonoBehaviour
             () => root.SetActive(false)
         );
     }
-    
+
+    private void Update()
+    {
+        var currentRot = leftShredder.rotation.eulerAngles;
+        currentRot.z += Time.deltaTime * shredderSpeed;
+        leftShredder.rotation = Quaternion.Euler(currentRot);
+        currentRot = rightShredder.rotation.eulerAngles;
+        currentRot.z -= Time.deltaTime * shredderSpeed;
+        rightShredder.rotation = Quaternion.Euler(currentRot);
+    }
+
     public void ShowSellItemsList()
     {
         root.SetActive(true);
@@ -48,6 +72,43 @@ public class SellItemsList : MonoBehaviour
     public void SellItems()
     {
         onSell.Invoke();
+        //HideSellItemsList();
+        StartCoroutine(SpawnTrash());
+    }
+
+    IEnumerator SpawnTrash()
+    {
+        int random = Random.Range(5, 9);
+        for (int i = 0; i < random; i++)
+        {
+            var trash = new GameObject("trash_to_shred", typeof(Image), typeof(CircleCollider2D), typeof(Rigidbody2D));
+            trash.transform.SetParent(trashSpawnPoint);
+            trash.transform.localPosition = Vector3.zero;
+            Vector3 randOffset = new Vector3(Random.Range(-130f, 130f), Random.Range(-5f, 5f), 0f);
+            trash.layer = 12;
+            trash.transform.localPosition = randOffset;
+            trash.transform.localScale = new Vector3(3f, 3f, 1f);
+            trash.GetComponent<Rigidbody2D>().gravityScale = 120f;
+            trash.GetComponent<Rigidbody2D>().mass = 15f;
+            trash.GetComponent<CircleCollider2D>().radius = 33f;
+            trash.GetComponent<Image>().sprite = trashSprites[Random.Range(0, trashSprites.Count)];
+            spawnedTrash.Add(trash);
+            yield return new WaitForSecondsRealtime(0.05f);
+        }
+        yield return new WaitForSecondsRealtime(0.6f);
+        for (int i = 0; i < 50; i++)
+        {
+            machineRect.DOAnchorPosX(Random.Range(-15f, 15f), 0.03f).SetUpdate(true);
+            yield return new WaitForSecondsRealtime(0.03f);
+        }
+        machineRect.DOAnchorPosX(0f, 0.03f).SetUpdate(true);
+        
+        yield return new WaitForSecondsRealtime(0.5f);
+        foreach (var go in spawnedTrash)
+        {
+            Destroy(go);
+        }
+        spawnedTrash.Clear();
         HideSellItemsList();
     }
     
