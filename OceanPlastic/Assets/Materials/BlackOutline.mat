@@ -67,6 +67,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
+    - _UseOutline: 0
     - _size: 0.002
     m_Colors:
     - _Color: {r: 0, g: 0, b: 0, a: 1}

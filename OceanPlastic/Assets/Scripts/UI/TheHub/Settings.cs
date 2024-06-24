@@ -13,6 +13,7 @@ public class Settings : MonoBehaviour
     private TextMeshProUGUI postprocessCheck;
     [SerializeField] 
     private TextMeshProUGUI oxygenUsageCheck;
+    public TextMeshProUGUI outlineCheck;
     private bool oxygenUsageActive = true;
 
     private void Start()
@@ -27,6 +28,16 @@ public class Settings : MonoBehaviour
             feature.SetActive(false);
             postprocessCheck.text = "X";
         }
+
+        if (StaticGameData.instance.showOutline)
+        {
+            outlineCheck.text = "X";
+        }
+        else
+        {
+            outlineCheck.text = "";
+        }
+        
         oxygenUsageCheck.text = StaticGameData.instance.oxygenUsage ? "" : "X";
     }
 
@@ -61,6 +72,20 @@ public class Settings : MonoBehaviour
             oxygenUsageCheck.text = "";
             oxygenUsageActive = true;
             StaticGameData.instance.oxygenUsage = true;
+        }
+    }
+
+    public void ToggleOutline()
+    {
+        if (outlineCheck.text == "X")
+        {
+            outlineCheck.text = "";
+            StaticGameData.instance.showOutline = false;
+        }
+        else
+        {
+            outlineCheck.text = "X";
+            StaticGameData.instance.showOutline = true;
         }
     }
 

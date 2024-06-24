@@ -18,6 +18,7 @@ public class StaticGameData : MonoBehaviour
     
     public bool ripplePostProcess = true;
     public bool oxygenUsage = true;
+    public bool showOutline = false;
     #endregion
 
     public bool finishedFirstLevel = false;

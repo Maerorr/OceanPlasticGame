@@ -13,11 +13,15 @@ public class PauseMenu : MonoBehaviour
     public GameObject rippleCheckmark;
 
     public GameObject abandonConfirmationPanel;
+    public GameObject outlineCheck;
+
+    private OutlineShadersController outlineController;
     
     bool isOpen = false;
     
     private void Start()
     {
+        outlineController = FindAnyObjectByType<OutlineShadersController>();
         if (feature.isActive)
         {
             rippleCheckmark.SetActive(false);
@@ -26,6 +30,16 @@ public class PauseMenu : MonoBehaviour
         {
             rippleCheckmark.SetActive(true);
         }
+
+        if (StaticGameData.instance.showOutline)
+        {
+            outlineCheck.SetActive(true);
+        }
+        else
+        {
+            outlineCheck.SetActive(false);
+        }
+        
 
         abandonConfirmationPanel.SetActive(false);
         initialColor = pauseMenuRoot.color;
@@ -79,6 +93,15 @@ public class PauseMenu : MonoBehaviour
         {
             rippleCheckmark.SetActive(true);
         }
+        
+        if (StaticGameData.instance.showOutline)
+        {
+            outlineCheck.SetActive(true);
+        }
+        else
+        {
+            outlineCheck.SetActive(false);
+        }
     }
 
     public void OnRippleChange()
@@ -95,6 +118,22 @@ public class PauseMenu : MonoBehaviour
             feature.SetActive(true);
             StaticGameData.instance.ripplePostProcess = true;
             rippleCheckmark.SetActive(false);
+        }
+    }
+
+    public void OnOutlineChange()
+    {
+        if (StaticGameData.instance.showOutline)
+        {
+            outlineCheck.SetActive(false);
+            StaticGameData.instance.showOutline = false;
+            outlineController.DisableOutline();
+        }
+        else
+        {
+            outlineCheck.SetActive(true);
+            StaticGameData.instance.showOutline = true;
+            outlineController.EnableOutline();
         }
     }
 }
