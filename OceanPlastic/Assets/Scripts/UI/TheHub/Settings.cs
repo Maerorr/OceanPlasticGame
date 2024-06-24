@@ -39,6 +39,7 @@ public class Settings : MonoBehaviour
         }
         
         oxygenUsageCheck.text = StaticGameData.instance.oxygenUsage ? "" : "X";
+        oxygenUsageActive = StaticGameData.instance.oxygenUsage;
     }
 
     public void TogglePostProcess()

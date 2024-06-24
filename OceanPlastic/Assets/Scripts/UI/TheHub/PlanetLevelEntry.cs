@@ -85,7 +85,7 @@ public class PlanetLevelEntry : MonoBehaviour
         var moveYTween = planetInfoPanel.DOAnchorPos(new Vector2(0f, 0f), animationTime).SetEase(Ease.OutCubic).SetId(gameObject.GetInstanceID()+1).intId;
         var scaleYTween = planetInfoPanel.transform.DOScaleY(0f, animationTime).SetEase(Ease.OutCubic).SetId(gameObject.GetInstanceID()+2).intId;
         var scaleXTween = planetInfoPanel.transform.DOScaleX(0f, animationTime).SetEase(Ease.OutCubic).OnComplete(
-            () => { planetInfoPanel.gameObject.SetActive(false); Debug.Log("Setting planet to DISABLED"); }
+            () => { planetInfoPanel.gameObject.SetActive(false); }
         ).SetId(gameObject.GetInstanceID()+3).intId;
         
         tweens.Add(colorTween);
@@ -97,7 +97,6 @@ public class PlanetLevelEntry : MonoBehaviour
     public void Enable()
     {
         active = true;
-        Debug.Log("Setting planet to ACTIVE");
         planetInfoPanel.gameObject.SetActive(true);
         foreach (var tween in tweens)
         {

@@ -72,12 +72,12 @@ public abstract class MinigameTrigger : MonoBehaviour
 
     private void Hide()
     {
+        Time.timeScale = 1f;
         postprocess.EnableRipples();
         gameUIController.MoveToNormal();
         minigameInstance.transform.DOLocalMove(new Vector3(0f, -12f, 5f), 1f).SetEase(Ease.OutQuad).OnComplete(
             () =>
             {
-                Time.timeScale = 1f;
                 Destroy(minigameInstance);
                 onMinigameHidden.Invoke();
             }).SetUpdate(true);

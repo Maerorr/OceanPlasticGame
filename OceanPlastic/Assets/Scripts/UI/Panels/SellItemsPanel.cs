@@ -40,7 +40,7 @@ public class SellItemsList : MonoBehaviour
     {
         rect = GetComponent<RectTransform>();
         root = transform.gameObject;
-        rect.DOAnchorPos(closedPosition, 0.75f).SetEase(Ease.OutQuad).OnComplete(
+        rect.DOAnchorPos(closedPosition, 0.75f).SetUpdate(true).SetEase(Ease.OutQuad).OnComplete(
             () => root.SetActive(false)
         );
     }
@@ -58,28 +58,29 @@ public class SellItemsList : MonoBehaviour
     public void ShowSellItemsList()
     {
         root.SetActive(true);
-        rect.DOAnchorPos(openPosition, 0.75f).SetEase(Ease.OutQuad);
+        rect.DOAnchorPos(openPosition, 0.75f).SetUpdate(true).SetEase(Ease.OutQuad);
         PopulateSellItemsList();
     }
     
     public void HideSellItemsList()
     {
-        rect.DOAnchorPos(closedPosition, 0.75f).SetEase(Ease.OutQuad).OnComplete(
+        rect.DOAnchorPos(closedPosition, 0.75f).SetUpdate(true).SetEase(Ease.OutQuad).OnComplete(
             () => root.SetActive(false)
         );
     }
 
     public void SellItems()
     {
+        StartCoroutine(SpawnTrash());
         onSell.Invoke();
         //HideSellItemsList();
-        StartCoroutine(SpawnTrash());
     }
 
     IEnumerator SpawnTrash()
     {
+        int trashToSpawn = PlayerManager.Instance.PlayerInventory.GetInventory().Count;
         int random = Random.Range(5, 9);
-        for (int i = 0; i < random; i++)
+        for (int i = 0; i < trashToSpawn; i++)
         {
             var trash = new GameObject("trash_to_shred", typeof(Image), typeof(CircleCollider2D), typeof(Rigidbody2D));
             trash.transform.SetParent(trashSpawnPoint);

@@ -7,6 +7,6 @@ public class FPSUnlocker : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 60;
-        SceneManager.LoadScene("Scenes/TheHub");
+        SceneManager.LoadScene("Scenes/Levels/Tutorial");
     }
 }

@@ -12,9 +12,11 @@ public class ToolButtons : MonoBehaviour
     [FormerlySerializedAs("repairButton")] [SerializeField]
     public Button extraButton;
 
+    public Color selectedButtonColor;
     [SerializeField] 
     private TextMeshProUGUI extraButtonTooltip;
-    
+
+    private float initialButtonAlpha;
     private PlayerTools playerTools;
     private CurrentTool currentTool = CurrentTool.None;
 
@@ -22,6 +24,8 @@ public class ToolButtons : MonoBehaviour
     {
         playerTools = FindObjectOfType<PlayerTools>();
         DisableExtraButton();
+        initialButtonAlpha = vacuumButton.transform.GetComponent<Image>().color.a;
+        selectedButtonColor.a = initialButtonAlpha;
     }
 
     public void OnVacuumButtonClicked()
@@ -29,15 +33,15 @@ public class ToolButtons : MonoBehaviour
         if (currentTool == CurrentTool.Vacuum)
         {
             currentTool = CurrentTool.None;
-            vacuumButton.transform.GetComponent<Image>().color = Color.white;
-            forceCannonButton.transform.GetComponent<Image>().color = Color.white;
+            vacuumButton.transform.GetComponent<Image>().color = new Color(1f, 1f, 1f, initialButtonAlpha);
+            forceCannonButton.transform.GetComponent<Image>().color = new Color(1f, 1f, 1f, initialButtonAlpha);
             playerTools.SetCurrentTool(currentTool);
         }
         else
         {
             currentTool = CurrentTool.Vacuum;
-            vacuumButton.transform.GetComponent<Image>().color = Color.green;
-            forceCannonButton.transform.GetComponent<Image>().color = Color.white;
+            vacuumButton.transform.GetComponent<Image>().color = selectedButtonColor;
+            forceCannonButton.transform.GetComponent<Image>().color = new Color(1f, 1f, 1f, initialButtonAlpha);
         }
         playerTools.SetCurrentTool(currentTool);
     }
@@ -47,14 +51,14 @@ public class ToolButtons : MonoBehaviour
         if (currentTool == CurrentTool.ForceCannon)
         {
             currentTool = CurrentTool.None;
-            vacuumButton.transform.GetComponent<Image>().color = Color.white;
-            forceCannonButton.transform.GetComponent<Image>().color = Color.white;
+            vacuumButton.transform.GetComponent<Image>().color = new Color(1f, 1f, 1f, initialButtonAlpha);
+            forceCannonButton.transform.GetComponent<Image>().color = new Color(1f, 1f, 1f, initialButtonAlpha);
         }
         else
         {
             currentTool = CurrentTool.ForceCannon;
-            vacuumButton.transform.GetComponent<Image>().color = Color.white;
-            forceCannonButton.transform.GetComponent<Image>().color = Color.green;
+            vacuumButton.transform.GetComponent<Image>().color = new Color(1f, 1f, 1f, initialButtonAlpha);
+            forceCannonButton.transform.GetComponent<Image>().color = selectedButtonColor;
         }
         playerTools.SetCurrentTool(currentTool);
     }

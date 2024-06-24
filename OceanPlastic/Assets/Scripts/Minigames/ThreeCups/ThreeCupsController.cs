@@ -12,13 +12,13 @@ public class ThreeCupsController : Minigame
     
     private void Start()
     {
+        MinigameInit();
         cups = GetComponentsInChildren<Cup>().ToList();
 
         foreach (var cup in cups)
         {
             cup.clickable = false;
         }
-        MinigameInit();
         StartCoroutine(StartGame());
     }
 
@@ -66,9 +66,19 @@ public class ThreeCupsController : Minigame
 
     public void CheckCup(bool winning)
     {
+        StartCoroutine(CupCheckAnimation(winning));
+    }
+
+    IEnumerator CupCheckAnimation(bool winning)
+    {
+        yield return new WaitForSecondsRealtime(1.5f);
         if (winning)
         {
             onWin.Invoke();
+            foreach (var cup in cups)
+            {
+                cup.clickable = false;
+            }
         }
         else
         {

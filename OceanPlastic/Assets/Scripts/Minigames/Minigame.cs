@@ -26,7 +26,7 @@ public abstract class Minigame : MonoBehaviour
         sq.SetUpdate(true);
         sq.Append(tooltipTMP.DOFade(1f, 0.75f).SetEase(Ease.InQuad));
         // here we use .parent because i changed the tooltip to be a child alongside a background. So to move them both we just move the parent.
-        sq.Append(tooltipTMP.transform.parent.DOLocalMoveY(initialTooltipLocalY + 4f, 2f).SetDelay(4f).SetEase(Ease.OutQuad).OnComplete(
+        sq.Append(tooltipTMP.transform.parent.DOLocalMoveY(initialTooltipLocalY + 4f, 2f).SetDelay(2.5f).SetEase(Ease.OutQuad).OnComplete(
             () => tooltipTMP.transform.parent.gameObject.SetActive(false)));
         sq.Play();
     }

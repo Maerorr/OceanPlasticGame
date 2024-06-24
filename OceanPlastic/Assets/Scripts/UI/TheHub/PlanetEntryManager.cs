@@ -25,7 +25,6 @@ public class PlanetEntryManager : MonoBehaviour
         {
             if (planetLevelEntry.GetID() != entry.GetID())
             {
-                Debug.Log("disabling a planet entry");
                 planetLevelEntry.Disable();
             }
         }
