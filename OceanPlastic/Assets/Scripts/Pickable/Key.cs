@@ -15,8 +15,8 @@ public class Key : MonoBehaviour
         {
             if (tag.HasTag(Tags.Player))
             {
-                PlayerManager.Instance.PlayerInventory.SetHasKey(true);
-                FindAnyObjectByType<GameUIController>().UpdateKey(true);
+                PlayerManager.Instance.PlayerInventory.AddOneKey();
+                FindAnyObjectByType<GameUIController>().UpdateKey(1);
                 Destroy(gameObject);
             }
         }

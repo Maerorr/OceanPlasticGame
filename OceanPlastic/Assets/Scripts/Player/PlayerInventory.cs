@@ -19,7 +19,7 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] 
     private Messenger msg;
 
-    private bool hasKey = false;
+    private int keys = 0;
 
     public UnityEvent onInventoryFull;
     public UnityEvent onInventoryHasSpace;
@@ -165,13 +165,13 @@ public class PlayerInventory : MonoBehaviour
         return collectedTrash.Sum(tuple => tuple.Item2);
     }
     
-    public void SetHasKey(bool value)
+    public void AddOneKey()
     {
-        hasKey = value;
+        keys++;
     }
     
-    public bool HasKey()
+    public int GetKeysAmount()
     {
-        return hasKey;
+        return keys;
     }
 }

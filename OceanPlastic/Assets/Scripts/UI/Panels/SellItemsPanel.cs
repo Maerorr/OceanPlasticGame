@@ -82,7 +82,7 @@ public class SellItemsList : MonoBehaviour
     IEnumerator SpawnTrash()
     {
         int trashToSpawn = PlayerManager.Instance.PlayerInventory.GetInventory().Sum(tuple => tuple.Item2);
-        int random = Random.Range(5, 9);
+        trashToSpawn = Mathf.CeilToInt(trashToSpawn / 2f);
         for (int i = 0; i < trashToSpawn; i++)
         {
             var trash = new GameObject("trash_to_shred", typeof(Image), typeof(CircleCollider2D), typeof(Rigidbody2D));

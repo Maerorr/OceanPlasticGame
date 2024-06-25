@@ -4822,9 +4822,9 @@ RectTransform:
   m_Children:
   - {fileID: 6563550362940036256}
   - {fileID: 245571321651502026}
-  - {fileID: 3087882122225744529}
   - {fileID: 957474392703988836}
   - {fileID: 1277143332985616755}
+  - {fileID: 3087882122225744529}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -6924,6 +6924,10 @@ PrefabInstance:
       objectReference: {fileID: 3721332164799857440, guid: 2b4807cee0161504b8fbf81cc788c0b6, type: 2}
     - target: {fileID: 1090665507837310726, guid: 7cdb4ba3ba504d04489c99a2c2e8b4a6, type: 3}
       propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435079997539833456, guid: 7cdb4ba3ba504d04489c99a2c2e8b4a6, type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1435079997539833456, guid: 7cdb4ba3ba504d04489c99a2c2e8b4a6, type: 3}

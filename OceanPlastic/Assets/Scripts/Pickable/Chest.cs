@@ -9,6 +9,8 @@ public class Chest : MonoBehaviour
     public Sprite closedChest;
     public Sprite openChest;
     public SpriteRenderer spriteRenderer;
+
+    public int amountOfKeysRequired = 1;
     
     public bool isOpen = false;
     private bool isPlayerNear = false;
@@ -33,9 +35,17 @@ public class Chest : MonoBehaviour
     {
         if (!isOpen && isPlayerNear)
         {
-            if (!PlayerManager.Instance.PlayerInventory.HasKey())
+            if (PlayerManager.Instance.PlayerInventory.GetKeysAmount() < amountOfKeysRequired)
             {
-                msg.ShowMessage("The chest is locked.", transform.position, Color.red, 3f);
+                if (amountOfKeysRequired == 1)
+                {
+                    msg.ShowMessage($"The chest looks like it needs 1 key to be opened.", transform.position, Color.red, 3f);
+                }
+                else
+                {
+                    msg.ShowMessage($"The chest looks like it needs {amountOfKeysRequired} keys to be opened.", transform.position, Color.red, 3f);
+                }
+                
                 return;
             };
             isOpen = true;
@@ -46,7 +56,7 @@ public class Chest : MonoBehaviour
             treasure.DOLocalMoveY(3f, 3f).SetEase(Ease.OutQuart);
             treasure.DOScale(0.6f, 3f).SetEase(Ease.OutQuart);
             //hiddenImage.DOFade(0f, 6f).SetEase(Ease.InQuint).OnComplete(() => hiddenImage.gameObject.SetActive(false));
-            gameUIController.UpdateKey(false);
+            gameUIController.UpdateKey(-amountOfKeysRequired);
         }
     }
     

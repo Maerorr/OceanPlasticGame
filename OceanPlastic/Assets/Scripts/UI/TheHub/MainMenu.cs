@@ -14,6 +14,8 @@ public class MainMenu : MonoBehaviour
 
     public GameObject firstTimeTutorial;
 
+    public GameObject secondLevelBlock;
+
     private void Start()
     {
         Application.targetFrameRate = 60;
@@ -28,6 +30,8 @@ public class MainMenu : MonoBehaviour
             entry.rect.gameObject.SetActive(false);
             entry.initialPos = entry.rect.anchoredPosition;
         }
+        
+        secondLevelBlock.SetActive(!StaticGameData.instance.finishedFirstLevel);
     }
 
     public void LevelsPress()

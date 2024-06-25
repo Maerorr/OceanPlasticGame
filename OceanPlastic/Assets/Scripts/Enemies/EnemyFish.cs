@@ -20,6 +20,8 @@ public class EnemyFish : MonoBehaviour
     
     private bool canAttack = true;
     [SerializeField] private float attackCooldown;
+    public Sprite normalSprite;
+    public Sprite attackSprite;
     
     private SpriteRenderer spriteRenderer;
     private float currentSpeed;
@@ -40,6 +42,7 @@ public class EnemyFish : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
         stateCheckCoroutine = StartCoroutine(StateCheck());
+        spriteRenderer.sprite = normalSprite;
     }
 
     // Update is called once per frame
@@ -58,6 +61,7 @@ public class EnemyFish : MonoBehaviour
     private void EnterChase()
     {
         state = EnemyState.Chase;
+        spriteRenderer.sprite = attackSprite;
         spriteRenderer.color = new Color(1f, 0.8f, 0.8f);
     }
     private void EnterPatrol()
@@ -65,6 +69,7 @@ public class EnemyFish : MonoBehaviour
         state = EnemyState.Patrol;
         reachedTarget = true;
         spriteRenderer.color = Color.white;
+        spriteRenderer.sprite = normalSprite;
     }
     
     private void Patrol()
@@ -101,7 +106,7 @@ public class EnemyFish : MonoBehaviour
 
     private void Chase()
     {
-        target = Vector2.Lerp(target, PlayerManager.Instance.Position(), Time.deltaTime * 4f);
+        target = Vector2.Lerp(target, PlayerManager.Instance.Position(), Time.deltaTime * 2f);
         DrawCircle(target, 0.5f);
         direction = (target - (Vector2)transform.position).normalized;
         //rb.velocity = speed * chaseSpeedup * (direction);
@@ -168,7 +173,9 @@ public class EnemyFish : MonoBehaviour
     {
         canAttack = false;
         animator.SetTrigger("Attack");
+        spriteRenderer.sprite = normalSprite;
         yield return new WaitForSeconds(0.05f);
+        spriteRenderer.sprite = attackSprite;
         PlayerManager.Instance.Player.TakeDamage(5f);
         yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
@@ -183,6 +190,7 @@ public class EnemyFish : MonoBehaviour
         }
         ignorePlayerCooldownCoroutine = StartCoroutine(IgnorePlayerCooldown());
     }
+    
     IEnumerator IgnorePlayerCooldown()
     {
         EnterPatrol();

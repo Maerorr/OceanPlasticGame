@@ -50,23 +50,25 @@ public class FullScreenPostProcessController : MonoBehaviour
 
     public void DisableRipples()
     {
-        var currentStrength = initialStrength;
-        DOTween.To(() => currentStrength, x => currentStrength = x, 0f, 1f).OnUpdate(() =>
-        {
-            waterRippleMaterial.SetFloat(stregthID, currentStrength);
-        }).SetUpdate(true);
+        // var currentStrength = initialStrength;
+        // DOTween.To(() => currentStrength, x => currentStrength = x, 0f, 1f).OnUpdate(() =>
+        // {
+        //     waterRippleMaterial.SetFloat(stregthID, currentStrength);
+        // }).SetUpdate(true);
+        waterRipple.SetActive(false);
     }
 
     public void EnableRipples()
     {
-        var currentStrength = 0f;
-        if (StaticGameData.instance.ripplePostProcess)
-        {
-            DOTween.To(() => currentStrength, x => currentStrength = x, initialStrength, 1f).OnUpdate(() =>
-            {
-                waterRippleMaterial.SetFloat(stregthID, currentStrength);
-            }).SetUpdate(true);
-        }
+        waterRipple.SetActive(true);
+        // var currentStrength = 0f;
+        // if (StaticGameData.instance.ripplePostProcess)
+        // {
+        //     DOTween.To(() => currentStrength, x => currentStrength = x, initialStrength, 1f).OnUpdate(() =>
+        //     {
+        //         waterRippleMaterial.SetFloat(stregthID, currentStrength);
+        //     }).SetUpdate(true);
+        // }
     }
 
     public void TriggerDamageVignette()

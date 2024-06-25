@@ -92,7 +92,7 @@ public class ForceCannon : MonoBehaviour
             }).OnComplete(() =>
             {
                 waveTime = 0f;
-            }).intId;
+            }).SetId(999).intId;
             
             Array.Clear(hits, 0, hits.Length);
             

@@ -20,8 +20,8 @@ public class SceneTransitionEffect : MonoBehaviour
 
         if (StaticGameData.instance.justReturnedFromMission)
         {
-            waterTransition.rectTransform.DOAnchorPos(new Vector2(200f, -1200f), 0f);
-            waterTransition.rectTransform.DOAnchorPos(new Vector2(-1300, 250f), 2f);
+            waterTransition.rectTransform.DOAnchorPos(new Vector2(-1300, 250f), 0f);
+            waterTransition.rectTransform.DOAnchorPos(new Vector2(200f, -1200f), 2f);
             StaticGameData.instance.justReturnedFromMission = false;
         }
     }

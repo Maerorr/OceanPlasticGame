@@ -56,9 +56,9 @@ public class GameUIController : MonoBehaviour
         }
     }
 
-    public void UpdateKey(bool addOne)
+    public void UpdateKey(int addOrRemoveAmount)
     {
-        keysAmount += addOne ? 1 : -1;
+        keysAmount += addOrRemoveAmount;
         if (keysAmount > 0)
         {
             keysAmountText.text = $"{keysAmount} x";
