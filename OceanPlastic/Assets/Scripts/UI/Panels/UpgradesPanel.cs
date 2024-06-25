@@ -54,6 +54,7 @@ public class UpgradesPanel : MonoBehaviour
 
         
         root = transform.gameObject;
+        MarkAlreadyBoughtUpgrades();
         DisableAllTabs();
     }
     
@@ -104,7 +105,7 @@ public class UpgradesPanel : MonoBehaviour
     private void UpdateUpgrades()
     {
         var data = StaticGameData.instance;
-        
+        Debug.Log($"Upgrades are: {data.oxygenUpgrade}, {data.finUpgrade}, {data.pocketUpgrade}");
         oxygenUpgrade = data.oxygenUpgrade;
         finUpgrade = data.finUpgrade;
         //suitUpgrade = data.depthUpgrade;

@@ -60,7 +60,9 @@ public class StaticGameData : MonoBehaviour
         switch (type)
         {
             case UpgradeType.Oxygen:
-                oxygenUpgrade = UpgradeConversions.OxygenFromInt(lvl);
+                var ox = UpgradeConversions.OxygenFromInt(lvl);
+                Debug.Log($"Setting Oxygen to {ox}");
+                oxygenUpgrade = ox;
                 break;
             case UpgradeType.Fin:
                 finUpgrade = UpgradeConversions.FinFromInt(lvl);

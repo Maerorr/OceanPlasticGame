@@ -20,8 +20,8 @@ public class MainMenu : MonoBehaviour
         if (!StaticGameData.instance.firstTimeInHub)
         {
             firstTimeTutorial.SetActive(false);
-            StaticGameData.instance.firstTimeInHub = false;
         }
+        StaticGameData.instance.firstTimeInHub = false;
         noise.SetActive(false);
         foreach (var entry in menuEntries)
         {

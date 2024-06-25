@@ -961,7 +961,7 @@ MonoBehaviour:
     initialPos: {x: 0, y: 0}
     pressCooldown: 0
   noise: {fileID: 924549179}
-  firstTimeTutorial: {fileID: 0}
+  firstTimeTutorial: {fileID: 880662641}
 --- !u!4 &414937822
 Transform:
   m_ObjectHideFlags: 0

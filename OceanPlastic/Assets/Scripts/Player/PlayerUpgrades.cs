@@ -134,6 +134,7 @@ public class UpgradeConversions
 
         return OxygenUpgrades.Basic;
     }
+    
 
     // public static DepthUpgrades DepthFromInt(int i)
     // {
