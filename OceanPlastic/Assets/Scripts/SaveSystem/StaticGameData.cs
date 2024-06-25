@@ -24,6 +24,8 @@ public class StaticGameData : MonoBehaviour
     public bool finishedFirstLevel = false;
     public bool inTutorial = false;
     public bool firstTimeInHub = true;
+
+    public bool justReturnedFromMission = false;
     
     private void Awake()
     {

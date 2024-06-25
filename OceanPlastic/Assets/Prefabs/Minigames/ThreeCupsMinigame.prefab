@@ -1381,6 +1381,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jellyfish
       objectReference: {fileID: 0}
+    - target: {fileID: 2709395290531892964, guid: c3455c93704d6324888a4dcdf729c59f, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5966343470747475174, guid: c3455c93704d6324888a4dcdf729c59f, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.2625024

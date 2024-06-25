@@ -48000,6 +48000,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4743425805938270432, guid: efcb8879695d87e4fa70b6e25f7f922b, type: 3}
+      propertyPath: trashSprites.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743425805938270432, guid: efcb8879695d87e4fa70b6e25f7f922b, type: 3}
+      propertyPath: trashSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 1463605606, guid: 5fe87b9978b902e4a89a0a369989f7cf, type: 3}
+    - target: {fileID: 4743425805938270432, guid: efcb8879695d87e4fa70b6e25f7f922b, type: 3}
       propertyPath: onSell.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 129465961}

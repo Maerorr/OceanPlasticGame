@@ -118,9 +118,8 @@ public class MissionSummary : MonoBehaviour
         totalMoneyText.text = $"Total Money: {totalMoneyGained}";
     }
 
-    public void ToTheHub()
+    public void FinishLevelAddMoney()
     {
         StaticGameData.instance.money += totalMoneyGained;
-        SceneManager.LoadScene("TheHub");
     }
 }

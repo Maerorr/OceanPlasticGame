@@ -15,6 +15,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject abandonConfirmationPanel;
     public GameObject outlineCheck;
 
+    public Image panel;
+
     private OutlineShadersController outlineController;
     
     bool isOpen = false;
@@ -39,7 +41,7 @@ public class PauseMenu : MonoBehaviour
         {
             outlineCheck.SetActive(false);
         }
-        
+        panel.raycastTarget = false;
 
         abandonConfirmationPanel.SetActive(false);
         initialColor = pauseMenuRoot.color;
@@ -74,6 +76,7 @@ public class PauseMenu : MonoBehaviour
         {
             pauseMenuRoot.color = Color.clear;
             pauseMenuChild.SetActive(false);
+            panel.raycastTarget = false;
             isOpen = false;
             Time.timeScale = 1;
         }
@@ -81,6 +84,7 @@ public class PauseMenu : MonoBehaviour
         {
             pauseMenuRoot.color = initialColor;
             pauseMenuChild.SetActive(true);
+            panel.raycastTarget = true;
             isOpen = true;
             Time.timeScale = 0;
         }
