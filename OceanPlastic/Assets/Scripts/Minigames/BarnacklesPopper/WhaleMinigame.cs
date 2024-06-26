@@ -6,11 +6,13 @@ using UnityEngine;
 public class WhaleMinigame : MinigameTrigger
 {
     public List<GameObject> outsideBarnacles;
+    public ParticleSystem heartsAndBubbles;
     
     private void Start()
     {
         MinigameTriggerInit();
         onMinigameHidden.AddListener(AfterMinigameHide);
+        heartsAndBubbles.Stop();
     }
     
     private void AfterMinigameHide()
@@ -21,5 +23,13 @@ public class WhaleMinigame : MinigameTrigger
             Destroy(b);
         }
         outsideBarnacles.Clear();
+        StartCoroutine(Bubbles());
+    }
+
+    IEnumerator Bubbles()
+    {
+        heartsAndBubbles.Play();
+        yield return new WaitForSecondsRealtime(2f);
+        heartsAndBubbles.Stop();
     }
 }

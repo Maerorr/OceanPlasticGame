@@ -15,17 +15,22 @@ public class Settings : MonoBehaviour
     private TextMeshProUGUI oxygenUsageCheck;
     public TextMeshProUGUI outlineCheck;
     private bool oxygenUsageActive = true;
+    
+    public Material waterOverlayMaterial;
+    private int disableOverlayID = Shader.PropertyToID("_DisableOverlay");
 
     private void Start()
     {
         if (StaticGameData.instance.ripplePostProcess)
         {
             feature.SetActive(true);
+            waterOverlayMaterial.SetFloat(disableOverlayID, 0f);
             postprocessCheck.text = "";
         }
         else
         {
             feature.SetActive(false);
+            waterOverlayMaterial.SetFloat(disableOverlayID, 1f);
             postprocessCheck.text = "X";
         }
 

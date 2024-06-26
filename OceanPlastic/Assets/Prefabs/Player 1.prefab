@@ -258,7 +258,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5bb35dc7fa568ab4bb35f99968255672, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6021,7 +6021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootThreshold: 0.9
-  cooldown: 1
+  cooldown: 0.5
   cannonRange: 4
   cannonPower: 15
   maxConeAngle: 45
@@ -6352,7 +6352,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 5bb35dc7fa568ab4bb35f99968255672, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6467,7 +6467,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5bb35dc7fa568ab4bb35f99968255672, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6714,15 +6714,15 @@ PrefabInstance:
     - target: {fileID: 1586261769127887003, guid: 3a0ed238ac0ebaf44a1c6025df378593, type: 3}
       propertyPath: UVModule.sprites.Array.data[0].sprite
       value: 
-      objectReference: {fileID: 986430909, guid: 380de9ac9d9263f409e0820ad427ca21, type: 3}
+      objectReference: {fileID: 2050098176, guid: 8e419a27e893fdf4594ec4683a0925e2, type: 3}
     - target: {fileID: 1586261769127887003, guid: 3a0ed238ac0ebaf44a1c6025df378593, type: 3}
       propertyPath: UVModule.sprites.Array.data[1].sprite
       value: 
-      objectReference: {fileID: 352684658, guid: 380de9ac9d9263f409e0820ad427ca21, type: 3}
+      objectReference: {fileID: -493527112, guid: 8e419a27e893fdf4594ec4683a0925e2, type: 3}
     - target: {fileID: 1586261769127887003, guid: 3a0ed238ac0ebaf44a1c6025df378593, type: 3}
       propertyPath: UVModule.sprites.Array.data[2].sprite
       value: 
-      objectReference: {fileID: -590587753, guid: 380de9ac9d9263f409e0820ad427ca21, type: 3}
+      objectReference: {fileID: 537897716, guid: 8e419a27e893fdf4594ec4683a0925e2, type: 3}
     - target: {fileID: 7362569768100283499, guid: 3a0ed238ac0ebaf44a1c6025df378593, type: 3}
       propertyPath: m_Name
       value: Bubbles

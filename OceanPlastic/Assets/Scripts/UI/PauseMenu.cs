@@ -19,6 +19,9 @@ public class PauseMenu : MonoBehaviour
 
     private OutlineShadersController outlineController;
     
+    public Material waterOverlayMaterial;
+    private int disableOverlayID = Shader.PropertyToID("_DisableOverlay");
+    
     bool isOpen = false;
     
     private void Start()
@@ -110,18 +113,21 @@ public class PauseMenu : MonoBehaviour
 
     public void OnRippleChange()
     {
-        Debug.Log($"ripple is {feature.isActive}");
         if (feature.isActive)
         {
             feature.SetActive(false);
             StaticGameData.instance.ripplePostProcess = false;
             rippleCheckmark.SetActive(true);
+            Debug.Log("setting overlay material to 0");
+            waterOverlayMaterial.SetFloat(disableOverlayID, 1.5f);
         }
         else
         {
             feature.SetActive(true);
             StaticGameData.instance.ripplePostProcess = true;
             rippleCheckmark.SetActive(false);
+            Debug.Log("setting overlay material to 1");
+            waterOverlayMaterial.SetFloat(disableOverlayID, 0f);
         }
     }
 

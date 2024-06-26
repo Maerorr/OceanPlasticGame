@@ -34,7 +34,7 @@ public class Objectives : MonoBehaviour
     {
         var newObjective = Instantiate(objectiveEntryPrefab, layoutRoot.transform).GetComponent<ObjectiveEntry>();
         newObjective.SetSprite(pipeSprite);
-        newObjective.SetTrashColor(Color.black);
+        newObjective.SetTrashColor(new Color(0.1f, 0.1f, 0.1f));
         newObjective.SetEntryType(ObjectiveEntryType.Pipe);
         newObjective.SetObjectiveText("Pipes Repaired");
         newObjective.SetMaxValue(amountOfPipes);

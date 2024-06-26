@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ba44cdaea05300b4a8361f2abc24f015
+guid: bd09ec8f73f222a4397322e992df69f7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chests_0
+      name: refs_0
       rect:
         serializedVersion: 2
-        x: 63
-        y: 27
-        width: 118
-        height: 104
+        x: 31
+        y: 544
+        width: 125
+        height: 459
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 70d1f627cb8a49540aa1aac5e4b15e96
-      internalID: 248968849
+      spriteID: 3d8fb550f4a54764b87c7a8768fb84c9
+      internalID: 2093371505
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chests_1
+      name: refs_3
       rect:
         serializedVersion: 2
-        x: 338
-        y: 17
-        width: 118
-        height: 117
+        x: 300
+        y: 528
+        width: 418
+        height: 360
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,8 +145,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9578285698c3aca4d89ae881015cabe1
-      internalID: 2090151629
+      spriteID: 97afd80f1d0edaf47be2e35619ae669c
+      internalID: -1523277786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: refs_4
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 772
+        width: 228
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64a92a56f12bf974bb6488aa9234b98c
+      internalID: -1708174585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: refs_8
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 516
+        width: 228
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bd2eaa644de5e54e84941836509da36
+      internalID: 1156479732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: refs_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 240
+        width: 268
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 052520342da7fcb4d91a050459b48786
+      internalID: -764487538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: refs_20
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 12
+        width: 138
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d23afd8a34c2b2b4192bfe18fa396bec
+      internalID: 461390936
       vertices: []
       indices: 
       edges: []
@@ -162,8 +246,27 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      chests_0: 248968849
-      chests_1: 2090151629
+      refs_0: 2093371505
+      refs_1: 11841504
+      refs_10: -152214428
+      refs_11: -1256689997
+      refs_12: -1547149096
+      refs_13: -1012086487
+      refs_14: 910780740
+      refs_15: -764487538
+      refs_16: 627885756
+      refs_17: 376503133
+      refs_18: -352086104
+      refs_19: 1248193676
+      refs_2: -1304595073
+      refs_20: 461390936
+      refs_3: -1523277786
+      refs_4: -1708174585
+      refs_5: -468805760
+      refs_6: -276403666
+      refs_7: -277190620
+      refs_8: 1156479732
+      refs_9: 433483389
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

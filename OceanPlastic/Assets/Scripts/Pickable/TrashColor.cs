@@ -7,13 +7,13 @@ public static class TrashColor
         switch (type)
         {
             case MaterialType.Glass:
-                return new Color(0.106f, 0.72f, 0.129f);
+                return new Color(0.18f, 0.773f, 0.341f);
             case MaterialType.Metal:
                 return new Color(0.659f, 0.659f, 0.71f);
             case MaterialType.Plastic:
-                return new Color(0.89f, 0.89f, 0f);
+                return new Color(0.875f, 0.882f, 0.024f);
             case MaterialType.Rubber:
-                return new Color(0.851f, 0.275f, 0.082f);
+                return new Color(0.918f, 0.369f, 0.369f);
             default:
                 return Color.white;
         }

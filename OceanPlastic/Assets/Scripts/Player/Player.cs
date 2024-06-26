@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -62,6 +63,9 @@ public class Player : MonoBehaviour
     private int currentDepth = 0;
 
     private Messenger msg;
+
+    public SpriteRenderer playerSprite;
+    private int playerDamageTweenID;
     
     [Header("Events")]
     public UnityEvent onDeath;
@@ -80,7 +84,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         Application.SetStackTraceLogType(LogType.Log, StackTraceLogType.ScriptOnly);
-
+        
         msg ??= FindAnyObjectByType<Messenger>();
         oxygenDecreaseRate = baseMaxOxygen / secondsOfOxygen;
         
@@ -162,6 +166,9 @@ public class Player : MonoBehaviour
         }
         disableHealingCoroutine = StartCoroutine(DisableHealing());
         onDamageTaken.Invoke();
+        DOTween.Kill(playerDamageTweenID);
+        playerSprite.color = new Color(1f, 0.5f, 0.5f, 1f);
+        playerDamageTweenID = playerSprite.DOColor(Color.white, 0.66f).SetEase(Ease.InCubic).SetId(5534).intId;
     }
 
     IEnumerator DeathMessage()

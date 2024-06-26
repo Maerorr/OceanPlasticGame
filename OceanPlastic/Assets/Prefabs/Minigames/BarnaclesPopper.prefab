@@ -15039,6 +15039,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8717574009745596808}
   - component: {fileID: 3652915482614091621}
+  - component: {fileID: 6228565567568056835}
   m_Layer: 0
   m_Name: Whale
   m_TagString: Untagged
@@ -15055,8 +15056,8 @@ Transform:
   m_GameObject: {fileID: 3209547487684198982}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.017523425, w: 0.99984646}
-  m_LocalPosition: {x: 3.48, y: -0.38, z: -0.07}
-  m_LocalScale: {x: 1.3231294, y: 1.3231294, z: 1.3231294}
+  m_LocalPosition: {x: 3.48, y: -0.32, z: -0.07}
+  m_LocalScale: {x: 1.9078203, y: 1.9078203, z: 1.9078203}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1627819675473087903}
@@ -15102,7 +15103,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1393455667, guid: 8920b003fd2e088468c631b7883862ed, type: 3}
+  m_Sprite: {fileID: -1316628639, guid: a4942571fd72bdf4d9737e7eb27377af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -15113,6 +15114,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
+--- !u!95 &6228565567568056835
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3209547487684198982}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 085765a32ba110148a0172d277321411, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3526002732174018128
 GameObject:
   m_ObjectHideFlags: 0
@@ -15138,7 +15160,7 @@ Transform:
   m_GameObject: {fileID: 3526002732174018128}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.32, y: 2.64, z: -1.69}
+  m_LocalPosition: {x: -5.32, y: 3.22, z: -1.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

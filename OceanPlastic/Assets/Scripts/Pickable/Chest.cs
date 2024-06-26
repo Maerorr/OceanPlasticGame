@@ -8,7 +8,10 @@ public class Chest : MonoBehaviour
 {
     public Sprite closedChest;
     public Sprite openChest;
+    public GameObject chestLid;
+    public SpriteRenderer shine;
     public SpriteRenderer spriteRenderer;
+    
 
     public int amountOfKeysRequired = 1;
     
@@ -29,6 +32,8 @@ public class Chest : MonoBehaviour
         toolButtons = FindAnyObjectByType<ToolButtons>();
         toolButtons.extraButton.onClick.AddListener(OpenChest);
         treasure.gameObject.SetActive(false);
+        chestLid.SetActive(false);
+        shine.color = new Color(1f, 1f, 1f, 0f);
     }
 
     public void OpenChest()
@@ -49,6 +54,8 @@ public class Chest : MonoBehaviour
                 return;
             };
             isOpen = true;
+            shine.DOFade(1f, 1f).SetUpdate(true).OnComplete(() => shine.DOFade(0f, 2f).SetUpdate(true));
+            chestLid.SetActive(true);
             spriteRenderer.sprite = openChest;
             toolButtons.DisableExtraButton();
             toolButtons.ClearTooltip();
